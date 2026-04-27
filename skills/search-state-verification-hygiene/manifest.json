@@ -1,0 +1,11 @@
+{
+  "name": "search-state-verification-hygiene",
+  "displayName": "Search State Verification Hygiene",
+  "version": "1.0.0",
+  "target": "BrowserOS search agent",
+  "focus": "Clean starts, URL/UI/result verification, sticky-filter prevention, and click-budget control",
+  "inputs": ["BASE_URL", "QUERY", "INTENDED_FILTERS", "EXPECTED_VERTICAL", "RUN_MODE"],
+  "outputs": ["Clean-start confirmation", "State verification notes", "Final URL", "Reliability notes"],
+  "status": "packaged"
+}
+

@@ -1,0 +1,11 @@
+{
+  "name": "lead-scoring-dedup-pivots",
+  "displayName": "Lead Scoring, Deduplication, and Pivots",
+  "version": "1.0.0",
+  "target": "BrowserOS search agent",
+  "focus": "Convert raw search results into scored, deduplicated, action-ready shortlists with pivot plans",
+  "inputs": ["CANDIDATES", "TARGET_ROLE", "GEO_SCOPE", "CONTACT_PRIORITY", "MIN_SIGNAL_SCORE"],
+  "outputs": ["Scored shortlist", "Duplicate groups", "Discard list", "Pivot plan"],
+  "status": "packaged"
+}
+

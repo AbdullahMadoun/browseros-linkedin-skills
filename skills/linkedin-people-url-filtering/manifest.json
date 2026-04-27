@@ -1,0 +1,12 @@
+{
+  "name": "linkedin-people-url-filtering",
+  "displayName": "LinkedIn People URL Filtering",
+  "version": "1.0.0",
+  "target": "BrowserOS search agent",
+  "primarySource": "LinkedIn People Search",
+  "focus": "Fast, repeatable people search using clean URLs, quick filters, and reset hygiene",
+  "inputs": ["QUERY", "LOCATION", "NETWORK", "CURRENT_COMPANY", "MODE"],
+  "outputs": ["Final People URL", "Ordered filter stack", "Shortlist notes", "Reliability notes"],
+  "status": "packaged"
+}
+

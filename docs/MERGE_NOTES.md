@@ -1,0 +1,91 @@
+# Merge Notes
+
+## Merge Date
+
+2026-04-27
+
+## Sources
+
+### Local BrowserOS skills
+
+Source path:
+
+```text
+C:\Users\mohdm\.browseros\skills
+```
+
+Merged skills:
+
+- `google-sheets-connector-reliability`
+- `linkedin-attach-document-workflow`
+- `linkedin-connection-workflow`
+- `linkedin-inbox-preview-backfill`
+- `linkedin-messaging-workflow`
+- `linkedin-outreach-daily-ops`
+- `linkedin-outreach-sheet-workflow`
+- `linkedin-row-enrichment`
+
+### Archived search-agent skills
+
+Source archive:
+
+```text
+D:\downloads\browseros-search-agent-skills.rar
+```
+
+Extracted staging path:
+
+```text
+D:\downloads\browseros-search-agent-skills-staging\browseros-search-agent-skills
+```
+
+Merged skills:
+
+- `lead-scoring-dedup-pivots`
+- `linkedin-boolean-query-refinement`
+- `linkedin-ksa-recent-hiring-posts`
+- `linkedin-people-url-filtering`
+- `search-state-verification-hygiene`
+
+Preserved supporting files:
+
+- `manifest.json`
+- `templates.md`
+- `presets.md`
+- `build_people_search_url.py`
+- `QUERY_PACK_TEMPLATE.md`
+- `config.template.json`
+- `templates/results_template.csv`
+- `templates/run_log_template.md`
+
+## Normalization Performed
+
+The archived search-agent `SKILL.md` files did not include BrowserOS YAML front matter. BrowserOS-style front matter was added to these files:
+
+- `skills/lead-scoring-dedup-pivots/SKILL.md`
+- `skills/linkedin-boolean-query-refinement/SKILL.md`
+- `skills/linkedin-ksa-recent-hiring-posts/SKILL.md`
+- `skills/linkedin-people-url-filtering/SKILL.md`
+- `skills/search-state-verification-hygiene/SKILL.md`
+
+The original skill bodies were preserved below the added front matter.
+
+## Removal Policy
+
+No source skill was intentionally removed during this merge.
+
+Future removals should be handled explicitly:
+
+1. Identify the skill or file proposed for removal.
+2. Explain why it is obsolete, duplicated, or harmful.
+3. Ask for approval before deleting it.
+4. Record the decision in this file.
+
+## Conflict Policy
+
+If a future archive contains a skill with the same directory name:
+
+1. Do not overwrite blindly.
+2. Compare `SKILL.md`, manifest, templates, and scripts.
+3. Preserve both versions temporarily if behavior differs.
+4. Merge only after documenting what changed.

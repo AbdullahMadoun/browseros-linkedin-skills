@@ -1,0 +1,16 @@
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local run outputs
+*.log
+*.tmp
+*.bak
+
+# Python helper cache
+__pycache__/
+*.pyc
+
+# Local BrowserOS/session data should not be committed
+sessions/
+memory/

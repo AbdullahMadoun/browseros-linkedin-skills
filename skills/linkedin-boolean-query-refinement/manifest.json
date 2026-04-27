@@ -1,0 +1,12 @@
+{
+  "name": "linkedin-boolean-query-refinement",
+  "displayName": "LinkedIn Boolean Query Refinement",
+  "version": "1.0.0",
+  "target": "BrowserOS search agent",
+  "primarySource": "LinkedIn Search",
+  "focus": "Reusable Boolean query construction, noise control, and one-variable iteration",
+  "inputs": ["ROLE_FAMILY", "GEO_SCOPE", "COMPANY_SCOPE", "DOMAIN_CONTEXT", "NOISE_TERMS"],
+  "outputs": ["Boolean query block", "Filter order", "Top-10 relevance notes", "Saved query template"],
+  "status": "packaged"
+}
+

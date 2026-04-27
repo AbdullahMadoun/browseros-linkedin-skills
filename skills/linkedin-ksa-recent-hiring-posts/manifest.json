@@ -1,0 +1,15 @@
+{
+  "name": "linkedin-ksa-recent-hiring-posts",
+  "displayName": "LinkedIn KSA Recent Hiring Posts",
+  "version": "1.0.0",
+  "target": "BrowserOS search agent",
+  "region": "Saudi Arabia",
+  "focus": "Recent LinkedIn posts with direct contact paths, email-first",
+  "inputs": ["ROLE_KEYWORDS", "INDUSTRY_KEYWORDS", "GEO_SCOPE", "FRESHNESS_SEQUENCE", "MIN_SIGNAL_SCORE"],
+  "outputs": ["Scored post leads", "Deduplicated contact-ready shortlist"],
+  "languageSupport": ["English", "Arabic"],
+  "primarySource": "LinkedIn Posts Search",
+  "fallbackSource": "Google X-ray",
+  "status": "packaged"
+}
+
