@@ -11,7 +11,7 @@ Each subdirectory is a BrowserOS skill package. The primary entry point is alway
 | `linkedin-boolean-query-refinement` | Search | Boolean role/title query refinement |
 | `linkedin-ksa-recent-hiring-posts` | Search | Fresh KSA hiring-post discovery |
 | `lead-scoring-dedup-pivots` | Lead processing | Score, dedupe, and pivot from raw leads |
-| `local-latex-cv-tailoring` | Job application support | Tailor Abdullah's CV locally with LaTeX outputs |
+| `local-latex-resume-tailoring` | Job application support | Tailor a resume locally with LaTeX outputs |
 | `linkedin-outreach-sheet-workflow` | Outreach ops | Master LinkedIn + Google Sheets workflow |
 | `linkedin-inbox-preview-backfill` | Outreach ops | Fast inbox-preview sheet import |
 | `linkedin-row-enrichment` | Outreach ops | Enrich selected rows from profiles/threads |

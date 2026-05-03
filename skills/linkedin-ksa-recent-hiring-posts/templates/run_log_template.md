@@ -4,13 +4,15 @@
 
 - Date:
 - Target roles:
-- Candidate profile source:
+- Candidate profile source: redacted summary only
 - Ranked role clusters:
 - Industries:
 - Cities:
 - Freshness mode:
 - Minimum score:
 - Search mode:
+
+Do not log names, personal contact details, schools, employers, personal profile URLs, or other identifying candidate details unless explicitly requested by the user.
 
 ## Query Sequence Executed
 

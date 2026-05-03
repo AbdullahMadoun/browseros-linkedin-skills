@@ -1,12 +1,12 @@
 # BrowserOS LinkedIn Skills
 
-Reusable BrowserOS skills for LinkedIn search, lead discovery, outreach tracking, messaging, document attachment, Google Sheets reliability, and local CV tailoring.
+Reusable BrowserOS skills for LinkedIn search, lead discovery, outreach tracking, messaging, document attachment, Google Sheets reliability, and local resume tailoring.
 
-This repository merges two BrowserOS skill sets:
+This repository merges several BrowserOS skill sources:
 
 - LinkedIn outreach and Google Sheets operating skills created from local BrowserOS sessions.
-- Search-agent skills from `D:\downloads\browseros-search-agent-skills.rar`.
-- Local BrowserOS refinements from `/Users/abdullah/.browseros/skills`, including a candidate-fit KSA hiring search update and local LaTeX CV tailoring.
+- Search-agent skills from an archived BrowserOS search-agent package.
+- Local BrowserOS refinements, including a candidate-fit KSA hiring search update and local LaTeX resume tailoring.
 
 No source skill was intentionally removed during the merge. The archived search skills were kept with their supporting files and normalized by adding BrowserOS-style `SKILL.md` front matter.
 
@@ -22,7 +22,7 @@ browseros-linkedin-skills/
 │   ├── linkedin-connection-workflow/
 │   ├── linkedin-inbox-preview-backfill/
 │   ├── linkedin-ksa-recent-hiring-posts/
-│   ├── local-latex-cv-tailoring/
+│   ├── local-latex-resume-tailoring/
 │   ├── linkedin-messaging-workflow/
 │   ├── linkedin-outreach-daily-ops/
 │   ├── linkedin-outreach-sheet-workflow/
@@ -70,10 +70,10 @@ Use these when BrowserOS is managing LinkedIn outreach in a Google Sheet.
   Fast first-pass import from LinkedIn inbox preview rows into a Google Sheet without opening every thread.
 
 - `linkedin-row-enrichment`  
-  Opens only selected high-value threads or profiles to fill LinkedIn URL, title, company, exact message context, and higher-confidence fields.
+  Opens only selected high-value threads or profiles to fill LinkedIn URL, title, company, action context, and more reliable fields without storing message transcripts.
 
 - `linkedin-outreach-daily-ops`  
-  Daily delta loop for scanning changed threads, updating reply/follow-up state, maintaining queue actions, and logging runs.
+  Daily delta loop for scanning changed threads, updating reply/follow-up state, and maintaining queue actions.
 
 - `google-sheets-connector-reliability`  
   Recovery and batching rules for flaky Google Sheets connector behavior, including partial-write verification and timeout/503 handling.
@@ -95,8 +95,8 @@ Use these for concrete LinkedIn UI actions.
 
 Use this after a promising role, recruiter post, or company target is found.
 
-- `local-latex-cv-tailoring`
-  Tailors Abdullah Madoun's CV fully locally using approved master CV data, deterministic content selection, local LaTeX output, and optional local PDF compilation.
+- `local-latex-resume-tailoring`
+  Tailors a resume fully locally using approved master resume data, deterministic content selection, local LaTeX output, and optional local PDF compilation.
 
 ## Recommended Usage Chains
 
@@ -113,11 +113,11 @@ Use this after a promising role, recruiter post, or company target is found.
 2. `linkedin-ksa-recent-hiring-posts`
 3. `lead-scoring-dedup-pivots`
 
-### Turn a lead into a tailored CV
+### Turn a lead into a tailored resume
 
 1. `linkedin-ksa-recent-hiring-posts` or `linkedin-people-url-filtering`
 2. `lead-scoring-dedup-pivots`
-3. `local-latex-cv-tailoring`
+3. `local-latex-resume-tailoring`
 
 ### Build an outreach tracker from LinkedIn messages
 
@@ -160,7 +160,7 @@ It does not delete existing BrowserOS skills and does not overwrite existing ski
 The repo is configured for:
 
 ```text
-https://github.com/AbdullahMadoun/browseros-linkedin-skills
+https://github.com/<your-github-user>/browseros-linkedin-skills
 ```
 
 Typical first push:

@@ -4,7 +4,7 @@ description: Attach and send a local document in a LinkedIn message thread by lo
 metadata:
   display-name: LinkedIn Attach Document Workflow
   enabled: "true"
-  version: "1.0"
+  version: "1.1"
 ---
 
 # LinkedIn Attach Document Workflow
@@ -18,6 +18,9 @@ Use this when the user asks to send a CV, resume, PDF, DOC, DOCX, or other docum
 - The correct LinkedIn message thread is open, or the target thread can be opened first.
 - The user has provided the message and document intent, or the message is obvious from context.
 - The absolute local file path is known, or can be found safely before upload.
+
+## Sensitive document rule
+For resumes, CVs, offer letters, contracts, IDs, financial documents, or other private files, require explicit confirmation of both the exact absolute file path and the exact recipient/thread before uploading. If the file was discovered by search instead of supplied directly by the user, re-confirm before sending.
 
 ## Core rule
 Do not assume the visible paperclip button is the upload target.
@@ -35,7 +38,7 @@ LinkedIn often hides the real `input[type=file]`. If `upload_file` fails against
    - Use an absolute path.
    - If the path is unknown, search likely folders such as Downloads, Documents, Desktop, and any user-named project folder.
    - Prefer the most recent matching PDF/DOC/DOCX only when that matches the user's request.
-   - If multiple plausible documents exist, ask the user before attaching.
+   - If the document is sensitive or multiple plausible documents exist, ask the user to confirm the exact file before attaching.
 
 3. **Click the visible attach-file control once.**
    - This can cause LinkedIn to initialize the hidden document upload input.
@@ -50,8 +53,17 @@ LinkedIn often hides the real `input[type=file]`. If `upload_file` fails against
      const inputs = [...document.querySelectorAll('input[type="file"]')];
      const el = inputs.find(input => {
        const accept = (input.getAttribute('accept') || '').toLowerCase();
-       return !accept.includes('image') || accept.includes('pdf') || accept.includes('doc');
-     }) || inputs[inputs.length - 1];
+       const label = [
+         input.getAttribute('aria-label') || '',
+         input.getAttribute('title') || '',
+         input.id || '',
+         input.name || ''
+       ].join(' ').toLowerCase();
+       const acceptsDocument = accept.includes('pdf') || accept.includes('doc') || accept.includes('msword') || accept.includes('officedocument');
+       const looksLikeDocument = label.includes('document') || label.includes('file') || label.includes('attachment');
+       const imageOnly = accept && accept.split(',').every(part => part.toLowerCase().includes('image'));
+       return !imageOnly && (acceptsDocument || looksLikeDocument);
+     });
      if (!el) return 'no file input';
      el.className = '';
      el.removeAttribute('hidden');
@@ -87,6 +99,7 @@ LinkedIn often hides the real `input[type=file]`. If `upload_file` fails against
 7. **Verify staging before sending.**
    - Take another snapshot.
    - Confirm a staged attachment is visible, usually through a `Remove attachment <filename>` control or visible filename.
+   - For sensitive documents, confirm the staged filename and recipient still match the user's approved file and thread.
    - If no staged attachment appears, do not send.
 
 8. **Fill the composer.**
@@ -126,4 +139,5 @@ LinkedIn often hides the real `input[type=file]`. If `upload_file` fails against
 - Reuse the workflow, not old transient element IDs.
 - Verify the staged attachment before sending.
 - Verify the document card after sending.
+- Ask before uploading or sending sensitive documents unless the exact file and recipient were already confirmed.
 - Ask before attaching when multiple plausible files match.

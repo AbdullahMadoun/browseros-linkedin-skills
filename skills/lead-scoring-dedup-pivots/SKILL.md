@@ -4,7 +4,7 @@ description: Score raw search results, remove duplicate leads, decide what to ke
 metadata:
   display-name: Lead Scoring, Deduplication, and Pivots
   enabled: "true"
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Skill: Lead Scoring, Deduplication, and Pivots
@@ -16,6 +16,13 @@ Use this skill after a search returns candidate posts, profiles, companies, recr
 ## Purpose
 
 Convert raw search results into an action-ready shortlist by scoring signal quality, removing duplicates, and pivoting from strong evidence into adjacent sources.
+
+## Privacy rules
+
+- Treat names, profile URLs, personal emails, phone numbers, and message snippets as sensitive.
+- Prefer row IDs, source IDs, or redacted labels in chat summaries unless the user explicitly asks for full identifiers.
+- Keep public corporate application channels when needed, but avoid copying personal phone/email details into run logs.
+- When pivoting to external search engines, use role, company, geography, and hiring terms. Do not send candidate-private details, private profile-derived details, or personal contact data to Google.
 
 ## Inputs
 
@@ -60,18 +67,22 @@ Score from 0 to 10:
 
 ## Deduplication rules
 
-For posts, treat entries as duplicates if any two match:
+For posts, treat entries as duplicates only when a strong identity key matches:
 
 - Same email.
-- Same role phrase.
-- Same company or poster.
-- Same CTA wording within 7 days.
+- Same canonical post URL.
+- Same company or poster + same role phrase + same posted date/window.
+- Same company or poster + same CTA wording + same role phrase within 7 days.
 
-For profiles, treat entries as duplicates if any two match:
+Do not merge distinct openings from the same employer just because they share company and role family.
+
+For profiles, treat entries as duplicates when:
 
 - Same profile URL.
-- Same name + current company.
-- Same name + title + location.
+- Same public profile identifier.
+- Same name + current company + title + location, only if no profile URL is available.
+
+If only a weak name/company or name/title match exists, mark `possible_duplicate` and review instead of merging automatically.
 
 Keep the record with the highest recency, clearest contact route, and most complete notes.
 
@@ -85,6 +96,7 @@ After two or more high-signal records:
 4. Pivot from Companies to People only after a broad company pattern is found.
 
 Do not over-constrain pivots with exact company + strict contact phrase before proving volume exists.
+Do not pivot into Google with personal names, private profile data, or candidate-specific resume details unless the user explicitly approves that search.
 
 ## Noise handling
 
@@ -126,7 +138,7 @@ Notes:
 
 ```text
 Profile URL:
-Name:
+Name or redacted label:
 Current title:
 Company:
 Location:

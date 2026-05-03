@@ -15,7 +15,7 @@ PRESETS = {
 }
 
 
-def build_url(query, second_degree=False, geo_urn=None):
+def build_url(query, second_degree=False, geo_urn=None, current_company_urn=None):
     params = {"keywords": query}
 
     if second_degree:
@@ -23,6 +23,9 @@ def build_url(query, second_degree=False, geo_urn=None):
 
     if geo_urn:
         params["geoUrn"] = f'["{geo_urn}"]'
+
+    if current_company_urn:
+        params["currentCompany"] = f'["{current_company_urn}"]'
 
     query_string = urllib.parse.urlencode(params, quote_via=urllib.parse.quote)
     return f"{BASE_URL}?{query_string}"
@@ -40,6 +43,7 @@ def main():
     parser.add_argument("--second-degree", action="store_true", help='Add network=["S"]')
     parser.add_argument("--riyadh", action="store_true", help=f"Add Riyadh geoUrn ({RIYADH_URN})")
     parser.add_argument("--geo-urn", help="Override location geoUrn")
+    parser.add_argument("--current-company-urn", help="Add currentCompany filter by LinkedIn company URN")
     args = parser.parse_args()
 
     query = " ".join(args.query).replace("_", " ").strip()
@@ -54,9 +58,15 @@ def main():
     if args.riyadh and not geo_urn:
         geo_urn = RIYADH_URN
 
-    print(build_url(query=query, second_degree=second_degree, geo_urn=geo_urn))
+    print(
+        build_url(
+            query=query,
+            second_degree=second_degree,
+            geo_urn=geo_urn,
+            current_company_urn=args.current_company_urn,
+        )
+    )
 
 
 if __name__ == "__main__":
     main()
-

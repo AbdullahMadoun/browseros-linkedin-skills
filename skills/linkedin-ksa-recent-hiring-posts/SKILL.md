@@ -8,7 +8,7 @@ description: >-
 metadata:
   display-name: LinkedIn KSA Recent Hiring Posts
   enabled: "true"
-  version: "1.1"
+  version: "1.2"
 ---
 
 # LinkedIn KSA Recent Hiring Posts
@@ -33,6 +33,8 @@ Find fresh KSA hiring signals by searching LinkedIn posts first, using structure
 When the user provides a CV, profile, or experience summary, derive role families before searching.
 Do not search for one literal title only.
 Map the profile into 3 to 5 ranked role clusters, then search the highest-fit clusters first.
+
+Before logging or using the profile as search input, strip names, contact details, schools, employers, personal URLs, and other identifying details unless the user explicitly asks to use them. Keep only role-relevant capabilities, seniority, domains, and tools.
 
 ## Candidate-to-role mapping
 Infer role clusters from evidence in the profile.
@@ -215,6 +217,8 @@ Arabic:
 - راسلني
 - التقديم المباشر
 
+Prefer public corporate channels such as company career pages, work-domain recruiting emails, and clear apply links. If a post exposes a personal phone number, WhatsApp number, or personal email address, record only the route type in summaries unless the user explicitly asks to keep the raw contact detail.
+
 ### Geography pack
 English:
 - Saudi Arabia
@@ -312,9 +316,9 @@ Use broad posting phrases first.
 16. ROLE fresh graduate Saudi Arabia
 
 ### Stage 3: add poster or contact signal
-17. ROLE hr@ OR careers@ OR talent@
-18. ROLE WhatsApp OR apply now
-19. hiring ROLE email OR CV OR resume
+17. ROLE (hr@ OR careers@ OR talent@)
+18. ROLE (WhatsApp OR "apply now")
+19. hiring ROLE (email OR CV OR resume)
 20. recruiter ROLE Riyadh
 21. talent acquisition ROLE Saudi Arabia
 22. نبحث عن ROLE الرياض
@@ -403,6 +407,8 @@ Fallback patterns:
 - site:linkedin.com/posts ROLE hiring Riyadh
 - site:linkedin.com/feed/update recruiter Saudi Arabia hiring
 
+Do not send candidate names, personal resume details, private profile-derived details, personal phone numbers, or personal email addresses to Google. Use role, company, geography, and hiring terms instead.
+
 Never treat a Google result as fresh until the LinkedIn post itself confirms acceptable date evidence.
 
 ## Result validation rules
@@ -426,7 +432,7 @@ Score each candidate from 0 to 10:
 - Recency: 24h = 2, week = 1.
 - Role match: exact fit = 2, adjacent fit = 1.
 - Geography match: Saudi or city evidence = up to 2.
-- Contact clarity: direct email or WhatsApp = 3, strong apply CTA = 2, vague CTA = 1.
+- Contact clarity: public corporate email or company apply route = 3, personal phone/WhatsApp or personal email = 2, vague CTA = 1.
 - Poster credibility: recruiter, hiring manager, founder, or company page = 1.
 
 Action thresholds:
@@ -451,6 +457,7 @@ Role:
 Company or poster:
 KSA evidence:
 Contact route:
+Contact route type:
 Language:
 Signal score:
 Candidate-fit cluster:

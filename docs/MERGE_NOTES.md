@@ -11,7 +11,7 @@
 Source path:
 
 ```text
-C:\Users\mohdm\.browseros\skills
+<local-browseros-skills-dir>
 ```
 
 Merged skills:
@@ -30,13 +30,13 @@ Merged skills:
 Source archive:
 
 ```text
-D:\downloads\browseros-search-agent-skills.rar
+<search-agent-skills-archive>
 ```
 
 Extracted staging path:
 
 ```text
-D:\downloads\browseros-search-agent-skills-staging\browseros-search-agent-skills
+<search-agent-skills-staging-dir>
 ```
 
 Merged skills:
@@ -97,7 +97,7 @@ If a future archive contains a skill with the same directory name:
 Source path:
 
 ```text
-/Users/abdullah/.browseros/skills
+<local-browseros-skills-dir>
 ```
 
 Reviewed local skills against the GitHub repo and kept the normalized repo versions where local files were older, disabled, or malformed. Notable decisions:
@@ -105,9 +105,13 @@ Reviewed local skills against the GitHub repo and kept the normalized repo versi
 - Preserved the cleaned repo copy of `linkedin-messaging-workflow` because the local copy contained duplicated escaped front matter.
 - Preserved repo metadata, versions, manifests, templates, and helper scripts for existing skills.
 - Replaced `linkedin-ksa-recent-hiring-posts/SKILL.md` with the newer local LinkedIn-first candidate-fit workflow.
-- Updated the KSA skill manifest, config, query pack, and result/log templates to match the v1.1 workflow.
+- Updated the KSA skill manifest, config, query pack, and result/log templates to match the v1.2 workflow.
 - Merged the local single-sheet outreach model into `linkedin-outreach-sheet-workflow` as an explicit lightweight mode instead of replacing the existing normalized workbook model.
-- Added `local-latex-cv-tailoring` as a job-application support skill.
+- Added `local-latex-resume-tailoring` as a job-application support skill.
+
+### 2026-05-04 anonymization
+
+Removed user-specific paths, repository-owner URLs, names, and resume details from repo documentation and the local LaTeX resume tailoring skill.
 
 ### 2026-05-04
 

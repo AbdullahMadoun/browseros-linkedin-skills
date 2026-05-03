@@ -12,6 +12,8 @@ Replace placeholders:
 
 If the user provides a CV, profile, or experience summary, map it into 3 to 5 role clusters before searching. Search the top 2 or 3 clusters first.
 
+Strip names, contact details, schools, employers, profile URLs, and other identifying details before logging or using the profile as search input unless the user explicitly asks to use them.
+
 Common clusters:
 
 1. Applied AI and ML
@@ -41,8 +43,8 @@ Use level modifiers such as `intern`, `trainee`, `fresh graduate`, `graduate pro
 
 ## Stage 3: add contact or poster signal
 
-13. `[ROLE] hr@ OR careers@ OR talent@`
-14. `[ROLE] WhatsApp OR apply now`
+13. `[ROLE] (hr@ OR careers@ OR talent@)`
+14. `[ROLE] (WhatsApp OR "apply now")`
 15. `recruiter [ROLE] Riyadh`
 16. `talent acquisition [ROLE] Saudi Arabia`
 17. `توظيف [ROLE] السعودية`
@@ -74,6 +76,8 @@ Use only after LinkedIn-native recovery paths are exhausted:
 23. `site:linkedin.com/posts ("hiring" OR "we are hiring") ("Saudi Arabia" OR Riyadh) ("send your CV" OR email)`
 24. `site:linkedin.com/posts [ROLE] hiring Riyadh`
 25. `site:linkedin.com/feed/update recruiter Saudi Arabia hiring`
+
+Do not send candidate names, private profile-derived details, personal phone numbers, or personal emails to Google. Use role, company, geography, and hiring terms.
 
 ## Google recency
 

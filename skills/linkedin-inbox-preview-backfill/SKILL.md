@@ -4,7 +4,7 @@ description: Backfill recent LinkedIn outreach into the single Outreach sheet us
 metadata:
   display-name: LinkedIn Inbox Preview Backfill
   enabled: "true"
-  version: "1.1"
+  version: "1.2"
 ---
 
 # LinkedIn Inbox Preview Backfill
@@ -50,6 +50,8 @@ It is acceptable for these to remain blank on the first pass:
 - `next_action_on`
 - `thread_url`
 
+If both `profile_url` and `thread_url` are missing, do not merge into an existing row by name alone. Create an unresolved row or mark the row `needs_review`.
+
 ## Required sheet structure
 Follow the schema from `linkedin-outreach-sheet-workflow`.
 Do not create `Outreach_Table`, `Import_Log`, or extra helper tabs.
@@ -68,6 +70,8 @@ If visible, collect:
 - whether the preview starts with `You:`
 - unread or fresh activity signal
 - thread URL if easy to capture
+
+Use preview text only transiently to classify direction and action. Do not write or report private message snippets unless the user specifically asks for exact text.
 
 ## How to map preview rows into the sheet
 
@@ -95,7 +99,7 @@ Do not invent detail just to complete a row.
 For each person:
 1. match by normalized `profile_url` when available
 2. otherwise match by `thread_url` if available
-3. otherwise use a careful name match and keep the row easy to revisit
+3. otherwise do not merge automatically; add a new unresolved row or mark `needs_review`
 4. add or update only the useful changed fields
 
 ## When to open a thread or profile

@@ -1,38 +1,44 @@
 ---
-name: local-latex-cv-tailoring
+name: local-latex-resume-tailoring
 description: >-
-  Tailor Abdullah Madoun's CV fully locally using structured master CV data,
-  deterministic bullet selection, and local LaTeX compilation. Use when the user
-  asks to tailor a CV to a job description, optimize for a role, generate a
-  tailored LaTeX/PDF resume, or automate local CV customization.
+  Tailor a resume fully locally using structured master resume data,
+  deterministic content selection, and local LaTeX compilation. Use when the
+  user asks to tailor a resume to a job description, optimize for a role,
+  generate a tailored LaTeX/PDF resume, or automate local resume customization.
 metadata:
-  display-name: Local LaTeX CV Tailoring
+  display-name: Local LaTeX Resume Tailoring
   enabled: "true"
-  version: "1.0"
+  version: "1.1"
 ---
 
-# Local LaTeX CV Tailoring
+# Local LaTeX Resume Tailoring
 
 ## Purpose
 
-Produce a tailored CV fully locally, with a transparent selection process and optional local PDF compilation.
+Produce a tailored resume fully locally, with a transparent selection process and optional local PDF compilation.
 
 ## Primary assets
 
-Use these assets first if they exist:
+Use project-local or user-provided assets first.
 
-- `/Users/abdullah/Desktop/BroswerOS/runs/cv_local_tailoring/abdullah_current_cv.tex`
-- `/Users/abdullah/Desktop/BroswerOS/runs/cv_local_tailoring/abdullah_master_cv.json`
-- `/Users/abdullah/Desktop/BroswerOS/runs/cv_local_tailoring/tailor_cv.py`
+Recommended names:
 
-If the user provides a newer CV or more bullets, update the master JSON rather than relying only on the flat LaTeX source.
+- `current_resume.tex`
+- `master_resume.json`
+- `tailor_resume.py`
+
+Recommended workspace pattern:
+
+`~/BrowserOS/runs/resume_local_tailoring/`
+
+If the user provides a newer resume or more approved bullets, update the master JSON rather than relying only on the flat LaTeX source.
 
 ## When to use
 
 Activate when the user asks to:
 
-- tailor their CV to a job description
-- adapt their resume for a specific role
+- tailor a resume to a job description
+- adapt a resume for a specific role
 - automate resume customization locally
 - compile a LaTeX resume after role-based edits
 - keep all resume processing local and auditable
@@ -44,7 +50,7 @@ Activate when the user asks to:
 3. Prefer deterministic selection, ranking, and trimming over freeform rewriting.
 4. Preserve the existing LaTeX layout unless the user explicitly asks for redesign.
 5. Store per-role outputs in their own folder.
-6. Keep an audit artifact showing why bullets were selected.
+6. Keep an audit artifact showing why content was selected.
 7. If a local compiler is missing, still complete the tailoring and leave compile instructions.
 
 ## Input contract
@@ -52,7 +58,7 @@ Activate when the user asks to:
 Minimum useful inputs:
 
 - a role title or a full job description
-- the current LaTeX CV or master CV JSON
+- the current LaTeX resume or master resume JSON
 
 Preferred inputs:
 
@@ -99,7 +105,7 @@ From the target role, extract and normalize:
 
 ### 3. Score approved content only
 
-Use `abdullah_master_cv.json` as the approved source of truth.
+Use `master_resume.json` as the approved source of truth when available.
 
 Rank:
 
@@ -120,7 +126,7 @@ Generate role-specific content while preserving factual integrity:
 
 ### 5. Preserve layout
 
-For Abdullah's current CV, prefer generating a full standalone role-specific `.tex` that preserves the existing preamble, spacing, section style, and header format.
+Prefer generating a full standalone role-specific `.tex` that preserves the existing preamble, spacing, section style, and header format.
 
 Fallback approaches:
 
@@ -142,55 +148,39 @@ Always save:
 - job description snapshot
 - compile report if compilation was attempted
 
-## Abdullah-specific positioning rules
+## Role-family positioning rules
 
-Use these as defaults unless the target role strongly suggests otherwise.
+Use these as defaults only when the approved resume evidence supports them.
 
 ### For AI/ML or research roles
 
 Emphasize:
 
-- end-to-end computer vision pipeline work
-- few-shot classification design
-- model evaluation, optimization, testing, and debugging
-- tabular ML performance and ensemble work
-- sign language research with TCNs, Transformers, and GNNs
-- strong GPA and AI specialization when useful
-
-De-emphasize if space is tight:
-
-- generic awards not related to ML, unless they add prestige
+- model building, experimentation, evaluation, optimization, testing, and debugging
+- relevant machine learning, computer vision, NLP, or data modeling work
+- research methods, publication-quality rigor, or advanced coursework when supported by the resume
 
 ### For data / analytics / operations roles
 
 Emphasize:
 
-- fraud risk metric across operational tables
-- semantic text-matching automation
-- Power BI KPI dashboards
-- root-cause analysis and forecasting support
-- practical automation that reduced manual work
-- stakeholder-facing recommendations and operational visibility
-
-De-emphasize if space is tight:
-
-- deep research-model details that do not translate to business value
+- metrics, analysis, forecasting, dashboards, automation, or operational decision support
+- stakeholder-facing recommendations
+- measurable impact from process improvement or analytical work
 
 ### For product / startup / consulting roles
 
 Emphasize:
 
-- PitchSwipe product concept and recommendation engine
-- Four Principles consulting competition and transformation roadmap
-- cross-functional framing, problem-solving, and structured execution
-- ability to connect technical work to business outcomes
+- problem framing, prioritization, customer or stakeholder understanding
+- product thinking, structured execution, and business impact
+- cross-functional collaboration where supported by resume evidence
 
-### For SWE roles
+### For software engineering roles
 
 Emphasize:
 
-- Python, Java, SQL, FastAPI, Docker, REST APIs, Git, CI/CD, testing, Linux
-- end-to-end system building aspects of research projects
+- programming languages, APIs, databases, testing, version control, deployment, and system-building work
 - shipping-oriented language over purely academic language
 
 ## Page-pressure rules
@@ -207,15 +197,15 @@ For one-page targets:
 
 Use a per-target folder like:
 
-`/Users/abdullah/Desktop/BroswerOS/runs/cv_local_tailoring/output/<role-slug>/`
+`~/BrowserOS/runs/resume_local_tailoring/output/<role-slug>/`
 
 Typical contents:
 
 - `job.txt`
 - `selection_report.json`
 - `generated_content.tex`
-- `tailored_cv.tex`
-- `tailored_cv.pdf`
+- `tailored_resume.tex`
+- `tailored_resume.pdf`
 - `compile_report.json`
 
 ## Execution notes
@@ -229,7 +219,7 @@ Typical contents:
 
 This skill succeeds when:
 
-- the tailored CV is factual
+- the tailored resume is factual
 - the role alignment is obvious on first read
 - the output is locally reproducible
 - the result can compile locally when a compiler is available

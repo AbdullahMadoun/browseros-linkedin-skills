@@ -173,17 +173,17 @@ Best for:
 - Profile-based Connect/Invite flow.
 - Send without a note.
 - Avoiding unreliable suggestion-card invite buttons.
-- Verifying that Connect disappeared or Pending/Message/More remains.
+- Verifying an explicit invite-sent state such as Pending, Invitation sent, or Withdraw.
 
 ## Job Application Support
 
-### `local-latex-cv-tailoring`
+### `local-latex-resume-tailoring`
 
-Use when BrowserOS needs to tailor Abdullah Madoun's CV to a role while keeping the workflow local and auditable.
+Use when BrowserOS needs to tailor a resume to a role while keeping the workflow local and auditable.
 
 Best for:
-- Turning a job description or hiring post into a tailored CV target.
-- Selecting approved master-CV bullets deterministically.
+- Turning a job description or hiring post into a tailored resume target.
+- Selecting approved master-resume bullets deterministically.
 - Preserving the existing LaTeX layout.
 - Saving per-role `.tex`, report, job snapshot, and optional PDF outputs.
 - Avoiding invented achievements, dates, technologies, or metrics.

@@ -1,1 +1,1 @@
-post_url,posted_time,role,company_or_poster,ksa_evidence,contact_route,language,signal_score,candidate_fit_cluster,duplicate_group,next_pivot,notes
+post_url,posted_time,role,company_or_poster,ksa_evidence,contact_route_type,contact_route_value_if_public_corporate,language,signal_score,candidate_fit_cluster,duplicate_group,next_pivot,notes

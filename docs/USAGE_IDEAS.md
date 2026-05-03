@@ -45,25 +45,25 @@ Use this when the user wants fresh Saudi hiring posts, preferably with email or 
 
 How to use:
 - Start clean in LinkedIn Posts search.
-- If the user provides a CV/profile, map it into ranked role clusters first.
+- If the user provides a resume/profile, use a redacted summary to map it into ranked role clusters first.
 - Stay LinkedIn-first: Posts, People pivots, company validation, Jobs validation, then Google X-ray only as fallback.
 - Run broad high-yield KSA hiring queries before role-targeted variants.
 - Mirror with Arabic queries if English results are sparse.
 - Use Google X-ray only when LinkedIn-native recovery paths are exhausted.
 - Score posts by freshness, role match, KSA evidence, contact clarity, and poster credibility.
 
-## 4. Lead to Tailored CV
+## 4. Lead to Tailored Resume
 
 Use this when a hiring post, recruiter lead, or job description is strong enough to apply.
 
 1. `linkedin-ksa-recent-hiring-posts` or `linkedin-people-url-filtering`
 2. `lead-scoring-dedup-pivots`
-3. `local-latex-cv-tailoring`
+3. `local-latex-resume-tailoring`
 
 How to use:
 - Keep the job description or post snapshot with the lead.
 - Score the opportunity before spending tailoring effort.
-- Use approved master-CV content only.
+- Use approved master-resume content only.
 - Save a selection report and tailored LaTeX/PDF artifacts in a per-role output folder.
 
 ## 5. Noisy LinkedIn Search Rescue

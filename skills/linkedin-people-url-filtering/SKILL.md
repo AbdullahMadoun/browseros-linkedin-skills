@@ -4,7 +4,7 @@ description: Build fast repeatable LinkedIn People searches using direct People 
 metadata:
   display-name: LinkedIn People URL Filtering
   enabled: "true"
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Skill: LinkedIn People URL Filtering
@@ -72,6 +72,7 @@ Use the URL as the source of truth when possible.
 - Base People search: `?keywords=<encoded_query>`
 - Second-degree network: `network=["S"]`
 - Riyadh location: `geoUrn=["101336206"]`
+- Current company: `currentCompany=["<company_urn>"]`
 - `origin=GLOBAL_SEARCH_HEADER` is optional and not required for the clean baseline.
 
 Example:
@@ -106,7 +107,7 @@ Before each new search cycle:
 
 1. Click `Reset` if visible.
 2. Or reopen a clean People URL with only intended parameters.
-3. Confirm the URL contains only the intended `keywords`, `network`, and `geoUrn` parameters.
+3. Confirm the URL contains only the intended `keywords`, `network`, `geoUrn`, and `currentCompany` parameters.
 4. Confirm the page is still in People results, not All results.
 
 ## Error and drift handling

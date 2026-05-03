@@ -4,7 +4,7 @@ description: Send LinkedIn connection requests from profile pages using the reli
 metadata:
   display-name: LinkedIn Connection Workflow
   enabled: "true"
-  version: "1.1"
+  version: "1.2"
 ---
 
 # LinkedIn Connection Workflow
@@ -37,7 +37,8 @@ Use the profile-based Connect or Invite path and send without a note unless the 
    - Wait for the modal to close or the page state to change.
 5. **Verify from profile state.**
    - Re-check the profile page.
-   - Success indicators include Connect disappearing and Pending, Message, or a similar post-invite state appearing.
+   - Success requires an explicit invite-sent state such as Pending, Invitation sent, Withdraw, or another clearly equivalent state.
+   - Do not treat generic Message or More buttons, or Connect disappearing by itself, as proof that the invite was sent.
 
 ## Fallback order
 1. Profile Connect or Invite.
@@ -67,14 +68,14 @@ Do not invent a separate tracking structure.
 ## Verification rules
 
 ### Success indicators
-- Profile loses the Connect action.
-- Profile shows Pending, Message, More, or another post-invite state.
+- Profile shows Pending, Invitation sent, Withdraw, or another explicit post-invite state.
 - The custom-invite modal closes after sending.
 
 ### Failure indicators
 - The modal remains unchanged.
 - Clicking does not create a visible state transition.
 - A suggestion-card Invite button behaves like a no-op.
+- Only generic Message or More buttons are visible, with no explicit invite-sent state.
 
 ## Operational rules
 - prefer profile pages over cards

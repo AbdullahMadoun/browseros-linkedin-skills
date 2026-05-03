@@ -4,7 +4,7 @@ description: Run LinkedIn outreach from one simple Google Sheet named Outreach u
 metadata:
   display-name: LinkedIn Outreach Sheet Workflow
   enabled: "true"
-  version: "1.1"
+  version: "1.2"
 ---
 
 # LinkedIn Outreach Sheet Workflow
@@ -128,6 +128,9 @@ Do not rewrite the whole sheet. Patch the active rows and keep moving.
 7. Keep the queue honest: if something is done or irrelevant, clear or update `next_action` intentionally.
 8. Use the Google Sheets connector first.
 9. If browser fallback is needed, keep only one relevant Google Sheets tab open and edit a small scope.
+
+## Reporting privacy
+The sheet may contain names, profile URLs, titles, companies, thread URLs, and private message context. In chat summaries, prefer row numbers, initials, or redacted labels unless the user asks for full identifiers. Do not paste message transcripts; use short action-focused labels instead.
 
 ## Connector-first update flow
 1. Read current headers and candidate rows.

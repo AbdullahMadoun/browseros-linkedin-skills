@@ -4,7 +4,7 @@ description: Run simple day-to-day LinkedIn outreach maintenance by checking wha
 metadata:
   display-name: LinkedIn Outreach Daily Ops
   enabled: "true"
-  version: "1.1"
+  version: "1.2"
 ---
 
 # LinkedIn Outreach Daily Ops
@@ -64,6 +64,7 @@ At the end of a run, you should be able to say:
 - how many rows were updated
 - which follow-ups are due
 - which rows still need review
+- use row numbers or redacted labels in chat summaries unless the user asks for names, profile URLs, or thread URLs
 
 ## Anti-churn rules
 - never rewrite the whole sheet each day
