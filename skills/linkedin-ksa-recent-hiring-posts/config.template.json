@@ -1,13 +1,18 @@
 {
   "ROLE_KEYWORDS": ["data analyst", "business analyst"],
+  "ROLE_VARIANTS": ["analytics engineer", "BI analyst", "operations analyst"],
   "INDUSTRY_KEYWORDS": ["fintech", "banking"],
-  "GEO_SCOPE": ["Saudi Arabia", "Riyadh", "Jeddah", "Dammam", "Khobar"],
+  "GEO_SCOPE": ["Saudi Arabia", "Riyadh", "Jeddah", "Dammam", "Khobar", "Medina", "Makkah"],
   "FRESHNESS_SEQUENCE": ["past-24h", "past-week"],
   "MIN_SIGNAL_SCORE": 7,
+  "STRICTNESS": "balanced",
+  "CANDIDATE_PROFILE_SOURCE": "optional CV, LinkedIn summary, or project history",
+  "ROLE_CLUSTERING_ENABLED": true,
   "MAX_RESULTS_PER_QUERY": 30,
   "EMAIL_PRIORITY": true,
+  "LINKEDIN_NATIVE_RECOVERY_BEFORE_GOOGLE": true,
   "GOOGLE_XRAY_ENABLED": true,
   "NEGATIVE_TERMS_GOOGLE": ["internship", "course", "bootcamp", "freelance"],
-  "NOTES": "If zero results, remove email tokens before dropping role or geography."
+  "SEARCH_MODES": ["market_scan", "target_role_hunt", "recruiter_source_discovery", "employer_thread_discovery"],
+  "NOTES": "If zero results, remove strict contact tokens, expand role variants, pivot inside LinkedIn, and use Google X-ray only after LinkedIn-native recovery."
 }
-

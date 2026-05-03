@@ -45,13 +45,28 @@ Use this when the user wants fresh Saudi hiring posts, preferably with email or 
 
 How to use:
 - Start clean in LinkedIn Posts search.
-- Run broad high-yield KSA hiring queries first.
-- Run role-targeted queries after signal is proven.
+- If the user provides a CV/profile, map it into ranked role clusters first.
+- Stay LinkedIn-first: Posts, People pivots, company validation, Jobs validation, then Google X-ray only as fallback.
+- Run broad high-yield KSA hiring queries before role-targeted variants.
 - Mirror with Arabic queries if English results are sparse.
-- Use Google X-ray only when LinkedIn ranking or UI quality is weak.
+- Use Google X-ray only when LinkedIn-native recovery paths are exhausted.
 - Score posts by freshness, role match, KSA evidence, contact clarity, and poster credibility.
 
-## 4. Noisy LinkedIn Search Rescue
+## 4. Lead to Tailored CV
+
+Use this when a hiring post, recruiter lead, or job description is strong enough to apply.
+
+1. `linkedin-ksa-recent-hiring-posts` or `linkedin-people-url-filtering`
+2. `lead-scoring-dedup-pivots`
+3. `local-latex-cv-tailoring`
+
+How to use:
+- Keep the job description or post snapshot with the lead.
+- Score the opportunity before spending tailoring effort.
+- Use approved master-CV content only.
+- Save a selection report and tailored LaTeX/PDF artifacts in a per-role output folder.
+
+## 5. Noisy LinkedIn Search Rescue
 
 Use this when search results are irrelevant, stale, over-filtered, or clearly affected by hidden state.
 
@@ -67,7 +82,7 @@ How to use:
 - Add OR title variants before adding many filters.
 - Add NOT exclusions for repeated irrelevant personas.
 
-## 5. Message a Shortlist
+## 6. Message a Shortlist
 
 Use this after a shortlist already exists and the user wants to send messages.
 
@@ -84,7 +99,7 @@ How to use:
 - If attaching a document, verify the attachment is staged before sending and the document card appears after sending.
 - Update the sheet in small verified batches.
 
-## 6. Connect With Target People First
+## 7. Connect With Target People First
 
 Use this when the user wants to build a warmer LinkedIn network before messaging.
 
@@ -100,7 +115,7 @@ How to use:
 - Use profile Connect/Invite, then Send without a note unless the note flow is verified live.
 - Verify profile state after sending.
 
-## 7. Backfill First, Then Search for New Leads
+## 8. Backfill First, Then Search for New Leads
 
 Use this when the user already has LinkedIn conversations and wants both historical cleanup and future lead discovery.
 
@@ -120,7 +135,7 @@ How to use:
 - Add new leads to the same operating table.
 - Move to a daily delta loop.
 
-## 8. When to Stop
+## 9. When to Stop
 
 Stop a run when:
 - Search state cannot be verified after one retry.
@@ -130,7 +145,7 @@ Stop a run when:
 - A thread/profile was already handled successfully in the same run.
 - Lead quality drops below the scoring threshold.
 
-## 9. What to Record After Each Run
+## 10. What to Record After Each Run
 
 For search runs:
 - Query.

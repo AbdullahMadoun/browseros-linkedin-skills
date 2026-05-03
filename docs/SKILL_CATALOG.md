@@ -59,6 +59,8 @@ Use when BrowserOS needs to find recent Saudi Arabia hiring posts with direct co
 Best for:
 - LinkedIn Posts search with past-24h and past-week freshness.
 - English and Arabic hiring queries.
+- Mapping a CV/profile into ranked role clusters before searching.
+- LinkedIn-native recruiter, company, and jobs validation pivots before Google.
 - Email-first and CTA-first lead discovery.
 - Google X-ray fallback when LinkedIn ranking is weak.
 - Scoring and deduplicating fresh hiring posts.
@@ -172,3 +174,16 @@ Best for:
 - Send without a note.
 - Avoiding unreliable suggestion-card invite buttons.
 - Verifying that Connect disappeared or Pending/Message/More remains.
+
+## Job Application Support
+
+### `local-latex-cv-tailoring`
+
+Use when BrowserOS needs to tailor Abdullah Madoun's CV to a role while keeping the workflow local and auditable.
+
+Best for:
+- Turning a job description or hiring post into a tailored CV target.
+- Selecting approved master-CV bullets deterministically.
+- Preserving the existing LaTeX layout.
+- Saving per-role `.tex`, report, job snapshot, and optional PDF outputs.
+- Avoiding invented achievements, dates, technologies, or metrics.

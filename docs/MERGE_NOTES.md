@@ -89,3 +89,22 @@ If a future archive contains a skill with the same directory name:
 2. Compare `SKILL.md`, manifest, templates, and scripts.
 3. Preserve both versions temporarily if behavior differs.
 4. Merge only after documenting what changed.
+
+## Local Refresh
+
+### 2026-05-03
+
+Source path:
+
+```text
+/Users/abdullah/.browseros/skills
+```
+
+Reviewed local skills against the GitHub repo and kept the normalized repo versions where local files were older, disabled, or malformed. Notable decisions:
+
+- Preserved the cleaned repo copy of `linkedin-messaging-workflow` because the local copy contained duplicated escaped front matter.
+- Preserved repo metadata, versions, manifests, templates, and helper scripts for existing skills.
+- Replaced `linkedin-ksa-recent-hiring-posts/SKILL.md` with the newer local LinkedIn-first candidate-fit workflow.
+- Updated the KSA skill manifest, config, query pack, and result/log templates to match the v1.1 workflow.
+- Merged the local single-sheet outreach model into `linkedin-outreach-sheet-workflow` as an explicit lightweight mode instead of replacing the existing normalized workbook model.
+- Added `local-latex-cv-tailoring` as a job-application support skill.

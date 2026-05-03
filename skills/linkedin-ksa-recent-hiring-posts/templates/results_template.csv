@@ -1,2 +1,1 @@
-post_url,posted_time,role,company_or_poster,ksa_evidence,contact_email_or_cta,signal_score,duplicate_group,notes
-
+post_url,posted_time,role,company_or_poster,ksa_evidence,contact_route,language,signal_score,candidate_fit_cluster,duplicate_group,next_pivot,notes

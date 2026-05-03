@@ -1,11 +1,12 @@
 # BrowserOS LinkedIn Skills
 
-Reusable BrowserOS skills for LinkedIn search, lead discovery, outreach tracking, messaging, document attachment, and Google Sheets reliability.
+Reusable BrowserOS skills for LinkedIn search, lead discovery, outreach tracking, messaging, document attachment, Google Sheets reliability, and local CV tailoring.
 
 This repository merges two BrowserOS skill sets:
 
 - LinkedIn outreach and Google Sheets operating skills created from local BrowserOS sessions.
 - Search-agent skills from `D:\downloads\browseros-search-agent-skills.rar`.
+- Local BrowserOS refinements from `/Users/abdullah/.browseros/skills`, including a candidate-fit KSA hiring search update and local LaTeX CV tailoring.
 
 No source skill was intentionally removed during the merge. The archived search skills were kept with their supporting files and normalized by adding BrowserOS-style `SKILL.md` front matter.
 
@@ -21,6 +22,7 @@ browseros-linkedin-skills/
 │   ├── linkedin-connection-workflow/
 │   ├── linkedin-inbox-preview-backfill/
 │   ├── linkedin-ksa-recent-hiring-posts/
+│   ├── local-latex-cv-tailoring/
 │   ├── linkedin-messaging-workflow/
 │   ├── linkedin-outreach-daily-ops/
 │   ├── linkedin-outreach-sheet-workflow/
@@ -52,7 +54,7 @@ Use these when BrowserOS needs to find relevant people, posts, hiring signals, o
   Improves noisy LinkedIn search results with Boolean title families, quoted exact phrases, NOT exclusions, and top-result relevance checks.
 
 - `linkedin-ksa-recent-hiring-posts`  
-  Finds recent Saudi Arabia hiring posts on LinkedIn using English/Arabic query lanes, freshness filters, direct-contact scoring, and Google X-ray fallback.
+  Finds recent Saudi Arabia hiring posts on LinkedIn using LinkedIn-first post search, candidate-to-role cluster mapping, English/Arabic query ladders, freshness filters, direct-contact scoring, and Google X-ray fallback only after LinkedIn-native recovery.
 
 - `lead-scoring-dedup-pivots`  
   Scores raw posts/profiles/companies, removes duplicates, decides what to keep, and creates pivot plans from strong signals.
@@ -89,6 +91,13 @@ Use these for concrete LinkedIn UI actions.
 - `linkedin-connection-workflow`  
   Sends LinkedIn connection requests from profile pages using the reliable no-note flow and verifies success from profile state.
 
+### Job Application Support
+
+Use this after a promising role, recruiter post, or company target is found.
+
+- `local-latex-cv-tailoring`
+  Tailors Abdullah Madoun's CV fully locally using approved master CV data, deterministic content selection, local LaTeX output, and optional local PDF compilation.
+
 ## Recommended Usage Chains
 
 ### Search for LinkedIn people
@@ -103,6 +112,12 @@ Use these for concrete LinkedIn UI actions.
 1. `search-state-verification-hygiene`
 2. `linkedin-ksa-recent-hiring-posts`
 3. `lead-scoring-dedup-pivots`
+
+### Turn a lead into a tailored CV
+
+1. `linkedin-ksa-recent-hiring-posts` or `linkedin-people-url-filtering`
+2. `lead-scoring-dedup-pivots`
+3. `local-latex-cv-tailoring`
 
 ### Build an outreach tracker from LinkedIn messages
 

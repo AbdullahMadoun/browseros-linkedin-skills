@@ -4,22 +4,24 @@
 
 - Date:
 - Target roles:
+- Candidate profile source:
+- Ranked role clusters:
 - Industries:
 - Cities:
 - Freshness mode:
 - Minimum score:
+- Search mode:
 
 ## Query Sequence Executed
 
-- Lane A Query 1:
-- Lane A Query 2:
-- Lane A Query 3:
-- Lane B Query 1:
-- Lane B Query 2:
-- Lane B Query 3:
-- Arabic Query 1:
-- Arabic Query 2:
-- Google X-ray Query:
+- Stage 1 live-hiring query:
+- Stage 2 role query:
+- Stage 3 contact/poster query:
+- Stage 4 company/industry query:
+- Arabic mirror query:
+- People pivot:
+- Company or Jobs validation pivot:
+- Google X-ray fallback query:
 
 ## Results Summary
 
@@ -28,6 +30,8 @@
 - Medium-signal (7):
 - Discarded (<=6):
 - Duplicates removed:
+- Best candidate-fit cluster:
+- Next pivot:
 
 ## Observed Noise Patterns
 
@@ -44,4 +48,3 @@
 ## Iteration Changes for Next Run
 
 -
-

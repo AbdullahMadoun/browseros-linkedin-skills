@@ -47,6 +47,40 @@ If the user wants a lightweight setup:
 - `Import_Log`
 - `Meta`
 
+### Single-sheet mode
+If the user explicitly wants the simplest durable tracker, use one Google Sheet named `Outreach` instead of the normalized workbook.
+
+Use this model:
+- one row = one person
+- unique key = normalized LinkedIn profile URL
+- lifecycle state = `stage`
+- queue state = `next_action_on` plus `next_action`
+- filters/views instead of helper tabs
+
+Required columns:
+- `added_on`
+- `full_name`
+- `profile_url`
+- `title`
+- `company`
+- `stage`
+- `last_outbound_on`
+- `last_inbound_on`
+- `next_action_on`
+- `next_action`
+- `notes`
+
+Durable stage values:
+- `Lead`
+- `Invited`
+- `Connected`
+- `Messaged`
+- `Replied`
+- `Nurture`
+- `Closed`
+
+Do not add duplicate rows for the same `profile_url`. If a row exists, patch only changed fields and avoid overwriting verified data with weak guesses. Keep notes short; do not paste full message transcripts into the sheet.
+
 ### Recommended full setup
 For a serious system, create:
 - `People`
