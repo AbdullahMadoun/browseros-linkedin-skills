@@ -64,7 +64,7 @@ Use these when BrowserOS needs to find relevant people, posts, hiring signals, o
 Use these when BrowserOS is managing LinkedIn outreach in a Google Sheet.
 
 - `linkedin-outreach-sheet-workflow`  
-  Master architecture for a traceable LinkedIn outreach system using LinkedIn browser automation plus Google Sheets as memory, queue, and audit trail.
+  Simple one-sheet operating model for LinkedIn outreach using one `Outreach` tab, one row per person, stable stages, next actions, and connector-first updates.
 
 - `linkedin-inbox-preview-backfill`  
   Fast first-pass import from LinkedIn inbox preview rows into a Google Sheet without opening every thread.

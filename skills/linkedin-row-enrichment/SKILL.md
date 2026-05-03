@@ -1,149 +1,79 @@
 ---
 name: linkedin-row-enrichment
-description: Enrich already-imported LinkedIn outreach rows by opening only selected threads or profiles to fill profile URL, title, company, exact message context, and higher-confidence values.
+description: Improve selected Outreach sheet rows by opening only the necessary LinkedIn thread or profile to fill missing profile URL, title, company, and clearer next-step context.
 metadata:
   display-name: LinkedIn Row Enrichment
   enabled: "true"
-  version: "1.0"
+  version: "1.1"
 ---
 
 # LinkedIn Row Enrichment
 
 ## Purpose
-Upgrade preview-imported rows into high-confidence rows.
+Upgrade the most important rows from minimally useful to action-ready.
 
-This skill assumes rows already exist in `Outreach_Table` and some fields still contain placeholders like:
-- `pending_enrichment`
-- `TBD`
-- `preview_only`
-- `last_outbound_needs_backfill`
+This skill assumes rows already exist in the simple `Outreach` sheet and some fields are still blank or lightly noted.
+
+## One-sheet rule
+Enrichment improves the existing row.
+It does not create a separate enrichment sheet, QA sheet, or research sheet.
 
 ## Use this when
-- the user says “improve the sheet further”
-- high-priority rows need title/company/profile links
-- follow-up drafts need better context
-- you need exact thread or profile details
+- the user wants the sheet improved further
+- high-priority rows need `profile_url`, `title`, or `company`
+- follow-up decisions need better context
+- a name match needs verification
 
 ## What this mode should improve
 Typical target fields:
-- LinkedIn URL
-- Title
-- Company
-- exact last outbound message
-- exact last inbound message
-- more accurate status
-- exact follow-up reason
-- higher data confidence
-- better review notes
+- `profile_url`
+- `title`
+- `company`
+- `stage` if preview-only inference was weak
+- `next_action`
+- `next_action_on`
+- `notes`
 
 ## Row selection strategy
-Do **not** enrich rows randomly.
+Do not enrich rows randomly.
 
 Prioritize in this order:
-1. `Priority = high`
-2. `Status = waiting_on_reply`
-3. `Enrichment Status = preview_only`
-4. rows with strong draft/follow-up potential
-5. rows with ambiguous review notes
-
-Suggested first enrichment targets:
-- founders
-- recruiters
-- hiring managers
-- strong-fit people at target companies
-- rows where one profile open would unlock multiple fields
+1. rows with upcoming or overdue `next_action_on`
+2. rows with `next_action = Reply` or `Follow up`
+3. rows missing `profile_url`
+4. rows missing `title` or `company`
+5. rows marked `needs_review`
 
 ## Open-target discipline
-Only open a thread or profile when it will answer a real question.
+Open a thread only when you need conversation state.
+Open a profile only when you need profile identity or role/company details.
 
-Open a **thread** when you need:
-- exact outbound/inbound messages
-- precise reply state
-- actual last touch context
-- thread-specific details not available in preview
-
-Open a **profile** when you need:
-- LinkedIn URL
-- headline/title
-- company
-- role context
-
-## Recommended enrichment workflow
+## Recommended workflow
 For one row at a time:
-1. identify the target row from the sheet
-2. find the matching conversation in LinkedIn
-3. open the thread if message context is needed
-4. open the profile if role/company/URL are needed
-5. update only the missing fields
-6. raise confidence if the values were confirmed
-7. update `Last Verified At`
-8. revise `Review Notes`
+1. identify the target row in the sheet
+2. find the matching LinkedIn conversation or profile
+3. open the thread if reply state or context matters
+4. open the profile if URL, title, or company are needed
+5. update only the missing or corrected fields
+6. keep notes short
 
-## Confidence upgrade rules
-Raise to `high` only when the data was directly confirmed from thread/profile view.
-
-Examples:
-- preview only → `medium`
-- profile opened and company/title confirmed → `high`
-- exact message text confirmed in-thread → `high`
-
-Keep at `medium` when:
-- the row still depends on preview inference
-- URL or company remains unconfirmed
-
-## Recommended field updates
-
-### After profile open
-Update:
-- LinkedIn URL
-- Title
-- Company
-- Enrichment Status
-- Data Confidence
-- Last Verified At
-- Review Notes
-
-### After thread open
-Update:
-- Last Outbound Message
-- Last Inbound Message
-- Status
-- Awaiting Reply From
-- Last Touch Direction
-- Followup Reason
-- Backfill Status
-- Data Confidence
-- Last Verified At
-
-## Review Notes conventions
-Good values include:
-- `title_company_url_confirmed`
-- `thread_verified`
-- `last_outbound_confirmed`
-- `last_inbound_confirmed`
-- `still_missing_profile_url`
-- `profile_not_accessible`
-- `thread_state_ambiguous`
-
-## Enrichment Status conventions
-Suggested values:
+## Notes conventions
+Good short notes include:
 - `preview_only`
-- `partially_enriched`
-- `fully_enriched`
-- `needs_manual_review`
+- `needs_review`
+- `profile_confirmed`
+- `ready_for_followup`
+- `reply_received`
+
+Avoid verbose notes and full message transcripts.
 
 ## Anti-waste rules
-- do not open low-priority rows first
-- do not enrich rows whose data will not affect actionability
-- do not open a profile just to confirm something obvious from an already high-confidence row
+- do not enrich low-value rows first
+- do not open a profile just to confirm obvious data
+- do not add new columns for enrichment tracking
+- do not split enrichment across new sheets
 - patch missing fields only
-- stop after 3–5 good enrichments if quality begins dropping
+- stop when additional opens are no longer improving actionability
 
-## Best outcome of this mode
-A small number of rows become genuinely strong:
-- complete profile information
-- exact context
-- trustworthy follow-up reasoning
-- better drafts
-
-This is more valuable than shallow enrichment of 50 rows.
+## Best outcome
+A smaller number of rows become clearly actionable and trustworthy, which is better than shallow enrichment across everything.

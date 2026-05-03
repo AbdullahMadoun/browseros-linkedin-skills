@@ -93,11 +93,11 @@ Supporting files:
 Use when building or operating a LinkedIn outreach tracker in Google Sheets.
 
 Best for:
-- Designing the workbook architecture.
-- Creating `Outreach_Table`, `People`, `Threads`, `Activity_Log`, `Queue`, `Import_Log`, and metadata tabs.
-- Choosing stable person/thread/event/action keys.
-- Separating inbox observation from structured sheet memory.
-- Building a traceable, auditable outreach operating system.
+- Keeping outreach in one simple `Outreach` sheet.
+- Using one row per person with normalized LinkedIn URL as the preferred key.
+- Managing relationship state with durable stage values.
+- Managing work state with `next_action_on` and `next_action`.
+- Improving rows iteratively without creating helper tabs.
 
 ### `linkedin-inbox-preview-backfill`
 
@@ -107,7 +107,7 @@ Best for:
 - Populating recent outreach quickly.
 - Scanning inbox preview rows before opening threads.
 - Capturing last-touch direction and likely reply state.
-- Writing placeholders for fields that need later enrichment.
+- Creating minimal useful rows in the `Outreach` sheet.
 - Getting an operational table without solving the whole inbox.
 
 ### `linkedin-row-enrichment`
@@ -117,8 +117,8 @@ Use after preview backfill when selected rows need better data.
 Best for:
 - Opening high-priority profiles to confirm URL, title, and company.
 - Opening threads to confirm exact outbound/inbound message context.
-- Raising confidence from medium to high.
-- Patching only missing fields.
+- Improving only the existing `Outreach` row.
+- Patching only missing or corrected fields.
 
 ### `linkedin-outreach-daily-ops`
 
@@ -129,7 +129,7 @@ Best for:
 - Detecting changed/new threads.
 - Updating reply, follow-up, enrichment, and queue state.
 - Skipping unchanged rows.
-- Logging daily runs.
+- Maintaining `next_action_on`, `next_action`, and short durable notes.
 
 ### `google-sheets-connector-reliability`
 
@@ -139,7 +139,7 @@ Best for:
 - Small logical batches.
 - Partial-write verification.
 - Patch-only recovery.
-- Connector-safe placeholders.
+- Connector-first one-sheet updates.
 - Avoiding duplicate rows and blind rewrites.
 
 ## Direct LinkedIn Actions

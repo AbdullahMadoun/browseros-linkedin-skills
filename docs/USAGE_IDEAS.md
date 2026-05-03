@@ -13,7 +13,7 @@ Use this when the user wants to backfill LinkedIn messages, manage replies, and 
 5. `google-sheets-connector-reliability` whenever needed
 
 How to use:
-- Start with the master workflow to create or inspect the workbook structure.
+- Start with the master workflow to create or inspect the one-sheet `Outreach` structure.
 - Use preview backfill to populate rows quickly from the inbox list.
 - Enrich only the highest-priority rows after the table is usable.
 - Switch to daily ops after the first import.
@@ -157,10 +157,9 @@ For search runs:
 - Scored shortlist and dedupe decisions.
 
 For outreach runs:
-- Import run ID.
 - Rows added.
 - Rows updated.
 - Rows skipped.
-- Confidence summary.
 - Follow-up queue changes.
 - Connector reliability notes.
+- Rows that still need review.

@@ -1,118 +1,73 @@
 ---
 name: linkedin-outreach-daily-ops
-description: Run LinkedIn outreach tracking as an ongoing operating loop using delta thinking, queueing, and controlled browser-to-sheet updates.
+description: Run simple day-to-day LinkedIn outreach maintenance by checking what changed, updating only affected Outreach rows, and keeping next actions current.
 metadata:
   display-name: LinkedIn Outreach Daily Ops
   enabled: "true"
-  version: "1.0"
+  version: "1.1"
 ---
 
 # LinkedIn Outreach Daily Ops
 
 ## Purpose
-Operate the LinkedIn outreach system after initial setup and first backfill are complete.
+Operate the simple `Outreach` sheet after setup or backfill is complete.
 
-This skill is about **maintenance, monitoring, and actioning**, not just ingestion.
+This skill is for maintenance, not rebuilding the sheet every day.
 
-## Daily operating goals
+## One-sheet rule
+Daily ops should update the same `Outreach` sheet.
+Do not create daily log sheets, due sheets, reply sheets, or workflow history sheets.
+
+## Daily goals
 A good daily run should answer:
-- what changed since last run?
+- who changed since the last check?
 - who replied?
-- who still needs follow-up?
-- what should be enriched next?
-- what can be skipped safely?
+- who needs follow-up?
+- which rows need a little enrichment before action?
 
 ## Core loop
-1. scan LinkedIn inbox preview
-2. identify changed or new threads
-3. skip unchanged rows
-4. open only priority threads
-5. update state
-6. update queue / next actions
-7. stamp verification metadata
-8. log the run
+1. scan the LinkedIn inbox preview
+2. identify new or changed conversations
+3. skip clearly unchanged rows
+4. open only the threads that affect action
+5. update the matching sheet rows
+6. refresh `next_action_on` and `next_action`
 
-## Delta-thinking rules
-Do not treat every day like a first import.
-
+## Delta rules
 Open a thread only if:
 - there is a new unread signal
-- the preview changed
-- the row is high priority and still weakly enriched
-- follow-up is due and exact context is needed
-- previous review notes say the row was ambiguous
+- the preview changed materially
+- a follow-up is due and exact context matters
+- the row is important and still ambiguous
 
 Skip a thread if:
-- the row was already verified recently
-- preview is unchanged
-- no action depends on deeper context
-- the thread was handled successfully in the same run
+- the preview is unchanged
+- no decision depends on deeper context
+- the row was already handled in the current run
 
-## Recommended statuses for daily operation
-- `waiting_on_reply`
-- `replied`
-- `active_conversation`
-- `followup_due`
-- `needs_review`
-- `archived`
+## Row update rules
+- if the latest touch is inbound, usually move `stage` to `Replied` and set `next_action = Reply`
+- if the latest touch is outbound, usually keep `stage = Messaged` and decide whether `next_action = Follow up`
+- if the relationship cools off, consider `stage = Nurture`
+- if the thread is done, use `stage = Closed` and clear next actions
 
-## Queue / Next Action ideas
-Use values like:
-- `reply`
-- `follow_up`
-- `enrich_profile`
-- `review_manually`
-- `archive`
-- `none`
-
-## Follow-up handling
-If the row is outbound-last-touch and still waiting:
-- preserve the last outbound
-- keep or create a draft
-- update follow-up reason
-- mark whether enrichment should happen before sending the next touch
-
-If the row becomes inbound-last-touch:
-- flip `Awaiting Reply From` to `me`
-- change `Status` to `replied` or `active_conversation`
-- consider drafting the next reply only if useful
-
-## Verification policy
-Update `Last Verified At` whenever:
-- the preview is rechecked and deemed unchanged
-- the thread is opened and reviewed
-- the profile is opened and confirmed
-
-This matters because it tells you whether the row is stale even if nothing changed.
-
-## Daily import logging
-Create a new `Import_Log` row per run with:
-- Import Run ID
-- Imported At
-- Source = linkedin
-- Mode = daily_delta
-- Rows Added
-- Rows Updated
-- Confidence summary
-- Notes
+## Sheet discipline
+- update only changed rows
+- keep the single-sheet schema
+- do not create import logs or helper tabs
+- keep notes short
+- prefer connector updates first, browser fallback only when necessary
 
 ## Good daily run output
 At the end of a run, you should be able to say:
-- X rows added
-- Y rows updated
-- Z rows skipped as unchanged
-- these high-priority follow-ups remain
-- these rows still need enrichment
+- how many rows were added
+- how many rows were updated
+- which follow-ups are due
+- which rows still need review
 
 ## Anti-churn rules
-- never rewrite all rows every day
-- never drop confidence just because the connector or UI is flaky
+- never rewrite the whole sheet each day
+- never create extra status systems outside the main stage values
 - never deepen every conversation by default
-- never convert a clean operator table into a noisy event dump
-
-## When to escalate to enrichment mode
-Switch to `linkedin-row-enrichment` when:
-- a row becomes strategically important
-- title/company/profile URL are needed before follow-up
-- preview context is no longer enough
-- confidence must move from medium to high
+- never turn the sheet into a noisy event log
+- never branch daily maintenance into multiple sheets

@@ -108,3 +108,18 @@ Reviewed local skills against the GitHub repo and kept the normalized repo versi
 - Updated the KSA skill manifest, config, query pack, and result/log templates to match the v1.1 workflow.
 - Merged the local single-sheet outreach model into `linkedin-outreach-sheet-workflow` as an explicit lightweight mode instead of replacing the existing normalized workbook model.
 - Added `local-latex-cv-tailoring` as a job-application support skill.
+
+### 2026-05-04
+
+Reviewed the outreach skills again and found inconsistent defaults between the simple `Outreach` sheet model and the older normalized workbook model.
+
+Updated these skills to make one-sheet `Outreach` tracking the default:
+
+- `google-sheets-connector-reliability`
+- `linkedin-connection-workflow`
+- `linkedin-inbox-preview-backfill`
+- `linkedin-outreach-daily-ops`
+- `linkedin-outreach-sheet-workflow`
+- `linkedin-row-enrichment`
+
+Kept normalized multi-tab tracking as optional advanced guidance only when explicitly requested.

@@ -1,126 +1,118 @@
 ---
 name: google-sheets-connector-reliability
-description: Keep Google Sheets writes reliable during outreach workflows by using safe batching, explicit placeholders, partial verification, and controlled recovery from timeouts or 503s.
+description: Keep Google Sheets work simple and reliable by using connector-first reads, small upsert batches, verification after writes, one-sheet discipline, and browser fallback only when truly needed.
 metadata:
   display-name: Google Sheets Connector Reliability
   enabled: "true"
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Google Sheets Connector Reliability
 
 ## Purpose
-Make sheet writes resilient during LinkedIn outreach workflows.
+Provide the simplest reliable write pattern for Google Sheets work.
 
-This skill exists because the Google Sheets connector can become:
-- slow
-- partially successful
-- timeout-prone
-- intermittently unavailable
+Use this skill whenever a workflow needs to create or update rows in Google Sheets and reliability matters more than cleverness.
 
-A reliable workflow must assume this sometimes happens.
+## Default rule
+Because Google Sheets is connected, use the connector first.
 
-## Core reliability rules
-1. **Write in small logical batches**
-2. **After failure, test one small write first**
-3. **Verify partial success before retrying**
-4. **Patch missing cells only**
-5. **Never rerun an entire batch blindly**
-6. **Use explicit placeholders instead of blank values when needed**
+Do not default to browser editing unless:
+- the connector is failing repeatedly
+- the update is urgent
+- the affected range is small enough to edit safely by hand
 
-## Best batch design
-Group writes by meaning, not by maximum size.
+## One-sheet discipline
+When a workflow already has a canonical sheet structure, keep using it.
 
-Good batch examples:
-- one header block
-- one row metadata block
-- one import log row
-- one group of 5 related cells
+Do not respond to connector friction by creating:
+- staging sheets
+- import sheets
+- log sheets
+- temp sheets
+- backup workflow sheets
 
-Bad batch examples:
-- 50 unrelated cells across many tabs
-- full-table rewrites
-- mixed writes where one failure makes verification messy
+Reliability problems should be solved with smaller verified writes, not more tabs.
 
-## Connector-safe placeholders
-Prefer explicit values like:
-- `pending_enrichment`
-- `TBD`
-- `not_run`
-- `preview_only`
+## Simple reliable flow
+1. Read the target sheet headers and the rows you may touch.
+2. Build row updates using the existing sheet schema.
+3. Write in small logical batches, usually 1-10 rows.
+4. Re-read the changed rows.
+5. Patch only what did not land.
+6. Stop if repeated failures make the result unclear.
+
+## What counts as a good batch
+Good batches:
+- one header setup
+- one row add
+- one row update
+- a few related row updates
+
+Bad batches:
+- full-sheet rewrites
+- many unrelated edits across the workbook
+- giant retries after uncertain timeouts
+- splitting one workflow across many sheets to feel safer
+
+## Verification rule
+After any non-trivial write:
+- read back the changed rows
+- compare expected vs actual
+- patch only the missing cells
+
+Never assume a timeout means nothing was written.
+
+## Retry discipline
+If a write fails:
+1. do not rerun the whole batch blindly
+2. test one small write first
+3. if that works, continue with smaller batches
+4. patch only the missing cells
+
+## Placeholders vs blanks
+Prefer blanks by default.
+
+Use a short explicit value only when it helps future operations, for example:
 - `needs_review`
+- `profile_url_missing`
+- `preview_only`
 
-Avoid true blanks when the connector behaves inconsistently.
+Do not fill sheets with placeholder noise just to avoid blanks.
 
-## Recovery flow after failure
-When a write fails or times out:
-1. stop the big batch
-2. test one tiny write
-3. if it succeeds, continue in smaller batches
-4. verify the target range
-5. patch only missing cells
-6. record notes if reliability affected confidence
-
-## 503 handling
-A 503 usually means the service is temporarily unavailable, not that the workbook is broken.
+## 503 and timeout handling
+A 503 or timeout does not prove the workbook is broken, and it does not prove that nothing was written.
 
 Do this:
 - reduce write size
 - wait briefly or switch tasks
 - test a single write
-- resume carefully
+- read back the affected range
+- patch only missing cells
 
 Do not do this:
 - spam the same batch repeatedly
-- assume nothing was written
+- assume nothing landed
 - re-run the entire import
+- create extra tabs as a workaround
 
-## Timeout handling
-Timeouts are especially dangerous because the write may have partially succeeded.
+## When to use browser fallback
+Use browser-side editing only when all of these are true:
+- the connector is unstable or unavailable
+- the change is urgent
+- the edit scope is small and easy to verify
 
-Always:
-- read back the affected range
-- identify exactly what landed
-- write only the missing cells
-
-## Verification pattern
-After any non-trivial or flaky batch:
-1. read the target range
-2. compare expected vs actual
-3. patch only missing values
-
-This pattern is mandatory for outreach workflows because duplicate or partial data corrupts trust.
-
-## When to switch to browser fallback
-If the connector becomes too unstable for important edits:
-- keep the spreadsheet open in a background browser tab
-- decide whether direct browser editing is worth it
-- prefer waiting for connector recovery for structured updates
-- use browser-side editing only as a last resort because it is slower and harder to audit
-
-## Import log discipline
-Even under connector instability, still maintain `Import_Log`.
-If a run was partial, say so in notes.
-
-Good note examples:
-- `partial_write_patched`
-- `connector_503_recovered`
-- `row_headers_written_after_retry`
-- `preview_rows_added_connector_unstable`
-
-## Reliability-aware confidence rules
-Do not reduce row confidence just because the connector glitched.
-Confidence describes data certainty, not transport certainty.
-
-But do add review notes if:
-- some fields may not have landed
-- a row may still be incomplete
-- the write order was interrupted
+When falling back:
+- keep the same one-sheet structure
+- keep only one relevant sheet tab open if possible
+- edit only the urgent cells
+- avoid schema changes during fallback
 
 ## Best outcome
-A workflow that survives connector instability without:
+A workflow that stays reliable without:
 - duplicate rows
-- missing audit trail
-- blind rewrites
-- operator confusion
-- wasted retries
+- blind retries
+- full-sheet rewrites
+- extra logging machinery
+- unnecessary browser work
+- sheet sprawl

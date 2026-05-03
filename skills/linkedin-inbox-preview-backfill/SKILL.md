@@ -1,179 +1,119 @@
 ---
 name: linkedin-inbox-preview-backfill
-description: Backfill recent LinkedIn outreach into Google Sheets using inbox preview data first, with bounded passes, confidence labeling, and minimal thread opens.
+description: Backfill recent LinkedIn outreach into the single Outreach sheet using inbox preview data first, minimal row fields, and selective deepening only when needed.
 metadata:
   display-name: LinkedIn Inbox Preview Backfill
   enabled: "true"
-  version: "1.0"
+  version: "1.1"
 ---
 
 # LinkedIn Inbox Preview Backfill
 
 ## Purpose
-Populate a Google Sheet from recent LinkedIn outreach as fast as possible **without** opening every thread.
+Populate the `Outreach` sheet quickly from recent LinkedIn conversations without opening every thread.
 
-This is the best starting mode when:
+This is the right starting mode when:
 - the sheet is empty or mostly empty
-- the user wants historical outreach imported quickly
-- accuracy can begin at preview-level and improve later
-- speed matters more than immediate perfect enrichment
+- the user wants recent outreach loaded fast
+- speed matters more than perfect enrichment on the first pass
 
 ## Core rule
-**The inbox preview is the first pass, not a shortcut to ignore.**
+Start with the inbox preview. Open threads or profiles only when the preview is not enough to create a useful row.
 
-The preview pass is usually the highest-leverage step because it lets you:
-- identify active threads
-- capture names
-- capture last-touch direction
-- infer reply state
-- identify follow-up candidates
-- avoid opening unchanged or low-value threads
+## One-sheet rule
+Write into the existing `Outreach` sheet only.
 
-## What this mode should produce
-A row should be considered successful in preview-backfill mode if it contains:
-- Name
-- Date Contacted / last visible activity marker
-- Status
-- Last Outbound Message or Last Inbound Message
-- Awaiting Reply From
-- Source
-- Enrichment Status
-- Next Action
-- Priority
-- Backfill Status
-- Person Key
-- Thread Key
-- Capture Method
-- Data Confidence
-- Import Run ID
-- Imported At
-- Last Verified At
-- Followup Reason
-- Review Notes
+Do not create:
+- import tabs
+- review tabs
+- enrichment tabs
+- workflow notes tabs
+- any other sheet just because the import is iterative
 
-It is acceptable for these fields to remain placeholders during this pass:
-- LinkedIn URL
-- Title
-- Company
-- exact follow-up date
-- exact canonical timestamp
+Iterative work should improve the same rows over time.
 
-## When to use
-Use this skill when the user says things like:
-- fill the sheet from my LinkedIn messages
-- backfill recent outreach
-- import the people I messaged
-- start with the latest conversations
-- just get the table populated first
+## Target output
+A preview-backfill row is good enough if it captures most of:
+- `added_on`
+- `full_name`
+- `profile_url` if visible, otherwise blank
+- `stage`
+- `last_contact_on`
+- `last_contact_direction`
+- `next_action`
+- `notes`
 
-## Preparation
-Before touching LinkedIn:
-1. Ensure the spreadsheet exists
-2. Ensure `Outreach_Table` exists
-3. Ensure traceability columns exist
-4. Ensure `Import_Log` exists
-5. Create an `import_run_id`
+It is acceptable for these to remain blank on the first pass:
+- `profile_url`
+- `title`
+- `company`
+- `next_action_on`
+- `thread_url`
 
-Suggested import run ID format:
-`li_preview_backfill_YYYY-MM-DD_HHMMSS`
+## Required sheet structure
+Follow the schema from `linkedin-outreach-sheet-workflow`.
+Do not create `Outreach_Table`, `Import_Log`, or extra helper tabs.
 
-## Bounded import rules
-Recommended defaults:
-- backfill only the most recent **50** threads on first run
-- capture only the latest visible message signal from preview
-- do one bounded load-more pass at most unless the user explicitly wants deeper history
-- retry one interaction per inbox action at most
+## Recommended bounds
+Default first pass:
+- backfill the most recent 30-50 conversations
+- do at most one bounded load-more pass unless the user asks for deeper history
+- retry each inbox interaction at most once
 
-## Data capture from inbox preview
-From each visible conversation tile, collect if visible:
+## What to capture from each conversation tile
+If visible, collect:
 - name
-- relative activity date/time
+- visible activity date/time marker
 - preview line
-- whether preview begins with `You:` or the other person name
-- unread badge if visible
-- any strong signal like deleted message / attachment / post share
+- whether the preview starts with `You:`
+- unread or fresh activity signal
+- thread URL if easy to capture
 
-## How to interpret preview rows
+## How to map preview rows into the sheet
 
 ### If preview begins with `You:`
-Assume:
-- `Last Touch Direction = outbound`
-- likely `Status = waiting_on_reply`
-- `Awaiting Reply From = them`
-- `Followup Reason = awaiting_reply_after_outbound`
+Use:
+- `stage = Messaged`
+- `last_contact_direction = outbound`
+- `next_action = Follow up` when follow-up is likely, otherwise blank
+- `notes = preview_only`
 
-### If preview begins with the other person name
-Assume:
-- `Last Touch Direction = inbound`
-- likely `Status = replied` or `active_conversation`
-- `Awaiting Reply From = me`
-- `Followup Reason = reply_received`
+### If preview begins with the other person's name
+Use:
+- `stage = Replied`
+- `last_contact_direction = inbound`
+- `next_action = Reply`
+- `notes = preview_only`
 
 ### If preview is ambiguous
-Use:
-- `Status = needs_review`
-- `Awaiting Reply From = none`
-- `Review Notes = ambiguous_preview`
+Use the best safe row you can and mark:
+- `notes = needs_review`
 
-## Suggested row-writing strategy
-For each row:
-1. write the minimum useful fields first
-2. write metadata second
-3. write placeholders for enrichment gaps
-4. log the run once per batch, not once per row
+Do not invent detail just to complete a row.
 
-Placeholders should be explicit, for example:
-- `pending_enrichment`
-- `TBD`
-- `preview_only`
-- `last_outbound_needs_backfill`
+## Upsert strategy
+For each person:
+1. match by normalized `profile_url` when available
+2. otherwise match by `thread_url` if available
+3. otherwise use a careful name match and keep the row easy to revisit
+4. add or update only the useful changed fields
 
-## Priority heuristics
-Suggested values:
-- `high` = strong outreach, recruiter/founder/target company, clear follow-up candidate
-- `medium` = useful contact awaiting response
-- `low` = casual exchange, weak signal, low leverage thread
+## When to open a thread or profile
+Open a thread or profile only when one of these is true:
+- the row is high value
+- the correct person is ambiguous
+- `profile_url` is needed for deduplication
+- the reply state materially affects the next action
 
-## Next Action values
-Good defaults:
-- `enrich_profile_then_followup`
-- `backfill_last_outbound_then_decide`
-- `review_manually`
-- `none`
-
-## Trackability requirements
-Every preview-imported row should include:
-- `Capture Method = linkedin_inbox_preview`
-- `Data Confidence = medium`
-- `Import Run ID = current batch id`
-- `Imported At = run timestamp`
-- `Last Verified At = run timestamp`
-- `Review Notes = what remains missing`
-
-## Anti-retry rules
-- never reopen the same successful row in the same run
-- never rerun a whole batch if only 1–2 cells failed
-- verify and patch missing cells only
-- if load more does not yield reliable new rows, stop
-- do not brute-force the inbox UI
-
-## Stop conditions
-Stop the preview pass when:
-- the visible rows become noisy or low-quality
-- load-more stops returning clearly usable conversations
-- connector instability rises and patching becomes cheaper than continued expansion
-- the user has enough recent outreach imported to start operating
-
-## Output quality target
-At the end of this mode, the sheet should be:
-- operational
-- sortable
-- auditable
-- not yet fully enriched
-
-That is the correct outcome.
+## Anti-waste rules
+- do not open every thread
+- do not force full enrichment during the first pass
+- do not create logging infrastructure
+- do not rerun the entire batch when only a few cells failed
+- stop when the marginal quality becomes poor
 
 ## What happens next
-After preview backfill, switch to:
-- `linkedin-row-enrichment` for quality upgrades
-- `linkedin-outreach-daily-ops` for ongoing monitoring
+After preview backfill:
+- use `linkedin-row-enrichment` for better profile/title/company coverage
+- use `linkedin-outreach-daily-ops` for ongoing updates
+- keep improving the same sheet instead of branching into new ones
