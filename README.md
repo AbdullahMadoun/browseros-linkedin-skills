@@ -1,14 +1,16 @@
 # BrowserOS LinkedIn Skills
 
-Reusable BrowserOS skills for LinkedIn search, lead discovery, outreach tracking, messaging, document attachment, Google Sheets reliability, and local resume tailoring.
+Reusable BrowserOS skills for LinkedIn search, lead discovery, outreach tracking, messaging, Outlook mail actions, document attachment, Google Sheets reliability, and local resume tailoring.
 
 This repository merges several BrowserOS skill sources:
 
 - LinkedIn outreach and Google Sheets operating skills created from local BrowserOS sessions.
 - Search-agent skills from an archived BrowserOS search-agent package.
-- Local BrowserOS refinements, including a candidate-fit KSA hiring search update and local LaTeX resume tailoring.
+- Local BrowserOS refinements, including a candidate-fit KSA hiring search update, Outlook mail workflows, and local resume tailoring.
 
 No source skill was intentionally removed during the merge. The archived search skills were kept with their supporting files and normalized by adding BrowserOS-style `SKILL.md` front matter.
+
+This repo tracks the custom top-level BrowserOS skills. Nested BrowserOS default skills under `builtin/` are not vendored here.
 
 ## Repository Layout
 
@@ -22,12 +24,16 @@ browseros-linkedin-skills/
 │   ├── linkedin-connection-workflow/
 │   ├── linkedin-inbox-preview-backfill/
 │   ├── linkedin-ksa-recent-hiring-posts/
-│   ├── local-latex-resume-tailoring/
 │   ├── linkedin-messaging-workflow/
 │   ├── linkedin-outreach-daily-ops/
 │   ├── linkedin-outreach-sheet-workflow/
 │   ├── linkedin-people-url-filtering/
 │   ├── linkedin-row-enrichment/
+│   ├── linkedin-shortlist-resume-batch-tailoring/
+│   ├── local-latex-resume-tailoring/
+│   ├── outlook-connector-draft-attach-send/
+│   ├── outlook-mail-connector-reliability/
+│   ├── outlook-scheduled-send-workflow/
 │   └── search-state-verification-hygiene/
 ├── docs/
 │   ├── MERGE_NOTES.md
@@ -91,12 +97,28 @@ Use these for concrete LinkedIn UI actions.
 - `linkedin-connection-workflow`  
   Sends LinkedIn connection requests from profile pages using the reliable no-note flow and verifies success from profile state.
 
+### Outlook Mail Actions
+
+Use these when BrowserOS is drafting, attaching, sending, scheduling, or verifying Outlook emails.
+
+- `outlook-mail-connector-reliability`
+  Connector-first rules for Outlook draft creation, updates, sending, and verification, with browser fallback only for verified connector gaps.
+
+- `outlook-connector-draft-attach-send`
+  Creates Outlook drafts through the connector, attaches local files in Outlook web, verifies staged attachments, and sends safely.
+
+- `outlook-scheduled-send-workflow`
+  Schedules Outlook emails through the web UI when connector schedule-send support is unavailable, with explicit time and attachment verification.
+
 ### Job Application Support
 
-Use this after a promising role, recruiter post, or company target is found.
+Use these after a promising role, recruiter post, or company target is found.
 
 - `local-latex-resume-tailoring`
   Tailors a resume fully locally using approved master resume data, deterministic content selection, local LaTeX output, and optional local PDF compilation.
+
+- `linkedin-shortlist-resume-batch-tailoring`
+  Turns a ranked shortlist of opportunities into one truthful resume per opportunity, with one-page checks, unsupported-fact audits, and mapping guides.
 
 ## Recommended Usage Chains
 
@@ -119,6 +141,12 @@ Use this after a promising role, recruiter post, or company target is found.
 2. `lead-scoring-dedup-pivots`
 3. `local-latex-resume-tailoring`
 
+### Tailor a ranked shortlist into resumes
+
+1. `lead-scoring-dedup-pivots`
+2. `linkedin-shortlist-resume-batch-tailoring`
+3. `local-latex-resume-tailoring` for individual high-priority roles that need deeper local tailoring
+
 ### Build an outreach tracker from LinkedIn messages
 
 1. `linkedin-outreach-sheet-workflow`
@@ -132,6 +160,12 @@ Use this after a promising role, recruiter post, or company target is found.
 1. `linkedin-messaging-workflow`
 2. `linkedin-attach-document-workflow` when a file must be sent
 3. `google-sheets-connector-reliability` if the action also updates the outreach sheet
+
+### Draft, attach, send, or schedule Outlook email
+
+1. `outlook-mail-connector-reliability`
+2. `outlook-connector-draft-attach-send` when a local file must be attached
+3. `outlook-scheduled-send-workflow` when the email must be sent later
 
 More detailed chain ideas are in [docs/USAGE_IDEAS.md](docs/USAGE_IDEAS.md).
 

@@ -12,6 +12,7 @@ Each subdirectory is a BrowserOS skill package. The primary entry point is alway
 | `linkedin-ksa-recent-hiring-posts` | Search | Fresh KSA hiring-post discovery |
 | `lead-scoring-dedup-pivots` | Lead processing | Score, dedupe, and pivot from raw leads |
 | `local-latex-resume-tailoring` | Job application support | Tailor a resume locally with LaTeX outputs |
+| `linkedin-shortlist-resume-batch-tailoring` | Job application support | Batch-tailor one resume per ranked opportunity |
 | `linkedin-outreach-sheet-workflow` | Outreach ops | Master LinkedIn + Google Sheets workflow |
 | `linkedin-inbox-preview-backfill` | Outreach ops | Fast inbox-preview sheet import |
 | `linkedin-row-enrichment` | Outreach ops | Enrich selected rows from profiles/threads |
@@ -20,6 +21,9 @@ Each subdirectory is a BrowserOS skill package. The primary entry point is alway
 | `linkedin-messaging-workflow` | Direct action | Send LinkedIn messages and verify delivery |
 | `linkedin-attach-document-workflow` | Direct action | Attach and send local documents in LinkedIn threads |
 | `linkedin-connection-workflow` | Direct action | Send profile-based connection invites |
+| `outlook-mail-connector-reliability` | Outlook mail | Connector-first Outlook mail drafting, sending, and verification |
+| `outlook-connector-draft-attach-send` | Outlook mail | Attach local files to connector-created Outlook drafts |
+| `outlook-scheduled-send-workflow` | Outlook mail | Schedule Outlook emails and verify scheduled state |
 
 ## Package Rules
 

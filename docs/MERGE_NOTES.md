@@ -113,6 +113,21 @@ Reviewed local skills against the GitHub repo and kept the normalized repo versi
 
 Removed user-specific paths, repository-owner URLs, names, and resume details from repo documentation and the local LaTeX resume tailoring skill.
 
+### 2026-05-04 missing custom skill pass
+
+Rechecked `<local-browseros-skills-dir>` recursively. The source directory contained 18 custom top-level `SKILL.md` files plus nested BrowserOS built-in skills under `builtin/`.
+
+Added the custom skills that were missed in the first refresh:
+
+- `outlook-mail-connector-reliability`
+- `outlook-connector-draft-attach-send`
+- `outlook-scheduled-send-workflow`
+- `linkedin-shortlist-resume-batch-tailoring`
+
+Skipped nested BrowserOS built-in skills such as `save-page`, `summarize-page`, and `fill-form` because they are default BrowserOS skills rather than custom repo source skills.
+
+Renamed the local batch-tailoring source to `linkedin-shortlist-resume-batch-tailoring`, removed personal filename examples, and converted CV wording to generic resume wording.
+
 ### 2026-05-04
 
 Reviewed the outreach skills again and found inconsistent defaults between the simple `Outreach` sheet model and the older normalized workbook model.

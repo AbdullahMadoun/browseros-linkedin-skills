@@ -59,7 +59,7 @@ Use when BrowserOS needs to find recent Saudi Arabia hiring posts with direct co
 Best for:
 - LinkedIn Posts search with past-24h and past-week freshness.
 - English and Arabic hiring queries.
-- Mapping a CV/profile into ranked role clusters before searching.
+- Mapping a resume/profile into ranked role clusters before searching.
 - LinkedIn-native recruiter, company, and jobs validation pivots before Google.
 - Email-first and CTA-first lead discovery.
 - Google X-ray fallback when LinkedIn ranking is weak.
@@ -175,6 +175,41 @@ Best for:
 - Avoiding unreliable suggestion-card invite buttons.
 - Verifying an explicit invite-sent state such as Pending, Invitation sent, or Withdraw.
 
+## Outlook Mail Actions
+
+### `outlook-mail-connector-reliability`
+
+Use when BrowserOS needs to draft, update, send, or verify Outlook email through the Outlook Mail connector.
+
+Best for:
+- Connector-first draft creation and updates.
+- Plain no-attachment sends through the connector.
+- Sent Items verification with narrow reads.
+- Knowing when browser fallback is justified.
+- Avoiding duplicate sends and heavy mailbox queries.
+
+### `outlook-connector-draft-attach-send`
+
+Use when BrowserOS needs to create an Outlook draft through the connector, attach a local file in Outlook web, then send safely.
+
+Best for:
+- Resolving exact local attachment paths.
+- Opening the connector-created draft by `webLink`.
+- Exposing Outlook's hidden file input when needed.
+- Verifying staged attachments before send.
+- Verifying delivery and attachment state after send.
+
+### `outlook-scheduled-send-workflow`
+
+Use when BrowserOS needs to schedule, delay delivery, or send later from Outlook.
+
+Best for:
+- Connector-created draft content.
+- Outlook web schedule-send fallback.
+- Explicit date, time, and timezone handling.
+- Pop-out compose recovery when embedded compose fails.
+- Verifying scheduled state through `Cancel send`.
+
 ## Job Application Support
 
 ### `local-latex-resume-tailoring`
@@ -187,3 +222,15 @@ Best for:
 - Preserving the existing LaTeX layout.
 - Saving per-role `.tex`, report, job snapshot, and optional PDF outputs.
 - Avoiding invented achievements, dates, technologies, or metrics.
+
+### `linkedin-shortlist-resume-batch-tailoring`
+
+Use when BrowserOS needs to turn a ranked opportunity shortlist into one tailored resume per opportunity.
+
+Best for:
+- Ingesting ranked LinkedIn or similar opportunity shortlists.
+- Creating one target file per opportunity.
+- Applying role-family presets before tailoring.
+- Enforcing one-page output with compile/page-count checks.
+- Running unsupported-fact audits across the batch.
+- Producing job-to-resume mapping guides.

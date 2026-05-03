@@ -135,7 +135,37 @@ How to use:
 - Add new leads to the same operating table.
 - Move to a daily delta loop.
 
-## 9. When to Stop
+## 9. Batch Tailor a Ranked Shortlist
+
+Use this when a search run already produced a ranked shortlist and the user wants one resume per opportunity.
+
+1. `lead-scoring-dedup-pivots`
+2. `linkedin-shortlist-resume-batch-tailoring`
+3. `local-latex-resume-tailoring` for any high-priority role that needs deeper local tailoring
+
+How to use:
+- Keep rank, title, contact route type, source context, fit notes, and caveats.
+- Use rank-specific folders and a job-to-resume mapping guide.
+- Enforce one-page output with compile/page-count checks.
+- Run an unsupported-fact audit before treating the batch as done.
+- Use redacted labels in chat summaries unless exact opportunity details are needed.
+
+## 10. Outlook Draft, Attachment, and Schedule Send
+
+Use this when the user wants Outlook emails created, sent, attached, or scheduled.
+
+1. `outlook-mail-connector-reliability`
+2. `outlook-connector-draft-attach-send` when a local file must be attached
+3. `outlook-scheduled-send-workflow` when the email must be sent later
+
+How to use:
+- Create and update drafts through the connector first.
+- Use Outlook web only for verified connector gaps such as local attachment upload or schedule-send.
+- Confirm exact recipients and sensitive attachment paths before upload/send.
+- Verify staged attachments before sending or scheduling.
+- For schedule-send, confirm exact date, time, and timezone, then verify `Cancel send`.
+
+## 11. When to Stop
 
 Stop a run when:
 - Search state cannot be verified after one retry.
@@ -145,7 +175,7 @@ Stop a run when:
 - A thread/profile was already handled successfully in the same run.
 - Lead quality drops below the scoring threshold.
 
-## 10. What to Record After Each Run
+## 12. What to Record After Each Run
 
 For search runs:
 - Query.
