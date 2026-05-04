@@ -39,8 +39,8 @@ This catalog lists every public custom skill in the repository and the main reas
 | Skill | Use When | Notes |
 |---|---|---|
 | `linkedin-job-resume-fit-ranking` | LinkedIn jobs or posts need ranking against a resume. | Extracts requirements, maps evidence, applies caps, and gives candid fit verdicts. |
-| `linkedin-shortlist-resume-batch-tailoring` | A ranked shortlist should become one resume per opportunity. | Uses role-family presets, one-page checks, truth audits, and mapping guides. |
-| `local-latex-resume-tailoring` | A resume should be tailored locally with LaTeX artifacts. | Uses approved master data, deterministic content selection, and optional local PDF compilation. |
+| `linkedin-shortlist-resume-batch-tailoring` | A ranked shortlist should become one resume per opportunity. | Uses role-family presets, strict one-page checks, word-count floors, truth audits, and mapping guides. |
+| `local-latex-resume-tailoring` | A resume should be tailored locally with LaTeX artifacts. | Uses approved master data, alignment analysis, exact-substring rewrite plans, local PDF compilation, and compile recovery. |
 | `grounded-cover-letter-generator` | A cover letter body is needed. | Requires a template/structure and uses only resume-supported or user-approved evidence. |
 | `ats-keyword-density-review` | A resume needs ATS keyword review. | Finds missing supported terms, weak evidence, overuse, and stuffing risk. |
 | `resume-hallucination-risk-audit` | Edited application materials may contain unsupported claims. | Audits tools, employers, titles, dates, degrees, metrics, outcomes, and ownership verbs. |

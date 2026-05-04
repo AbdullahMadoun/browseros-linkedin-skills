@@ -48,8 +48,8 @@ Skills are grouped by use case. Each leaf folder that contains `SKILL.md` is a B
 | Skill | Use |
 |---|---|
 | `linkedin-job-resume-fit-ranking` | Rank LinkedIn jobs or posts against evidence in a resume. |
-| `linkedin-shortlist-resume-batch-tailoring` | Turn a ranked shortlist into one tailored resume per opportunity. |
-| `local-latex-resume-tailoring` | Tailor and optionally compile a LaTeX resume locally. |
+| `linkedin-shortlist-resume-batch-tailoring` | Turn a ranked shortlist into one truthful one-page resume per opportunity. |
+| `local-latex-resume-tailoring` | Tailor and compile LaTeX resumes locally with alignment and audit artifacts. |
 | `grounded-cover-letter-generator` | Draft non-generic cover letter bodies grounded in resume evidence. |
 | `ats-keyword-density-review` | Review ATS keyword coverage and stuffing risk. |
 | `resume-hallucination-risk-audit` | Audit application materials for unsupported claims. |

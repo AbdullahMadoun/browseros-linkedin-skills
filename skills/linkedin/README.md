@@ -19,4 +19,4 @@ Skills for LinkedIn search, company mapping, hiring-post analysis, outreach, mes
 | `linkedin-poster-workflow` | Prepare LinkedIn posts and stop before publish. |
 | `linkedin-easy-apply-application-workflow` | Prepare Easy Apply applications and stop before final submit. |
 | `linkedin-job-resume-fit-ranking` | Rank LinkedIn jobs against resume evidence. |
-| `linkedin-shortlist-resume-batch-tailoring` | Tailor one resume per ranked LinkedIn opportunity. |
+| `linkedin-shortlist-resume-batch-tailoring` | Tailor one truthful one-page resume per ranked LinkedIn opportunity. |

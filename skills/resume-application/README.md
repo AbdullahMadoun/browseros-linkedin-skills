@@ -4,7 +4,7 @@ Skills for truthful resume tailoring, cover letters, ATS review, hallucination a
 
 | Skill | Use |
 |---|---|
-| `local-latex-resume-tailoring` | Tailor and optionally compile a LaTeX resume locally. |
+| `local-latex-resume-tailoring` | Tailor and compile LaTeX resumes locally with alignment and audit artifacts. |
 | `grounded-cover-letter-generator` | Draft cover letter bodies grounded in resume evidence. |
 | `ats-keyword-density-review` | Review ATS keyword coverage and stuffing risk. |
 | `resume-hallucination-risk-audit` | Audit application materials for unsupported claims. |

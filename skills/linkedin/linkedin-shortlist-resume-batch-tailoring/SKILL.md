@@ -7,7 +7,7 @@ description: >-
 metadata:
   display-name: LinkedIn Shortlist Resume Batch Tailoring
   enabled: "true"
-  version: "1.1"
+  version: "1.2"
 ---
 
 # LinkedIn Shortlist Resume Batch Tailoring
@@ -60,6 +60,7 @@ If the file lacks full job descriptions, use the fit notes and title as the tail
 6. Batch speed must not hollow out the resume; every output must still look substantial and sendable.
 7. Track word count for every generated resume and flag outputs that fall materially below the original strong baseline.
 8. Preserve useful selective bolding so the batch outputs do not become visually bland.
+9. Use the current user-approved resume header/contact source. Never invent or change email, phone, location, links, or header details unless the user explicitly asks.
 
 ## Core workflow
 
@@ -115,7 +116,7 @@ Start from the approved source-of-truth resume data and generate a role-specific
 
 Default preservation rule:
 
-- start from the strongest approved resume shape, not a minimal shell
+- start from the strongest approved full resume shape, not a minimal shell
 - keep most of the original template and high-signal content
 - keep useful selective bolding patterns on metrics, tools, outcomes, and high-signal phrases
 - change what adds role fit; do not remove content casually
@@ -124,9 +125,9 @@ Default preservation rule:
 Use family-aware trimming rules such as:
 
 - AI/ML roles: keep the strongest research/ML evidence and usually 1-2 projects
-- data engineering roles: keep SQL/Python/pipeline evidence and trim awards first
-- analytics / BI roles: prioritize reporting, SQL, dashboards, KPI, root-cause, and forecasting evidence
-- business/performance roles: emphasize KPI analysis, reporting, decision support, stakeholder-facing work, and operational recommendations
+- Data engineering roles: keep SQL/Python/pipeline evidence and trim awards first
+- Analytics / BI roles: prioritize reporting, SQL, dashboards, KPI, root-cause, and forecasting evidence
+- Business/performance roles: emphasize KPI analysis, reporting, decision support, stakeholder-facing work, and operational recommendations
 
 If the compiled PDF exceeds one page:
 

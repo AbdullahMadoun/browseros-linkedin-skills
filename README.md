@@ -65,8 +65,8 @@ browseros-linkedin-skills/
 ### Application Materials
 
 - `linkedin-job-resume-fit-ranking` - rank LinkedIn jobs or posts against evidence from a resume.
-- `linkedin-shortlist-resume-batch-tailoring` - generate one truthful tailored resume per ranked opportunity.
-- `local-latex-resume-tailoring` - tailor a LaTeX resume locally with auditable content selection.
+- `linkedin-shortlist-resume-batch-tailoring` - generate one truthful one-page resume per ranked opportunity, with mapping and truth audits.
+- `local-latex-resume-tailoring` - tailor and compile LaTeX resumes locally with alignment, rewrite, and audit artifacts.
 - `grounded-cover-letter-generator` - draft cover letters grounded in a resume, job requirements, and user-approved story.
 - `ats-keyword-density-review` - check keyword coverage and stuffing risk without adding unsupported terms.
 - `resume-hallucination-risk-audit` - audit edited application materials for unsupported facts.
