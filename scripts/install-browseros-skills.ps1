@@ -16,19 +16,28 @@ New-Item -ItemType Directory -Force -Path $BrowserOsSkillsPath | Out-Null
 
 $installed = @()
 $skipped = @()
+$seen = @{}
 
-Get-ChildItem -Directory -LiteralPath $sourceSkills | Sort-Object Name | ForEach-Object {
-  $source = $_.FullName
-  $target = Join-Path $BrowserOsSkillsPath $_.Name
+$skillManifests = Get-ChildItem -LiteralPath $sourceSkills -Recurse -File -Filter "SKILL.md" | Sort-Object FullName
+
+$skillManifests | ForEach-Object {
+  $source = $_.Directory.FullName
+  $skillName = $_.Directory.Name
+  $target = Join-Path $BrowserOsSkillsPath $skillName
+
+  if ($seen.ContainsKey($skillName)) {
+    throw "Duplicate skill folder name found: $skillName"
+  }
+  $seen[$skillName] = $true
 
   if ((Test-Path -LiteralPath $target) -and -not $Overwrite) {
-    $skipped += $_.Name
+    $skipped += $skillName
     return
   }
 
   New-Item -ItemType Directory -Force -Path $target | Out-Null
   Copy-Item -Path (Join-Path $source "*") -Destination $target -Recurse -Force
-  $installed += $_.Name
+  $installed += $skillName
 }
 
 Write-Output "BrowserOS skills path: $BrowserOsSkillsPath"

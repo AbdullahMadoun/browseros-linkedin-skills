@@ -1,236 +1,63 @@
 # Skill Catalog
 
-This catalog describes every skill in the merged BrowserOS LinkedIn skills repository.
+This catalog lists every public custom skill in the repository and the main reason to use it.
 
-## Search and Lead Discovery
+## Search And Lead Intelligence
 
-### `search-state-verification-hygiene`
+| Skill | Use When | Notes |
+|---|---|---|
+| `search-state-verification-hygiene` | Search state may be stale, filtered, or inconsistent. | Start clean, change one variable at a time, verify URL/UI/result deltas. |
+| `linkedin-people-url-filtering` | You need reproducible LinkedIn People searches. | Includes `build_people_search_url.py`, presets, templates, and URL-lock fallback. |
+| `linkedin-boolean-query-refinement` | LinkedIn results are noisy or missing title variants. | Uses role blocks, quoted titles, NOT exclusions, and top-result checks. |
+| `linkedin-ksa-recent-hiring-posts` | You need recent Saudi Arabia hiring posts. | Uses LinkedIn-first search, English/Arabic ladders, contact-route scoring, and Google X-ray only after native recovery. |
+| `linkedin-company-opportunity-mapper` | A LinkedIn company page needs opportunity analysis. | Maps About, Jobs, Posts, People, recruiters, managers, hooks, and next actions. |
+| `linkedin-hiring-post-comment-miner` | A hiring post may hide useful signals in comments. | Extracts recruiters, referral offers, clarifications, contact routes, and company pivots. |
+| `lead-scoring-dedup-pivots` | Raw leads need triage. | Scores posts/profiles/companies, deduplicates conservatively, and suggests pivots. |
 
-Use before or during any search workflow where old filters, hidden state, stale tabs, date ranges, or location settings could affect results.
+## Outreach Operations
 
-Best for:
-- Clean-starting a LinkedIn or Google search.
-- Verifying a filter actually applied.
-- Switching to URL-lock mode when UI chips are inconsistent.
-- Keeping browser-agent actions within a click budget.
-
-Core output:
-- Clean base URL.
-- Intended vertical.
-- Query and filter stack.
-- Step verification notes.
-- Reliability notes and reset instructions.
-
-### `linkedin-people-url-filtering`
-
-Use when BrowserOS needs repeatable LinkedIn People searches without wasting clicks in mixed search results.
-
-Best for:
-- Opening direct `/search/results/people/` URLs.
-- Applying second-degree, location, and current-company filters.
-- Building reproducible People search URLs.
-- Avoiding stale filter carryover between runs.
-
-Supporting files:
-- `build_people_search_url.py`
-- `presets.md`
-- `templates.md`
-- `manifest.json`
-
-### `linkedin-boolean-query-refinement`
-
-Use when LinkedIn results are too broad, too noisy, or missing role/title variants.
-
-Best for:
-- Building role-family Boolean blocks.
-- Adding quoted exact titles.
-- Adding NOT exclusions for recurring noise.
-- Testing one variable per pass.
-- Saving winning query/filter combinations.
-
-Supporting files:
-- `templates.md`
-- `manifest.json`
-
-### `linkedin-ksa-recent-hiring-posts`
-
-Use when BrowserOS needs to find recent Saudi Arabia hiring posts with direct contact routes.
-
-Best for:
-- LinkedIn Posts search with past-24h and past-week freshness.
-- English and Arabic hiring queries.
-- Mapping a resume/profile into ranked role clusters before searching.
-- LinkedIn-native recruiter, company, and jobs validation pivots before Google.
-- Email-first and CTA-first lead discovery.
-- Google X-ray fallback when LinkedIn ranking is weak.
-- Scoring and deduplicating fresh hiring posts.
-
-Supporting files:
-- `QUERY_PACK_TEMPLATE.md`
-- `config.template.json`
-- `templates/results_template.csv`
-- `templates/run_log_template.md`
-- `manifest.json`
-
-### `lead-scoring-dedup-pivots`
-
-Use after search returns raw posts, people, companies, snippets, recruiters, or contact routes.
-
-Best for:
-- Scoring candidates from 0 to 10.
-- Removing duplicate posts or profiles.
-- Keeping only action-ready leads.
-- Pivoting from posts to people, people to posts, posts to companies, and companies to people.
-
-Supporting files:
-- `templates.md`
-- `manifest.json`
-
-## Outreach Tracking and Operations
-
-### `linkedin-outreach-sheet-workflow`
-
-Use when building or operating a LinkedIn outreach tracker in Google Sheets.
-
-Best for:
-- Keeping outreach in one simple `Outreach` sheet.
-- Using one row per person with normalized LinkedIn URL as the preferred key.
-- Managing relationship state with durable stage values.
-- Managing work state with `next_action_on` and `next_action`.
-- Improving rows iteratively without creating helper tabs.
-
-### `linkedin-inbox-preview-backfill`
-
-Use for the first bounded import from LinkedIn messages into Google Sheets.
-
-Best for:
-- Populating recent outreach quickly.
-- Scanning inbox preview rows before opening threads.
-- Capturing last-touch direction and likely reply state.
-- Creating minimal useful rows in the `Outreach` sheet.
-- Getting an operational table without solving the whole inbox.
-
-### `linkedin-row-enrichment`
-
-Use after preview backfill when selected rows need better data.
-
-Best for:
-- Opening high-priority profiles to confirm URL, title, and company.
-- Opening threads to confirm exact outbound/inbound message context.
-- Improving only the existing `Outreach` row.
-- Patching only missing or corrected fields.
-
-### `linkedin-outreach-daily-ops`
-
-Use for ongoing maintenance after the first backfill.
-
-Best for:
-- Daily inbox-preview scans.
-- Detecting changed/new threads.
-- Updating reply, follow-up, enrichment, and queue state.
-- Skipping unchanged rows.
-- Maintaining `next_action_on`, `next_action`, and short durable notes.
-
-### `google-sheets-connector-reliability`
-
-Use whenever Google Sheets writes become flaky, slow, partial, timeout-prone, or return 503.
-
-Best for:
-- Small logical batches.
-- Partial-write verification.
-- Patch-only recovery.
-- Connector-first one-sheet updates.
-- Avoiding duplicate rows and blind rewrites.
+| Skill | Use When | Notes |
+|---|---|---|
+| `linkedin-outreach-sheet-workflow` | You need a lightweight LinkedIn outreach tracker. | One `Outreach` tab, one row per person, durable stages, connector-first updates. |
+| `linkedin-inbox-preview-backfill` | You need to populate outreach rows quickly from LinkedIn inbox previews. | Avoids opening every thread; does not combine rows by name alone when URLs are missing. |
+| `linkedin-row-enrichment` | Selected outreach rows need better URL/title/company/context. | Opens only the needed profile or thread and patches changed fields. |
+| `linkedin-outreach-daily-ops` | Outreach needs daily maintenance. | Scans deltas, updates replies/follow-ups, skips unchanged rows. |
+| `google-sheets-connector-reliability` | Google Sheets writes are slow, flaky, partial, or timing out. | Uses small batches, verification reads, and patch-only recovery. |
 
 ## Direct LinkedIn Actions
 
-### `linkedin-messaging-workflow`
+| Skill | Use When | Notes |
+|---|---|---|
+| `linkedin-messaging-workflow` | A LinkedIn message must be sent from an existing thread. | Verifies recipient, composer, send action, and outbound message state. |
+| `linkedin-attach-document-workflow` | A local file must be attached in a LinkedIn message. | Requires exact file/recipient confirmation for sensitive documents and verifies staged attachment. |
+| `linkedin-connection-workflow` | A profile-based connection request must be sent. | Defaults to no-note flow and requires explicit invite-sent state. |
+| `linkedin-poster-workflow` | A LinkedIn post, media post, document post, poll, or scheduled post must be prepared. | Maps composer paths, upload fallbacks, audience/comment settings, and stops before final publish. |
+| `linkedin-easy-apply-application-workflow` | A LinkedIn Easy Apply application must be prepared. | Opens jobs, attaches the correct resume, fills only known fields, and stops before final submit. |
 
-Use when BrowserOS needs to send a normal LinkedIn message in an existing thread.
+## Application Materials
 
-Best for:
-- Opening the correct thread from the conversation list.
-- Filling the `Write a message...` composer.
-- Sending via `Control+Enter` or the Send button.
-- Verifying the outbound message appears.
+| Skill | Use When | Notes |
+|---|---|---|
+| `linkedin-job-resume-fit-ranking` | LinkedIn jobs or posts need ranking against a resume. | Extracts requirements, maps evidence, applies caps, and gives candid fit verdicts. |
+| `linkedin-shortlist-resume-batch-tailoring` | A ranked shortlist should become one resume per opportunity. | Uses role-family presets, one-page checks, truth audits, and mapping guides. |
+| `local-latex-resume-tailoring` | A resume should be tailored locally with LaTeX artifacts. | Uses approved master data, deterministic content selection, and optional local PDF compilation. |
+| `grounded-cover-letter-generator` | A cover letter body is needed. | Requires a template/structure and uses only resume-supported or user-approved evidence. |
+| `ats-keyword-density-review` | A resume needs ATS keyword review. | Finds missing supported terms, weak evidence, overuse, and stuffing risk. |
+| `resume-hallucination-risk-audit` | Edited application materials may contain unsupported claims. | Audits tools, employers, titles, dates, degrees, metrics, outcomes, and ownership verbs. |
+| `resume-applied-draft-review` | A final accepted resume draft needs review. | Compares original vs accepted draft for wins, regressions, remaining gaps, and readiness. |
+| `company-interview-prep-brief` | Interview preparation needs company context and grounded talking points. | Combines compact research, likely questions, red flags, and resume evidence. |
 
-### `linkedin-attach-document-workflow`
+## Outlook Mail
 
-Use when BrowserOS needs to send a local document through a LinkedIn message thread.
+| Skill | Use When | Notes |
+|---|---|---|
+| `outlook-mail-connector-reliability` | Outlook mail should use connector actions first. | Drafts, updates, sends, verifies, and falls back to browser only for verified gaps. |
+| `outlook-connector-draft-attach-send` | Outlook email needs a local attachment. | Creates connector drafts, attaches files in Outlook web, verifies staging, and sends. |
+| `outlook-scheduled-send-workflow` | Outlook email must be sent later. | Handles exact date/time/timezone and verifies scheduled state with `Cancel send`. |
 
-Best for:
-- Locating the exact absolute file path.
-- Exposing LinkedIn's hidden document file input.
-- Uploading the file through `upload_file`.
-- Verifying staged attachment before sending.
-- Verifying the document card after sending.
+## Skill Development
 
-### `linkedin-connection-workflow`
-
-Use when BrowserOS needs to send LinkedIn connection requests.
-
-Best for:
-- Profile-based Connect/Invite flow.
-- Send without a note.
-- Avoiding unreliable suggestion-card invite buttons.
-- Verifying an explicit invite-sent state such as Pending, Invitation sent, or Withdraw.
-
-## Outlook Mail Actions
-
-### `outlook-mail-connector-reliability`
-
-Use when BrowserOS needs to draft, update, send, or verify Outlook email through the Outlook Mail connector.
-
-Best for:
-- Connector-first draft creation and updates.
-- Plain no-attachment sends through the connector.
-- Sent Items verification with narrow reads.
-- Knowing when browser fallback is justified.
-- Avoiding duplicate sends and heavy mailbox queries.
-
-### `outlook-connector-draft-attach-send`
-
-Use when BrowserOS needs to create an Outlook draft through the connector, attach a local file in Outlook web, then send safely.
-
-Best for:
-- Resolving exact local attachment paths.
-- Opening the connector-created draft by `webLink`.
-- Exposing Outlook's hidden file input when needed.
-- Verifying staged attachments before send.
-- Verifying delivery and attachment state after send.
-
-### `outlook-scheduled-send-workflow`
-
-Use when BrowserOS needs to schedule, delay delivery, or send later from Outlook.
-
-Best for:
-- Connector-created draft content.
-- Outlook web schedule-send fallback.
-- Explicit date, time, and timezone handling.
-- Pop-out compose recovery when embedded compose fails.
-- Verifying scheduled state through `Cancel send`.
-
-## Job Application Support
-
-### `local-latex-resume-tailoring`
-
-Use when BrowserOS needs to tailor a resume to a role while keeping the workflow local and auditable.
-
-Best for:
-- Turning a job description or hiring post into a tailored resume target.
-- Selecting approved master-resume bullets deterministically.
-- Preserving the existing LaTeX layout.
-- Saving per-role `.tex`, report, job snapshot, and optional PDF outputs.
-- Avoiding invented achievements, dates, technologies, or metrics.
-
-### `linkedin-shortlist-resume-batch-tailoring`
-
-Use when BrowserOS needs to turn a ranked opportunity shortlist into one tailored resume per opportunity.
-
-Best for:
-- Ingesting ranked LinkedIn or similar opportunity shortlists.
-- Creating one target file per opportunity.
-- Applying role-family presets before tailoring.
-- Enforcing one-page output with compile/page-count checks.
-- Running unsupported-fact audits across the batch.
-- Producing job-to-resume mapping guides.
+| Document | Use |
+|---|---|
+| `docs/SKILL_IMPROVEMENT_WORKFLOW.md` | Exploration-first process for creating or improving reusable browser skills. |
+| `docs/PUBLICATION_AUDIT.md` | Public-release checklist for metadata, privacy, docs, and safety checks. |

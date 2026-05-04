@@ -1,195 +1,221 @@
-# Usage Ideas and Skill Chains
+# Usage Ideas And Skill Chains
 
-These are practical ways to combine the skills. The point is to load only the skill needed for the current phase, not every skill at once.
+These chains show how to combine skills without loading the whole repository at once. Use the smallest set that covers the current phase.
 
-## 1. Best Order for Outreach Sheet Operations
+## 1. Clean LinkedIn People Search
 
-Use this when the user wants to backfill LinkedIn messages, manage replies, and keep a Google Sheet as the operating table.
-
-1. `linkedin-outreach-sheet-workflow`
-2. `linkedin-inbox-preview-backfill`
-3. `linkedin-row-enrichment`
-4. `linkedin-outreach-daily-ops`
-5. `google-sheets-connector-reliability` whenever needed
-
-How to use:
-- Start with the master workflow to create or inspect the one-sheet `Outreach` structure.
-- Use preview backfill to populate rows quickly from the inbox list.
-- Enrich only the highest-priority rows after the table is usable.
-- Switch to daily ops after the first import.
-- Apply Sheets reliability rules any time writes are partial, slow, timing out, or returning service errors.
-
-## 2. Fast People Shortlist
-
-Use this when the user says something like "find product managers in Riyadh" or "make me a shortlist of second-degree recruiters."
+Use when building a targeted people shortlist.
 
 1. `search-state-verification-hygiene`
 2. `linkedin-people-url-filtering`
 3. `linkedin-boolean-query-refinement`
 4. `lead-scoring-dedup-pivots`
 
-How to use:
-- Clean the search state first so old chips and filters do not poison results.
-- Open a direct People URL instead of starting in mixed results.
-- Apply second-degree and location filters before advanced filters.
-- If results are noisy, refine the query with Boolean role/title variants.
-- Score and deduplicate the final shortlist.
+Output:
+- verified search URL
+- filter stack
+- shortlist
+- dedupe notes
+- next pivots
 
-## 3. KSA Hiring Posts With Direct Contact Routes
+## 2. Recent KSA Hiring Posts
 
-Use this when the user wants fresh Saudi hiring posts, preferably with email or a clear CTA.
+Use when looking for fresh Saudi Arabia hiring posts and contact routes.
 
 1. `search-state-verification-hygiene`
 2. `linkedin-ksa-recent-hiring-posts`
 3. `lead-scoring-dedup-pivots`
 
-How to use:
-- Start clean in LinkedIn Posts search.
-- If the user provides a resume/profile, use a redacted summary to map it into ranked role clusters first.
-- Stay LinkedIn-first: Posts, People pivots, company validation, Jobs validation, then Google X-ray only as fallback.
-- Run broad high-yield KSA hiring queries before role-targeted variants.
-- Mirror with Arabic queries if English results are sparse.
-- Use Google X-ray only when LinkedIn-native recovery paths are exhausted.
-- Score posts by freshness, role match, KSA evidence, contact clarity, and poster credibility.
+Rules:
+- stay LinkedIn-first
+- use redacted resume/profile summaries if candidate fit matters
+- use Arabic variants when English results are sparse
+- use Google X-ray only after LinkedIn-native recovery paths are exhausted
 
-## 4. Lead to Tailored Resume
+## 3. Company Opportunity Map
 
-Use this when a hiring post, recruiter lead, or job description is strong enough to apply.
+Use when a company page looks promising but needs structured review.
 
-1. `linkedin-ksa-recent-hiring-posts` or `linkedin-people-url-filtering`
-2. `lead-scoring-dedup-pivots`
-3. `local-latex-resume-tailoring`
+1. `linkedin-company-opportunity-mapper`
+2. `linkedin-people-url-filtering` when people search needs validation
+3. `linkedin-hiring-post-comment-miner` when relevant posts have useful comments
+4. `lead-scoring-dedup-pivots`
+5. `linkedin-outreach-sheet-workflow` if tracking is requested
 
-How to use:
-- Keep the job description or post snapshot with the lead.
-- Score the opportunity before spending tailoring effort.
-- Use approved master-resume content only.
-- Save a selection report and tailored LaTeX/PDF artifacts in a per-role output folder.
+Output:
+- company verdict
+- visible jobs
+- relevant posts
+- best contacts
+- outreach hooks
+- next actions
 
-## 5. Noisy LinkedIn Search Rescue
+## 4. Hiring Post Comment Mining
 
-Use this when search results are irrelevant, stale, over-filtered, or clearly affected by hidden state.
+Use when a hiring post may have recruiter replies, referral offers, clarifications, or hidden application routes in comments.
 
-1. `search-state-verification-hygiene`
-2. `linkedin-boolean-query-refinement`
-3. `linkedin-people-url-filtering` or `linkedin-ksa-recent-hiring-posts`
+1. `linkedin-hiring-post-comment-miner`
+2. `linkedin-company-opportunity-mapper` for company pivots
+3. `linkedin-people-url-filtering` for profile validation
 4. `lead-scoring-dedup-pivots`
 
-How to use:
-- Reset to a clean URL or visible reset state.
-- Change one thing per pass.
-- Confirm URL, UI chip, and result-set changes.
-- Add OR title variants before adding many filters.
-- Add NOT exclusions for repeated irrelevant personas.
+Stop before messaging, connecting, or commenting unless the user explicitly asks.
 
-## 6. Message a Shortlist
+## 5. Outreach Tracker From LinkedIn Messages
 
-Use this after a shortlist already exists and the user wants to send messages.
-
-1. `linkedin-messaging-workflow`
-2. `linkedin-attach-document-workflow` only if a file is needed
-3. `google-sheets-connector-reliability` if the outreach sheet must be updated
-4. `linkedin-outreach-daily-ops` for next-day follow-up tracking
-
-How to use:
-- Open the correct thread and verify the recipient.
-- Fill the approved message.
-- Send via the verified send path.
-- Verify the message appears in the thread.
-- If attaching a document, verify the attachment is staged before sending and the document card appears after sending.
-- Update the sheet in small verified batches.
-
-## 7. Connect With Target People First
-
-Use this when the user wants to build a warmer LinkedIn network before messaging.
-
-1. `linkedin-people-url-filtering`
-2. `linkedin-boolean-query-refinement`
-3. `lead-scoring-dedup-pivots`
-4. `linkedin-connection-workflow`
-
-How to use:
-- Build a targeted People shortlist.
-- Score and deduplicate before sending requests.
-- Open each profile directly.
-- Use profile Connect/Invite, then Send without a note unless the note flow is verified live.
-- Verify profile state after sending.
-
-## 8. Backfill First, Then Search for New Leads
-
-Use this when the user already has LinkedIn conversations and wants both historical cleanup and future lead discovery.
+Use when building or maintaining a lightweight outreach system.
 
 1. `linkedin-outreach-sheet-workflow`
 2. `linkedin-inbox-preview-backfill`
 3. `linkedin-row-enrichment`
-4. `search-state-verification-hygiene`
-5. `linkedin-people-url-filtering`
-6. `linkedin-boolean-query-refinement`
-7. `lead-scoring-dedup-pivots`
-8. `linkedin-outreach-daily-ops`
+4. `linkedin-outreach-daily-ops`
+5. `google-sheets-connector-reliability` whenever writes are flaky
 
-How to use:
-- Build the sheet from existing conversations first.
-- Enrich strategic rows.
-- Then search for new people using clean search workflows.
-- Add new leads to the same operating table.
-- Move to a daily delta loop.
+Rules:
+- keep one `Outreach` tab
+- one row per person
+- update only changed rows
+- use row numbers or redacted labels in summaries
 
-## 9. Batch Tailor a Ranked Shortlist
+## 6. Message Or Connect With A Shortlist
 
-Use this when a search run already produced a ranked shortlist and the user wants one resume per opportunity.
+Use after a shortlist has been scored and deduplicated.
+
+1. `lead-scoring-dedup-pivots`
+2. `linkedin-connection-workflow` for connection requests
+3. `linkedin-messaging-workflow` for existing threads
+4. `linkedin-attach-document-workflow` when a file must be sent
+5. `linkedin-outreach-sheet-workflow` if the action should be tracked
+
+Safety:
+- verify recipient before sending
+- confirm sensitive files before upload
+- verify send or invite state afterward
+
+## 7. LinkedIn Post Preparation
+
+Use when drafting or staging a LinkedIn post without publishing immediately.
+
+1. `linkedin-poster-workflow`
+2. `resume-hallucination-risk-audit` if the post mentions credentials, outcomes, metrics, or application claims
+
+Safety:
+- verify final text, attachments, audience, comment settings, and schedule state
+- never click `Post` or confirm scheduling without explicit final confirmation
+- remove staged test files before ending exploration
+
+## 8. Rank Jobs By Resume Fit
+
+Use when deciding which LinkedIn jobs or posts are worth applying to.
+
+1. `linkedin-job-resume-fit-ranking`
+2. `lead-scoring-dedup-pivots` if raw posts need cleanup
+3. `ats-keyword-density-review` for promising roles
+4. `local-latex-resume-tailoring` for the chosen role
+
+Output:
+- fit score
+- verdict
+- hard caps or blockers
+- strongest evidence
+- missing requirements
+- recommended next action
+
+## 9. Tailor A Ranked Shortlist
+
+Use when a scored shortlist should become one resume per opportunity.
 
 1. `lead-scoring-dedup-pivots`
 2. `linkedin-shortlist-resume-batch-tailoring`
-3. `local-latex-resume-tailoring` for any high-priority role that needs deeper local tailoring
+3. `resume-hallucination-risk-audit`
+4. `resume-applied-draft-review`
+5. `local-latex-resume-tailoring` for individual high-priority roles
 
-How to use:
-- Keep rank, title, contact route type, source context, fit notes, and caveats.
-- Use rank-specific folders and a job-to-resume mapping guide.
-- Enforce one-page output with compile/page-count checks.
-- Run an unsupported-fact audit before treating the batch as done.
-- Use redacted labels in chat summaries unless exact opportunity details are needed.
+Rules:
+- keep rank-specific folders
+- produce a job-to-resume mapping guide
+- enforce page-count and word-count checks
+- audit unsupported facts before use
 
-## 10. Outlook Draft, Attachment, and Schedule Send
+## 10. Single Resume Tailoring And Review
 
-Use this when the user wants Outlook emails created, sent, attached, or scheduled.
+Use when one role is important enough for careful tailoring.
+
+1. `local-latex-resume-tailoring`
+2. `ats-keyword-density-review`
+3. `resume-hallucination-risk-audit`
+4. `resume-applied-draft-review`
+
+Rules:
+- use approved source material only
+- do not add unsupported tools, credentials, metrics, or outcomes
+- preserve layout unless redesign is explicitly requested
+- compile locally when possible
+
+## 11. Cover Letter Or Application Note
+
+Use when a grounded cover letter body or fit note is needed.
+
+1. `linkedin-job-resume-fit-ranking` if role fit is not yet clear
+2. `grounded-cover-letter-generator`
+3. `resume-hallucination-risk-audit`
+
+Rules:
+- require a template or confirmed structure
+- avoid generic filler
+- use only resume-supported and user-approved evidence
+
+## 12. LinkedIn Easy Apply Preparation
+
+Use when preparing an Easy Apply application.
+
+1. `linkedin-job-resume-fit-ranking`
+2. `local-latex-resume-tailoring`
+3. `linkedin-easy-apply-application-workflow`
+4. `resume-hallucination-risk-audit` if new application text is created
+
+Safety:
+- fill only known fields
+- stop at review/final screen
+- never click `Submit application` without explicit confirmation for that job
+
+## 13. Interview Preparation
+
+Use after a role or interview target is known.
+
+1. `company-interview-prep-brief`
+2. `linkedin-company-opportunity-mapper` if company LinkedIn context matters
+3. `linkedin-job-resume-fit-ranking` if role requirements need mapping
+
+Output:
+- compact company brief
+- talking points grounded in resume evidence
+- likely questions
+- red flags
+- final prep actions
+
+## 14. Outlook Draft, Attachment, And Schedule Send
+
+Use when Outlook mail needs drafting, attachments, sending, or scheduling.
 
 1. `outlook-mail-connector-reliability`
 2. `outlook-connector-draft-attach-send` when a local file must be attached
 3. `outlook-scheduled-send-workflow` when the email must be sent later
 
-How to use:
-- Create and update drafts through the connector first.
-- Use Outlook web only for verified connector gaps such as local attachment upload or schedule-send.
-- Confirm exact recipients and sensitive attachment paths before upload/send.
-- Verify staged attachments before sending or scheduling.
-- For schedule-send, confirm exact date, time, and timezone, then verify `Cancel send`.
+Safety:
+- connector first for drafts and updates
+- confirm exact recipients and sensitive file paths
+- verify staged attachment before sending or scheduling
+- verify scheduled state with `Cancel send`
 
-## 11. When to Stop
+## 15. Create Or Improve A Skill
 
-Stop a run when:
-- Search state cannot be verified after one retry.
-- Result volume collapses after a new filter.
-- LinkedIn UI becomes inconsistent and URL-lock mode does not stabilize it.
-- Google Sheets writes become partial and patching is cheaper than expanding.
-- A thread/profile was already handled successfully in the same run.
-- Lead quality drops below the scoring threshold.
+Use when a browser workflow should become reusable.
 
-## 12. What to Record After Each Run
+1. Follow `docs/SKILL_IMPROVEMENT_WORKFLOW.md`
+2. Check overlap with existing skills
+3. Add or update the skill
+4. Update docs and indexes
+5. Run `docs/PUBLICATION_AUDIT.md`
 
-For search runs:
-- Query.
-- Entry mode.
-- Filter stack.
-- Final URL.
-- Top-result relevance.
-- Reliability notes.
-- Scored shortlist and dedupe decisions.
-
-For outreach runs:
-- Rows added.
-- Rows updated.
-- Rows skipped.
-- Follow-up queue changes.
-- Connector reliability notes.
-- Rows that still need review.
+Do not push until the complete skill batch is ready and approved.

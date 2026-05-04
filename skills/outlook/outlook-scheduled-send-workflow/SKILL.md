@@ -21,7 +21,7 @@ This skill is especially relevant when:
 - local attachments must be preserved and verified
 
 ## Action discovery rule
-The source Outlook Mail connector action set did not expose schedule-send / delayed-delivery.
+The Outlook Mail connector action set may not expose schedule-send / delayed-delivery.
 
 Before assuming that limitation still applies, inspect the currently exposed Outlook Mail actions when tools are available. If a native schedule-send action exists, use it only after verifying the parameters and scheduled state. Otherwise:
 - use connector actions for draft creation, updates, reading, deleting obsolete drafts, and verification
@@ -74,7 +74,7 @@ Then:
 4. Use the `Last chosen time` shortcut if it appears.
 5. Verify success by looking for `Cancel send`.
 
-Pop-out compose was more reliable than the embedded compose pane for schedule-send with attachments in the source environment.
+Pop-out compose is often more reliable than the embedded compose pane for schedule-send with attachments.
 
 ## Success verification
 A scheduled Outlook message should show:

@@ -28,7 +28,7 @@ Do not default to browser composition unless:
 ## Action discovery rule
 Before relying on a limitation, inspect the currently exposed Outlook Mail actions when tools are available.
 
-Known connector actions in the source environment included:
+Connector actions commonly used by this workflow include:
 - `outlookMail_create_draft`
 - `outlookMail_update_draft`
 - `outlookMail_send_draft`
@@ -52,9 +52,9 @@ If discovery exposes a native attachment or schedule-send action, prefer the nat
 - If the user asks for scheduling, report the final date, time, and timezone explicitly.
 
 ## Known limitations
-No attachment upload or add-attachment connector action was exposed in the source Outlook Mail action set.
+Attachment upload or add-attachment support may not be exposed in the current Outlook Mail connector action set.
 
-No schedule-send / delayed-delivery connector action was exposed in the source Outlook Mail action set.
+Schedule-send / delayed-delivery support may not be exposed in the current Outlook Mail connector action set.
 
 That means:
 - plain immediate-send emails can stay fully connector-based

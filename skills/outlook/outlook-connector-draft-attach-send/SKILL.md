@@ -25,7 +25,7 @@ Use browser automation only for the attachment step and final send when a true f
 ## Action discovery rule
 Before assuming attachment or schedule-send is unsupported, inspect the currently exposed Outlook Mail actions when tools are available.
 
-Source-environment connector actions used by this workflow included:
+Connector actions commonly used by this workflow include:
 - `outlookMail_create_draft`
 - `outlookMail_update_draft`
 - `outlookMail_send_draft`
@@ -34,7 +34,7 @@ Source-environment connector actions used by this workflow included:
 - `outlookMail_read_message`
 - `outlookMail_list_folders`
 
-Known source-environment limitations:
+Known connector gaps to verify during action discovery:
 - No attachment upload or add-attachment action was exposed.
 - No schedule-send / delayed-delivery connector action was exposed.
 - Therefore, if a real file must be attached and no native attachment action is discovered, do not finish the send through the connector alone.
