@@ -24,6 +24,13 @@ This catalog lists every public custom skill in the repository and the main reas
 | `linkedin-outreach-daily-ops` | Outreach needs daily maintenance. | Scans deltas, updates replies/follow-ups, skips unchanged rows. |
 | `google-sheets-connector-reliability` | Google Sheets writes are slow, flaky, partial, or timing out. | Uses small batches, verification reads, and patch-only recovery. |
 
+## Gmail Mail
+
+| Skill | Use When | Notes |
+|---|---|---|
+| `gmail-connector-reliability-workflow` | Gmail work can be done through connector actions. | Search/read first, draft before send, threaded replies, labels, archive/restore, Trash cleanup, contacts, and received attachments. |
+| `gmail-web-fallback-workflow` | Gmail connector lacks the needed capability. | Handles outgoing local attachments, scheduled send/cancel, existing draft edits/sends, label create/rename/delete, and visual settings. |
+
 ## Direct LinkedIn Actions
 
 | Skill | Use When | Notes |

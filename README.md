@@ -1,16 +1,17 @@
 # BrowserOS Skills Suite
 
-Public BrowserOS skill packages for LinkedIn search, outreach operations, job applications, resume tailoring, Outlook mail workflows, Google Sheets reliability, and grounded application-material review.
+Public BrowserOS skill packages for LinkedIn search, outreach operations, job applications, resume tailoring, Gmail and Outlook mail workflows, Google Sheets reliability, and grounded application-material review.
 
 The repository is organized as one skill per leaf folder under `skills/<group>/`. Each skill has a `SKILL.md` file with BrowserOS-compatible front matter and concise instructions for an agent to follow.
 
 ## What Is Included
 
-This repo includes 28 custom skills:
+This repo includes 30 custom skills:
 
 - Search and lead discovery: LinkedIn people search, Boolean refinement, KSA hiring posts, company mapping, hiring-post comment mining, scoring, deduplication, and search-state hygiene.
 - Outreach operations: one-sheet Google Sheets outreach tracking, inbox preview backfill, row enrichment, daily operations, LinkedIn messaging, connection requests, document attachment, and safe post preparation.
 - Job application support: LinkedIn Easy Apply preparation, job-to-resume fit ranking, batch shortlist tailoring, local LaTeX resume tailoring, cover letters, ATS keyword review, hallucination audits, final-draft review, and interview prep.
+- Gmail workflows: connector-first search/read/draft/send/reply reliability, received attachment extraction, label cleanup, web fallback for outgoing attachments, scheduled send, draft editing, and label management.
 - Outlook workflows: connector-first draft/send reliability, local file attachment in Outlook web, and scheduled send verification.
 
 BrowserOS built-in skills are not vendored here. This repo is for custom reusable workflows.
@@ -22,6 +23,7 @@ browseros-linkedin-skills/
 ├── CONTRIBUTING.md
 ├── skills/
 │   ├── google-sheets/
+│   ├── gmail/
 │   ├── linkedin/
 │   ├── outlook/
 │   ├── resume-application/
@@ -61,6 +63,11 @@ browseros-linkedin-skills/
 - `linkedin-attach-document-workflow` - attach and send local documents in LinkedIn message threads.
 - `linkedin-connection-workflow` - send profile-based LinkedIn connection requests and verify invite state.
 - `linkedin-poster-workflow` - prepare LinkedIn posts, media, documents, polls, and schedules while stopping before publish.
+
+### Gmail Mail
+
+- `gmail-connector-reliability-workflow` - use Gmail connector actions first for search, read, drafts, sends, replies, labels, archive, contacts, and received attachments.
+- `gmail-web-fallback-workflow` - use Gmail web for outgoing attachments, scheduled send, existing draft edits/sends, label management, and visual settings.
 
 ### Application Materials
 
@@ -157,6 +164,7 @@ Use [docs/USAGE_IDEAS.md](docs/USAGE_IDEAS.md) for common chains such as:
 - rank jobs by resume fit
 - tailor a shortlist into resumes
 - prepare and stop at LinkedIn Easy Apply review
+- use Gmail connector-first or web fallback mail workflows
 - draft or schedule Outlook email
 - maintain an outreach tracker
 

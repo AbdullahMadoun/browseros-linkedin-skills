@@ -67,5 +67,6 @@ Expected result:
 
 - LinkedIn skills are available for search, outreach, messaging, and Easy Apply workflows.
 - Resume/application skills are available for fit ranking, tailoring, cover letters, ATS review, draft review, hallucination audits, and interview prep.
+- Gmail skills are available for connector-first mail operations and web fallback workflows.
 - Outlook skills are available for connector-first drafting, local attachment, send, and scheduled send workflows.
 - Google Sheets and search-lead reliability skills are available for state cleanup, deduplication, scoring, and sheet recovery.

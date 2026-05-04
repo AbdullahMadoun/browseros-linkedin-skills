@@ -194,7 +194,20 @@ Output:
 - red flags
 - final prep actions
 
-## 14. Outlook Draft, Attachment, And Schedule Send
+## 14. Gmail Connector And Web Fallback
+
+Use when Gmail mail work needs search, reading, drafting, sending, replies, attachments, scheduled send, or label management.
+
+1. `gmail-connector-reliability-workflow` for connector-supported search, read, drafts, sends, replies, labels on messages, archive, contacts, and received attachments
+2. `gmail-web-fallback-workflow` only for outgoing local attachments, scheduled send/cancel, existing draft edits/sends, label create/rename/delete, and visual settings
+
+Safety:
+- draft before sending unless the user already provided complete final send approval
+- verify recipients, subject, body, attachments, and scheduled state before any send or schedule action
+- use exact test markers for cleanup
+- use Trash-label fallback when permanent delete is blocked
+
+## 15. Outlook Draft, Attachment, And Schedule Send
 
 Use when Outlook mail needs drafting, attachments, sending, or scheduling.
 
@@ -208,7 +221,7 @@ Safety:
 - verify staged attachment before sending or scheduling
 - verify scheduled state with `Cancel send`
 
-## 15. Create Or Improve A Skill
+## 16. Create Or Improve A Skill
 
 Use when a browser workflow should become reusable.
 

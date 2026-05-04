@@ -52,6 +52,7 @@ Place new skills under the closest group:
 | Group | Path |
 |---|---|
 | LinkedIn workflows | `skills/linkedin/<skill-name>/` |
+| Gmail workflows | `skills/gmail/<skill-name>/` |
 | Google Sheets workflows | `skills/google-sheets/<skill-name>/` |
 | Outlook workflows | `skills/outlook/<skill-name>/` |
 | Resume and application-material workflows | `skills/resume-application/<skill-name>/` |

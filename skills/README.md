@@ -33,6 +33,13 @@ Skills are grouped by use case. Each leaf folder that contains `SKILL.md` is a B
 | `linkedin-outreach-daily-ops` | Run daily reply/follow-up maintenance without rebuilding the sheet. |
 | `google-sheets-connector-reliability` | Recover from flaky, partial, timed-out, or 503 Google Sheets writes. |
 
+## Gmail Mail
+
+| Skill | Use |
+|---|---|
+| `gmail-connector-reliability-workflow` | Use Gmail connector actions first for search, read, drafts, sends, replies, labels, archive, contacts, and received attachments. |
+| `gmail-web-fallback-workflow` | Use Gmail web for outgoing attachments, scheduled send, existing draft edits/sends, label management, and visual settings. |
+
 ## Direct LinkedIn Actions
 
 | Skill | Use |
