@@ -54,6 +54,7 @@ Place new skills under the closest group:
 | LinkedIn workflows | `skills/linkedin/<skill-name>/` |
 | Gmail workflows | `skills/gmail/<skill-name>/` |
 | Google Sheets workflows | `skills/google-sheets/<skill-name>/` |
+| Obsidian workflows | `skills/obsidian/<skill-name>/` |
 | Outlook workflows | `skills/outlook/<skill-name>/` |
 | Resume and application-material workflows | `skills/resume-application/<skill-name>/` |
 | General search, scoring, and lead processing | `skills/search-leads/<skill-name>/` |

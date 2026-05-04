@@ -23,6 +23,12 @@ Skills are grouped by use case. Each leaf folder that contains `SKILL.md` is a B
 | `linkedin-hiring-post-comment-miner` | Mine hiring-post comments for recruiters, referrals, clarifications, and pivots. |
 | `lead-scoring-dedup-pivots` | Score raw leads, deduplicate, and choose the next search or outreach pivot. |
 
+## Obsidian Knowledge Base
+
+| Skill | Use |
+|---|---|
+| `obsidian-job-search-keyword-intelligence` | Maintain a local Obsidian job-search keyword vault with logs, duplicate exclusions, lead notes, source nodes, and application paths. |
+
 ## Outreach Operations
 
 | Skill | Use |

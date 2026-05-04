@@ -69,4 +69,5 @@ Expected result:
 - Resume/application skills are available for fit ranking, tailoring, cover letters, ATS review, draft review, hallucination audits, and interview prep.
 - Gmail skills are available for connector-first mail operations and web fallback workflows.
 - Outlook skills are available for connector-first drafting, local attachment, send, and scheduled send workflows.
+- Obsidian skills are available for local job-search keyword and lead intelligence vault maintenance.
 - Google Sheets and search-lead reliability skills are available for state cleanup, deduplication, scoring, and sheet recovery.

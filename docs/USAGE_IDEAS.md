@@ -61,7 +61,21 @@ Use when a hiring post may have recruiter replies, referral offers, clarificatio
 
 Stop before messaging, connecting, or commenting unless the user explicitly asks.
 
-## 5. Outreach Tracker From LinkedIn Messages
+## 5. Obsidian Job-Search Knowledge Base
+
+Use when search or outreach findings should become a durable Obsidian knowledge base.
+
+1. `obsidian-job-search-keyword-intelligence`
+2. `lead-scoring-dedup-pivots` for scoring consistency
+3. `gmail-connector-reliability-workflow` or `outlook-mail-connector-reliability` when email status needs verification
+
+Rules:
+- check duplicate exclusions before accepting leads
+- update keyword maturity after each serious search pass
+- create graph-friendly lead, source, recruiter, and application-path notes
+- avoid exposing raw contact details or vault paths in chat summaries
+
+## 6. Outreach Tracker From LinkedIn Messages
 
 Use when building or maintaining a lightweight outreach system.
 
@@ -77,7 +91,7 @@ Rules:
 - update only changed rows
 - use row numbers or redacted labels in summaries
 
-## 6. Message Or Connect With A Shortlist
+## 7. Message Or Connect With A Shortlist
 
 Use after a shortlist has been scored and deduplicated.
 
@@ -92,7 +106,7 @@ Safety:
 - confirm sensitive files before upload
 - verify send or invite state afterward
 
-## 7. LinkedIn Post Preparation
+## 8. LinkedIn Post Preparation
 
 Use when drafting or staging a LinkedIn post without publishing immediately.
 
@@ -104,7 +118,7 @@ Safety:
 - never click `Post` or confirm scheduling without explicit final confirmation
 - remove staged test files before ending exploration
 
-## 8. Rank Jobs By Resume Fit
+## 9. Rank Jobs By Resume Fit
 
 Use when deciding which LinkedIn jobs or posts are worth applying to.
 
@@ -121,7 +135,7 @@ Output:
 - missing requirements
 - recommended next action
 
-## 9. Tailor A Ranked Shortlist
+## 10. Tailor A Ranked Shortlist
 
 Use when a scored shortlist should become one resume per opportunity.
 
@@ -137,7 +151,7 @@ Rules:
 - enforce page-count and word-count checks
 - audit unsupported facts before use
 
-## 10. Single Resume Tailoring And Review
+## 11. Single Resume Tailoring And Review
 
 Use when one role is important enough for careful tailoring.
 
@@ -152,7 +166,7 @@ Rules:
 - preserve layout unless redesign is explicitly requested
 - compile locally when possible
 
-## 11. Cover Letter Or Application Note
+## 12. Cover Letter Or Application Note
 
 Use when a grounded cover letter body or fit note is needed.
 
@@ -165,7 +179,7 @@ Rules:
 - avoid generic filler
 - use only resume-supported and user-approved evidence
 
-## 12. LinkedIn Easy Apply Preparation
+## 13. LinkedIn Easy Apply Preparation
 
 Use when preparing an Easy Apply application.
 
@@ -179,7 +193,7 @@ Safety:
 - stop at review/final screen
 - never click `Submit application` without explicit confirmation for that job
 
-## 13. Interview Preparation
+## 14. Interview Preparation
 
 Use after a role or interview target is known.
 
@@ -194,7 +208,7 @@ Output:
 - red flags
 - final prep actions
 
-## 14. Gmail Connector And Web Fallback
+## 15. Gmail Connector And Web Fallback
 
 Use when Gmail mail work needs search, reading, drafting, sending, replies, attachments, scheduled send, or label management.
 
@@ -207,7 +221,7 @@ Safety:
 - use exact test markers for cleanup
 - use Trash-label fallback when permanent delete is blocked
 
-## 15. Outlook Draft, Attachment, And Schedule Send
+## 16. Outlook Draft, Attachment, And Schedule Send
 
 Use when Outlook mail needs drafting, attachments, sending, or scheduling.
 
@@ -221,7 +235,7 @@ Safety:
 - verify staged attachment before sending or scheduling
 - verify scheduled state with `Cancel send`
 
-## 16. Create Or Improve A Skill
+## 17. Create Or Improve A Skill
 
 Use when a browser workflow should become reusable.
 

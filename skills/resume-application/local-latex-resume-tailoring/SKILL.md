@@ -8,7 +8,7 @@ description: >-
 metadata:
   display-name: Local LaTeX Resume Tailoring
   enabled: "true"
-  version: "1.2"
+  version: "1.3"
 ---
 
 # Local LaTeX Resume Tailoring
@@ -75,7 +75,8 @@ If the user is working from a multi-role shortlist file and wants one custom res
 10. Every resume output is subject to a hard one-page rule unless the user explicitly changes the page target.
 11. Preserve the original resume's density, structure, and sendability; do not hollow out the document just to make tailoring easy.
 12. Use a word-count safety check so an output cannot quietly become too short while still fitting on one page.
-13. Preserve useful selective bolding so key metrics, tools, outcomes, and high-signal phrases still stand out visually.
+13. Preserve original bolded words and phrases whenever the underlying content remains present.
+14. Add selective bolding throughout every tailored resume output to improve readability, but only on truthful high-signal anchors.
 
 ## Hard one-page rule
 
@@ -231,7 +232,9 @@ Default preservation rule:
 
 - start from the strongest existing full resume shape, not from a minimal skeleton
 - keep most of the original template and most high-signal content
-- keep useful selective bolding patterns instead of flattening the page visually
+- preserve every original bolded word or phrase when its surrounding content remains in the tailored resume
+- when rewriting a sentence that retains the same achievement, tool, metric, or outcome, carry forward the original bold emphasis unless it would become inaccurate or awkward
+- add new selective bolding where it improves skimmability and first-read comprehension
 - change only what adds role fit, clarity, ordering, or emphasis
 - do not remove content unless it clearly improves relevance or is necessary to preserve one-page quality
 - a tailored resume should still look sendable and substantial, not sparse
@@ -261,8 +264,20 @@ Preferred approach:
 
 - start from the richer/original template when it compiles cleanly
 - keep the same visual rhythm, section presence, and substantial feel of the original resume
-- preserve useful bolding on metrics, tools, technical phrases, and result-heavy fragments
+- maintain original `\textbf{...}` emphasis on metrics, tools, technical phrases, and result-heavy fragments whenever those words or phrases remain in the output
 - prefer content substitutions, bullet swaps, and emphasis changes over structural reduction
+
+### Bolding and readability policy
+
+Bolding is part of the resume's communication quality, not decoration. Apply this policy to every generated or rewritten `.tex` resume:
+
+1. **Preserve original bolding first.** If an original bolded word or phrase survives in the tailored resume, keep it bold unless the content is removed, materially reworded away, or no longer truthful in context.
+2. **Carry emphasis through rewrites.** If a rewritten bullet keeps the same metric, tool, method, domain, or outcome as the source bullet, transfer the original bold anchor to the closest equivalent wording.
+3. **Add selective bolding where it helps scanning.** Each major section should contain clear visual anchors when truthful anchors are available: role-relevant tools, methods, domains, quantified outcomes, business results, awards, GPA, or high-signal keywords.
+4. **Be selective, not noisy.** Do not bold full bullets, long clauses, generic verbs, soft claims, unsupported job keywords, or ordinary filler. Prefer 1-3 short bold anchors per dense bullet and fewer when the line is already simple.
+5. **Use bolding to reveal structure.** Good anchors usually answer one of: what tool/method, what scale/metric, what business or technical result, what domain, what role-relevant keyword.
+6. **Never use bolding to imply unsupported expertise.** A bolded term must be grounded in the approved resume/master evidence, not copied from the job description for ATS appearance.
+7. **Audit before final PDF.** Before compiling or finalizing, compare original vs tailored LaTeX and check that retained original bold phrases are still bold, new bolding is sparse and meaningful, and no section looks visually flat.
 
 Fallback approaches:
 
@@ -447,6 +462,8 @@ This skill succeeds when:
 
 - the tailored resume is factual
 - the role alignment is obvious on first read
+- original bolded phrases that remain in the content are still bolded
+- new bolding is selectively added across the resume to make key evidence easier to scan without visual clutter
 - every resume output meets the page target
 - the output is locally reproducible
 - the workflow produces a real PDF when a compiler is available, not just a `.tex` file

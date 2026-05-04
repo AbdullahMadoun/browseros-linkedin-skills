@@ -11,7 +11,7 @@ description: >-
 metadata:
   display-name: Gmail Web Fallback Workflow
   enabled: "true"
-  version: "1.0"
+  version: "1.1"
 ---
 
 # Gmail Web Fallback Workflow
@@ -62,9 +62,10 @@ This workflow was learned from live Gmail web testing after connector limitation
 5. After opening Compose, verify the compose dialog exists before filling.
 6. After filling recipient, ensure Gmail converts it into a recipient chip; raw combobox text may not count as a recipient.
 7. For self-tests, click the autocomplete suggestion if Gmail shows it.
-8. Verify attachment cards/chips before sending.
+8. Verify attachment cards/chips before sending; for job outreach drafts, verify exactly one matched resume/CV attachment unless the user explicitly asks for more.
 9. For scheduled send, verify the message appears in Scheduled, then cancel if it is a test.
 10. For labels, Manage labels settings page is more reliable than the sidebar three-dot menu.
+11. Gmail's hidden `input[type=file][name=Filedata]` may appear in snapshots as a generic button, not a usable file input. If `upload_file` fails, reveal the real input, re-snapshot, and call `upload_file` on the newly labeled file-input element. Synthetic `DataTransfer`/`change` injection is unreliable and can hang; prefer the revealed real input.
 
 ## Outgoing attachment workflow
 
@@ -85,13 +86,23 @@ Workflow:
 4. If Gmail autocomplete appears, click the correct recipient suggestion.
 5. Fill subject.
 6. Fill body.
-7. Click Attach files.
-8. Upload the local file path with upload_file if the file input is exposed.
-9. If the file input is hidden, expose/use the hidden input only when explicitly needed for upload.
+7. Click Attach files or expose the Gmail file input if the browser upload tool needs a direct input element.
+8. Upload the local file path with `upload_file` once the real file input is exposed.
+9. If the file input is hidden, use this pattern before re-snapshotting:
+
+```js
+const input = document.querySelector('input[type="file"][name="Filedata"]');
+input.removeAttribute('aria-hidden');
+input.tabIndex = 0;
+input.style.cssText = 'position:fixed;left:20px;top:20px;width:260px;height:40px;opacity:1;z-index:2147483647;display:block;visibility:visible;background:white;color:black;';
+input.setAttribute('aria-label', 'BrowserOS Gmail upload input');
+```
+
 10. Wait until the attachment chip/card is visible and no upload progress remains.
-11. Verify filename in compose.
-12. Send only if user approved, otherwise stop at verified draft.
-13. After sending a self-test, verify the email appears with `has:attachment` in Inbox/Sent/search.
+11. Verify filename in compose and, when visible, that the draft list row says `has attachment`.
+12. For job outreach, verify exactly one matched resume/CV is attached unless the user explicitly asked for more.
+13. Send only if user approved, otherwise stop at verified draft.
+14. After sending a self-test, verify the email appears with `has:attachment` or `has attachment` in Inbox/Sent/search.
 ```
 
 Observed result:

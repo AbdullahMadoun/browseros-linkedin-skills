@@ -14,6 +14,12 @@ This catalog lists every public custom skill in the repository and the main reas
 | `linkedin-hiring-post-comment-miner` | A hiring post may hide useful signals in comments. | Extracts recruiters, referral offers, clarifications, contact routes, and company pivots. |
 | `lead-scoring-dedup-pivots` | Raw leads need triage. | Scores posts/profiles/companies, deduplicates conservatively, and suggests pivots. |
 
+## Obsidian Knowledge Base
+
+| Skill | Use When | Notes |
+|---|---|---|
+| `obsidian-job-search-keyword-intelligence` | A job-search Obsidian vault should be updated after search or outreach work. | Maintains keyword maturity, search logs, duplicate exclusions, lead notes, source nodes, application paths, and fit-ranked review queues. |
+
 ## Outreach Operations
 
 | Skill | Use When | Notes |
