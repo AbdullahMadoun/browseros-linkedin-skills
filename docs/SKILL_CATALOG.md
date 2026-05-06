@@ -28,6 +28,7 @@ This catalog lists every public custom skill in the repository and the main reas
 
 | Skill | Use When | Notes |
 |---|---|---|
+| `obsidian-long-term-memory-workflow` | Any BrowserOS skill needs durable long-term memory. | Stores reusable preferences, site/workflow learning, duplicate state, research findings, and skill insights in a user-approved Obsidian vault. |
 | `obsidian-job-search-keyword-intelligence` | A job-search Obsidian vault should be updated after search or outreach work. | Maintains keyword maturity, search logs, duplicate exclusions, lead notes, source nodes, application paths, and fit-ranked review queues. |
 
 ## Outreach Operations

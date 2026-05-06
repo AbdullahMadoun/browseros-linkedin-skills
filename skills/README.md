@@ -37,6 +37,7 @@ Skills are grouped by use case. Each leaf folder that contains `SKILL.md` is a B
 
 | Skill | Use |
 |---|---|
+| `obsidian-long-term-memory-workflow` | Save durable BrowserOS memory in a user-approved Obsidian vault instead of chat or transient run notes. |
 | `obsidian-job-search-keyword-intelligence` | Maintain a local Obsidian job-search keyword vault with logs, duplicate exclusions, lead notes, source nodes, and application paths. |
 
 ## Outreach Operations

@@ -13,6 +13,10 @@ metadata:
 
 # Application Answer Bank Protocol
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Use this whenever a workflow needs personal, application, or outreach answers. Public skills must not contain private defaults.
@@ -20,6 +24,11 @@ Use this whenever a workflow needs personal, application, or outreach answers. P
 Default private path: `~/.browseros/private/application-answer-bank.json`.
 
 If the private file is unavailable, ask only for the exact missing fields encountered.
+
+When an answer, preference, or document-choice rule needs durable memory, use
+`obsidian-long-term-memory-workflow` to store a pointer or policy note. Keep raw
+sensitive values in the private answer bank unless the user explicitly asks to
+store them in an Obsidian vault.
 
 ## Answer Classes
 
@@ -79,4 +88,3 @@ I need these exact fields before continuing:
 ```
 
 Do not expose full private answers in chat unless the user asks for the exact content.
-

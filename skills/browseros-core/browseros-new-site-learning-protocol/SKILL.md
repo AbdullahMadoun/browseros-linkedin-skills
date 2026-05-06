@@ -14,6 +14,10 @@ metadata:
 
 # BrowserOS New Site Learning Protocol
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Use this skill when BrowserOS is on a site without a known skill, or when the domain/site family has not been seen before. The goal is to learn the workflow safely before full automation.
@@ -32,8 +36,10 @@ Treat a site as new when:
 - the agent has no reliable success signal or final-action boundary for the requested task
 
 Private registry default: `~/.browseros/private/site-learning-registry.json`.
+When the site learning should become durable long-term memory, also use
+`obsidian-long-term-memory-workflow`.
 
-If the registry is unavailable, behave as if the site is new and write a run note instead of guessing.
+If the registry is unavailable, behave as if the site is new and write a run note instead of guessing. If the finding matters for future sessions, save it through Obsidian.
 
 ## Start Conditions
 
@@ -150,7 +156,7 @@ After first-time exploration, update private memory or the known-site registry w
 - related skill or run note
 - date last observed
 
-Do not store secrets, private messages, private file names, real profile URLs, or personal application answers in the registry.
+Do not store secrets, private messages, private file names, real profile URLs, or personal application answers in the registry. Use Obsidian for durable public-safe summaries or private vault notes, and keep raw sensitive values in the approved private store.
 
 ## Promotion Rule
 

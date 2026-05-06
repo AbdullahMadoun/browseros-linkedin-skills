@@ -13,6 +13,10 @@ metadata:
 
 # LinkedIn Profile Optimizer
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Use this to make a LinkedIn profile stronger for target roles without inventing facts or saving edits prematurely.

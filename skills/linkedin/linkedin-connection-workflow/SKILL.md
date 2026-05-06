@@ -9,6 +9,10 @@ metadata:
 
 # LinkedIn Connection Workflow
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 Send LinkedIn connection requests efficiently and verify that the invite was actually sent.
 

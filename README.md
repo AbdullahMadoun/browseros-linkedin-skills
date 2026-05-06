@@ -1,16 +1,16 @@
 # BrowserOS Skills Suite
 
-Public BrowserOS skill packages for BrowserOS routing, unknown-site learning, connector-first actions, LinkedIn search and outreach, job applications, research opportunities, resume tailoring, Gmail and Outlook mail workflows, Google Sheets reliability, Obsidian job-search intelligence, and grounded application-material review.
+Public BrowserOS skill packages for BrowserOS routing, unknown-site learning, connector-first actions, LinkedIn search and outreach, job applications, research opportunities, resume tailoring, Gmail and Outlook mail workflows, Google Sheets reliability, Obsidian long-term memory, Obsidian job-search intelligence, and grounded application-material review.
 
 The repository is organized as one skill per leaf folder under `skills/<group>/`. Each skill has a `SKILL.md` file with BrowserOS-compatible front matter and concise instructions for an agent to follow.
 
 ## What Is Included
 
-This repo includes 41 custom skills:
+This repo includes 42 custom skills:
 
 - BrowserOS core workflows: skill routing, first-time site exploration, unknown-site learning, connector-first action discovery, private approved-answer bank handling, and live skill evolution.
 - Search and lead discovery: LinkedIn people search, Boolean refinement, KSA hiring posts, company mapping, hiring-post comment mining, scoring, deduplication, and search-state hygiene.
-- Obsidian knowledge base workflows: keyword maturity, search logs, duplicate exclusions, lead notes, application paths, and graph-friendly job-search intelligence.
+- Obsidian knowledge base workflows: long-term BrowserOS memory, keyword maturity, search logs, duplicate exclusions, lead notes, application paths, and graph-friendly job-search intelligence.
 - Outreach operations: one-sheet Google Sheets outreach tracking, inbox preview backfill, row enrichment, daily operations, LinkedIn messaging, connection requests, document attachment, profile optimization, post-engagement lead mining, safe post preparation, and LinkedIn feature learning.
 - Job application support: LinkedIn Easy Apply, generic job portals, job/CV fit and keyword review, batch shortlist tailoring, local LaTeX resume tailoring, cover letters, hallucination audits, final-draft review, and interview prep.
 - Research opportunity workflows: credible AI/CS research opportunity search and professor/lab outreach preparation.
@@ -71,6 +71,7 @@ browseros-linkedin-skills/
 
 ### Obsidian Knowledge Base
 
+- `obsidian-long-term-memory-workflow` - save durable BrowserOS memory in a user-approved Obsidian vault instead of relying on chat context or transient run notes.
 - `obsidian-job-search-keyword-intelligence` - maintain a local Obsidian job-search keyword vault with logs, duplicate exclusions, lead notes, source nodes, and application paths.
 
 ### Outreach Operations

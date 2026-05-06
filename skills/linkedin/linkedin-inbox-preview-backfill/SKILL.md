@@ -9,6 +9,10 @@ metadata:
 
 # LinkedIn Inbox Preview Backfill
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 Populate the `Outreach` sheet quickly from recent LinkedIn conversations without opening every thread.
 

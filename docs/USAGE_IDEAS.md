@@ -75,6 +75,21 @@ Rules:
 - create graph-friendly lead, source, recruiter, and application-path notes
 - avoid exposing raw contact details or vault paths in chat summaries
 
+## 5a. Long-Term BrowserOS Memory
+
+Use whenever any BrowserOS skill produces knowledge that should survive future
+sessions.
+
+1. the active task skill
+2. `obsidian-long-term-memory-workflow`
+3. a domain-specific Obsidian skill, such as `obsidian-job-search-keyword-intelligence`, only when the memory belongs there
+
+Rules:
+- do not rely on chat context as memory
+- keep run notes transient unless linked from Obsidian
+- store durable preferences, site learning, duplicate state, research findings, and skill insights in a user-approved vault
+- keep secrets and raw sensitive answers out of public repo files
+
 ## 6. Outreach Tracker From LinkedIn Messages
 
 Use when building or maintaining a lightweight outreach system.

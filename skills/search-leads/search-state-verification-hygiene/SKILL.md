@@ -9,6 +9,10 @@ metadata:
 
 # Skill: Search State Verification Hygiene
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Trigger
 
 Use this skill before or during any browser-based search workflow where filters, tabs, date ranges, location settings, or hidden UI state can persist across runs.

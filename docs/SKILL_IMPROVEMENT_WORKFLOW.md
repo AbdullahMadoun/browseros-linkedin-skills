@@ -6,6 +6,10 @@ The purpose of a skill is to save BrowserOS from rediscovering the same workflow
 
 For live runs, use `browseros-skill-evolution-loop` as the end-of-run learning gate. It decides whether a new insight belongs in a run note, private memory, an existing skill patch, a new skill, or nowhere.
 
+When a reusable insight should survive future sessions, route it through
+`obsidian-long-term-memory-workflow`. Run notes are evidence; Obsidian is the
+durable memory layer.
+
 ## When To Create A Skill
 
 Create or improve a skill when:
@@ -38,7 +42,8 @@ During real BrowserOS work:
 2. Capture insights as they happen: URLs, labels, hidden controls, validation errors, final-action boundaries, success signals, failure signals, connector gaps, and recovery paths.
 3. At the end of the run, classify each insight:
    - `run_note`: useful but one-off or not yet verified
-   - `private_memory`: personal paths, approved answers, real contacts, document names, or duplicate state
+   - `private_memory`: short-lived personal paths, approved answers, real contacts, document names, or duplicate state that belongs in a private local store
+   - `obsidian_memory`: durable preferences, workflow learning, duplicate state, research findings, or private skill insights that should survive future sessions
    - `site_registry`: public-safe domain/workflow learning that marks a site family as known
    - `existing_skill_patch`: verified, generic, and improves a current skill
    - `new_skill_candidate`: a distinct repeatable workflow
@@ -46,7 +51,7 @@ During real BrowserOS work:
 4. Patch the repo source of truth first when a public skill should change.
 5. Sync installed BrowserOS skills only after validation.
 
-Do not patch public skills with account-specific observations, personal defaults, private filenames, real profile URLs, private messages, or unverified guesses.
+Do not patch public skills with account-specific observations, personal defaults, private filenames, real profile URLs, private messages, or unverified guesses. Save durable private learning in Obsidian instead.
 
 For large known sites with many independent feature families, use a
 site-specific feature-learning skill when available. For example, use

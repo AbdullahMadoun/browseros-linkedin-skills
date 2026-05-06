@@ -13,6 +13,10 @@ metadata:
 
 # LinkedIn KSA Recent Hiring Posts
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Find fresh KSA hiring posts and contact/application routes from LinkedIn Posts first. This skill is for post-led opportunity discovery, not LinkedIn Jobs scraping.

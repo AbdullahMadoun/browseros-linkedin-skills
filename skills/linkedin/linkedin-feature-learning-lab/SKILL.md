@@ -14,6 +14,10 @@ metadata:
 
 # LinkedIn Feature Learning Lab
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Use this skill when the user asks BrowserOS to learn LinkedIn capabilities,

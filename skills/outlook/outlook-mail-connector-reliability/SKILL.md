@@ -12,6 +12,10 @@ metadata:
 
 # Outlook Mail Connector Reliability
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 Provide a simple reliable pattern for Outlook email work using the Outlook Mail connector.
 

@@ -12,6 +12,10 @@ metadata:
 
 # LinkedIn Company Opportunity Mapper
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 Use this skill when BrowserOS needs to investigate a LinkedIn company page before
 applying, reaching out, mapping a target account, or deciding whether a company
 is worth pursuing. It is for free LinkedIn usage; do not depend on Premium-only

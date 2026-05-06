@@ -4,8 +4,8 @@ description: >-
   Continuously improve BrowserOS skills from live runs by capturing verified
   site insights, connector gaps, direct URLs, selectors, safety boundaries,
   success signals, failure modes, and recovery paths, then deciding whether to
-  write a run note, update private memory, patch an existing public skill, or
-  propose a new skill.
+  write a run note, save durable memory in Obsidian, patch an existing public
+  skill, or propose a new skill.
 metadata:
   display-name: BrowserOS Skill Evolution Loop
   enabled: "true"
@@ -13,6 +13,10 @@ metadata:
 ---
 
 # BrowserOS Skill Evolution Loop
+
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
 
 ## Purpose
 
@@ -56,7 +60,8 @@ Capture when a live run reveals:
 Classify each insight:
 
 - `run_note`: useful but one-off, uncertain, site-account-specific, or not yet verified.
-- `private_memory`: personal path, private account preference, approved answer, duplicate state, or sensitive workflow detail.
+- `private_memory`: personal path, private account preference, approved answer, duplicate state, or sensitive workflow detail that is short-lived or belongs in a private local store.
+- `obsidian_memory`: durable preference, workflow learning, duplicate state, research finding, or skill insight that should survive future sessions.
 - `site_registry`: public-safe domain/workflow learning that helps future agents know whether first-time exploration has already happened.
 - `existing_skill_patch`: verified, generic, and directly improves an existing skill.
 - `new_skill_candidate`: distinct repeatable workflow with its own trigger, safety model, or site family.
@@ -102,6 +107,11 @@ Private memory may contain:
 - duplicate outreach/application state
 - private notes about a specific run
 
+Durable long-term memory should go through `obsidian-long-term-memory-workflow`
+unless the user explicitly chooses a different long-term store. Use private
+files only for raw sensitive values or short-lived operational state, and link
+or summarize them from Obsidian when useful.
+
 Known-site registry may contain:
 
 - domain or site family
@@ -135,6 +145,7 @@ Report skill learning separately from task completion:
 Live insight:
 Classification:
 Stored in:
+Obsidian note:
 Skill updated:
 Install/sync status:
 Remaining validation needed:

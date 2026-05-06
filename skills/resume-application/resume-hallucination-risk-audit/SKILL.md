@@ -12,6 +12,10 @@ metadata:
 
 # Resume Hallucination Risk Audit
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Use this skill to verify that application materials remain truthful after tailoring. It checks whether edited resumes, cover letters, summaries, or interview notes introduced unsupported skills, tools, certifications, employers, titles, dates, degrees, metrics, outcomes, or claims of ownership.

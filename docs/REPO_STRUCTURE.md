@@ -41,7 +41,7 @@ Current groups:
 | `skills/google-sheets/` | Google Sheets connector reliability and sheet operations. |
 | `skills/gmail/` | Gmail connector-first mail workflows and Gmail web fallback operations. |
 | `skills/outlook/` | Outlook mail drafting, attachment, sending, scheduling, and verification. |
-| `skills/obsidian/` | Obsidian knowledge-base workflows for job-search keywords, lead notes, and application paths. |
+| `skills/obsidian/` | Obsidian knowledge-base workflows for long-term memory, job-search keywords, lead notes, and application paths. |
 | `skills/research-opportunities/` | Research opportunity discovery and professor/lab outreach workflows. |
 | `skills/resume-application/` | Resume, cover letter, ATS, hallucination audit, draft review, and interview prep workflows. |
 | `skills/search-leads/` | General search hygiene, scoring, deduplication, and pivot planning. |

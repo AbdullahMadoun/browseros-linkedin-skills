@@ -14,6 +14,10 @@ metadata:
 
 # Professor Lab Outreach Workflow
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Use this after a professor, lab, project, or research opportunity looks promising. The workflow creates credible outreach grounded in the user's actual background and the lab's work.

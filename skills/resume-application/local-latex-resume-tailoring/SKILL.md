@@ -13,6 +13,10 @@ metadata:
 
 # Local LaTeX Resume Tailoring
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Create factual, role-specific resume artifacts locally: parsed job requirements,

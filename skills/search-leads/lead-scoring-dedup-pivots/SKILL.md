@@ -9,6 +9,10 @@ metadata:
 
 # Skill: Lead Scoring, Deduplication, and Pivots
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Trigger
 
 Use this skill after a search returns candidate posts, profiles, companies, recruiters, or contact routes that need triage.

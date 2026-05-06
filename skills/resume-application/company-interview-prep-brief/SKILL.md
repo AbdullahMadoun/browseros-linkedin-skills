@@ -12,6 +12,10 @@ metadata:
 
 # Company + Interview Prep Brief
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Use this skill to prepare the user for an interview, recruiter conversation, networking call, or late-stage application by combining concise company research with role-specific, resume-grounded interview preparation.

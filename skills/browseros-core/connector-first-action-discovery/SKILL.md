@@ -14,6 +14,10 @@ metadata:
 
 # Connector-First Action Discovery
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Prefer structured connected-app actions over browser clicks when the task is about app data, records, mail, files, issues, deployments, sheets, or messages.

@@ -12,6 +12,10 @@ metadata:
 
 # LinkedIn Shortlist Resume Batch Tailoring
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Use this skill when the user has a shortlist file containing many role opportunities and wants a custom resume for each one without losing factual integrity.

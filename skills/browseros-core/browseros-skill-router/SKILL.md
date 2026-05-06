@@ -13,6 +13,10 @@ metadata:
 
 # BrowserOS Skill Router
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Use this as the first layer for complex BrowserOS tasks. It chooses the smallest reliable workflow before touching the page.
@@ -36,7 +40,7 @@ they answer faster than page inspection.
 3. **Connector first**: If the task belongs to a connected app and structured actions may exist, use `connector-first-action-discovery`.
 4. **Built-in skill**: Use built-ins for generic extraction, form fill, monitoring, screenshots, bookmarks, tab organization, page saving, summarization, or deep research when no custom skill adds important behavior.
 5. **Unknown site**: If no skill fits, use `browseros-new-site-learning-protocol`.
-6. **Local/private state**: Use private memory or local files only when the task depends on approved answers, previous outreach state, local CVs, or long-term tracking.
+6. **Local/private state**: Use private memory or local files only when the task depends on approved answers, previous outreach state, local CVs, or short-lived run state. For durable long-term memory, use `obsidian-long-term-memory-workflow`.
 7. **Live learning**: After substantial runs, use `browseros-skill-evolution-loop` to capture reusable insights and promote verified ones.
 
 ## Common Skill Chains
@@ -48,6 +52,7 @@ they answer faster than page inspection.
 - LinkedIn post engagement: `linkedin-post-engagement-lead-miner` -> outreach tracker or messaging skill only after confirmation.
 - LinkedIn unknown feature family: `linkedin-feature-learning-lab` -> `browseros-skill-evolution-loop` -> patch the narrowest LinkedIn skill only after verification.
 - Unfamiliar site that taught a reusable pattern: `browseros-new-site-learning-protocol` -> `browseros-skill-evolution-loop`.
+- Any task that needs durable memory: task skill -> `obsidian-long-term-memory-workflow` -> domain-specific Obsidian skill when one fits.
 
 ## Decision Checklist
 
@@ -60,6 +65,7 @@ Before acting, decide:
 - Is there a private approved-answer or duplicate-check source needed?
 - What visible state proves completion?
 - Where should the run artifact be saved if findings matter?
+- Does any result need long-term memory in Obsidian?
 
 ## Anti-Loop Rule
 

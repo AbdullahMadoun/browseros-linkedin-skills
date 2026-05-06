@@ -9,6 +9,10 @@ metadata:
 
 # Skill: LinkedIn People URL Filtering
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Trigger
 
 Use this skill when BrowserOS needs to find people on LinkedIn quickly, repeatedly, and with low click cost.

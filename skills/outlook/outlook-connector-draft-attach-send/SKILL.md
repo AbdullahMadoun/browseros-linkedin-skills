@@ -12,6 +12,10 @@ metadata:
 
 # Outlook Connector Draft Attach Send
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 Use the Outlook Mail connector for fast draft creation and draft updates, then use Outlook web only for the part the connector may not expose: true local file attachments.
 

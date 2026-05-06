@@ -12,6 +12,10 @@ metadata:
 
 # Resume Applied Draft Review
 
+## Long-Term Memory
+
+When durable memory is needed, use `obsidian-long-term-memory-workflow` to save it in an Obsidian vault. Keep chat and run notes transient unless they are linked from Obsidian.
+
 ## Purpose
 
 Use this skill to judge whether an edited or accepted resume draft is actually better than the original for a target job. This is not a rewriting skill. It is a final-draft review and decision-support skill.
