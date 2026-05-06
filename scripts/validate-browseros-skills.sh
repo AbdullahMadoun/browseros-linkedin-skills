@@ -46,14 +46,23 @@ ruby -e '
 if command -v rg >/dev/null 2>&1; then
   echo "privacy scan:"
   found=0
+  scan_paths=(README.md CONTRIBUTING.md docs skills scripts test-runs .gitignore)
 
-  if rg -n -i '(/Users/|C:\\Users\\|[A-Z]:\\Users\\)' README.md docs skills scripts \
+  if rg -n -i '(/Users/|C:\\Users\\|[A-Z]:\\Users\\|/home/[^/[:space:]]+)' "${scan_paths[@]}" \
     --glob '!scripts/validate-browseros-skills.sh'; then
     found=1
   fi
 
-  if rg -n -i '[[:alnum:]._%+-]+@[[:alnum:].-]+\.[[:alpha:]]{2,}' README.md docs skills scripts \
+  if rg -n -i '[[:alnum:]._%+-]+@[[:alnum:].-]+\.[[:alpha:]]{2,}' "${scan_paths[@]}" \
     --glob '!scripts/validate-browseros-skills.sh' | rg -v -i '(@example\.com|<[^>]*email[^>]*>)'; then
+    found=1
+  fi
+
+  if rg -n -i 'linkedin\.com/in/' "${scan_paths[@]}"; then
+    found=1
+  fi
+
+  if rg -n -i '([+][0-9][0-9 .()/-]{7,}|\b0[0-9]{8,}\b|\b[0-9]{3}[-. ][0-9]{3}[-. ][0-9]{4}\b)' "${scan_paths[@]}"; then
     found=1
   fi
 
