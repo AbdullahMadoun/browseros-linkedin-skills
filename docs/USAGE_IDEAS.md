@@ -118,14 +118,13 @@ Safety:
 - never click `Post` or confirm scheduling without explicit final confirmation
 - remove staged test files before ending exploration
 
-## 9. Rank Jobs By Resume Fit
+## 9. Rank Jobs By CV Fit And Keywords
 
 Use when deciding which LinkedIn jobs or posts are worth applying to.
 
-1. `linkedin-job-resume-fit-ranking`
+1. `job-cv-fit-keyword-review`
 2. `lead-scoring-dedup-pivots` if raw posts need cleanup
-3. `ats-keyword-density-review` for promising roles
-4. `local-latex-resume-tailoring` for the chosen role
+3. `local-latex-resume-tailoring` for the chosen role
 
 Output:
 - fit score
@@ -133,6 +132,7 @@ Output:
 - hard caps or blockers
 - strongest evidence
 - missing requirements
+- keyword coverage and stuffing risks
 - recommended next action
 
 ## 10. Tailor A Ranked Shortlist
@@ -156,7 +156,7 @@ Rules:
 Use when one role is important enough for careful tailoring.
 
 1. `local-latex-resume-tailoring`
-2. `ats-keyword-density-review`
+2. `job-cv-fit-keyword-review`
 3. `resume-hallucination-risk-audit`
 4. `resume-applied-draft-review`
 
@@ -170,7 +170,7 @@ Rules:
 
 Use when a grounded cover letter body or fit note is needed.
 
-1. `linkedin-job-resume-fit-ranking` if role fit is not yet clear
+1. `job-cv-fit-keyword-review` if role fit is not yet clear
 2. `grounded-cover-letter-generator`
 3. `resume-hallucination-risk-audit`
 
@@ -183,7 +183,7 @@ Rules:
 
 Use when preparing an Easy Apply application.
 
-1. `linkedin-job-resume-fit-ranking`
+1. `job-cv-fit-keyword-review`
 2. `local-latex-resume-tailoring`
 3. `linkedin-easy-apply-application-workflow`
 4. `resume-hallucination-risk-audit` if new application text is created
@@ -199,7 +199,7 @@ Use after a role or interview target is known.
 
 1. `company-interview-prep-brief`
 2. `linkedin-company-opportunity-mapper` if company LinkedIn context matters
-3. `linkedin-job-resume-fit-ranking` if role requirements need mapping
+3. `job-cv-fit-keyword-review` if role requirements need mapping
 
 Output:
 - compact company brief
@@ -246,3 +246,149 @@ Use when a browser workflow should become reusable.
 5. Run `docs/PUBLICATION_AUDIT.md`
 
 Do not push until the complete skill batch is ready and approved.
+
+## 18. Route A Complex BrowserOS Task
+
+Use when the request spans multiple apps, unfamiliar pages, connectors, local files, or final-action safety.
+
+1. `browseros-skill-router`
+2. the selected specific skill, built-in skill, connector workflow, or unknown-site protocol
+
+Output:
+- chosen route
+- skills used
+- final state or artifact
+- any reusable skill gap
+
+## 19. Learn An Unfamiliar Website
+
+Use when no existing skill covers the site or workflow, or when the domain/site family has not had a first-time exploration pass.
+
+1. `browseros-skill-router`
+2. `connector-first-action-discovery` if the target app may be connected
+3. `browseros-new-site-learning-protocol`
+4. `browseros-skill-evolution-loop`
+5. create or improve a specific skill only if the workflow is repeatable and verified
+
+Safety:
+- map first
+- treat absent registry entries as new-site state
+- change one state at a time
+- stop before submit, send, publish, payment, delete, invite, or permission change
+- save a workflow artifact for substantial learning
+- update the private known-site registry after exploration
+
+## 19a. Improve Skills From Live Runs
+
+Use after BrowserOS discovers a better path, hidden control, connector gap, success signal, failure mode, or recovery path during real work.
+
+1. `browseros-skill-evolution-loop`
+2. patch the narrowest existing skill when the insight is verified and public-safe
+3. write private memory for personal paths, defaults, recipients, documents, or duplicate state
+4. create a new skill only for a distinct repeatable workflow
+
+Rules:
+- capture every useful insight
+- promote only verified reusable insights
+- keep public skills generic
+- sync installed skills after validation
+
+## 20. Connected App Before Browser UI
+
+Use when a task targets Gmail, Outlook, Sheets, Drive, GitHub, Slack, Notion, Linear, Jira, Vercel, Supabase, Cloudflare, Stripe, YouTube, or another connected app.
+
+1. `connector-first-action-discovery`
+2. app-specific reliability skill when available
+3. web fallback only for proven connector gaps
+
+Rules:
+- read first when state is uncertain
+- draft before send where possible
+- verify write actions by reading back or checking visible state
+
+## 21. External Job Portal Application
+
+Use when applying through a company career site, Gulf portal, ATS, or LinkedIn external redirect.
+
+1. `job-portal-application-workflow`
+2. `browseros-new-site-learning-protocol` for unknown portals
+3. `application-answer-bank-protocol`
+4. `resume-hallucination-risk-audit` if new free-text application content is created
+
+Safety:
+- use approved answer-bank fields only
+- verify exact uploaded documents
+- stop before final submit
+- record portal-specific learning for future reuse
+
+## 22. Research Opportunity Search
+
+Use when finding credible AI/CS research opportunities, RA roles, visiting programs, funded summer options, or lab routes.
+
+1. `research-opportunity-finder`
+2. `lead-scoring-dedup-pivots` if many leads need triage
+3. `professor-lab-outreach-workflow` for promising professor/lab routes
+4. `obsidian-job-search-keyword-intelligence` when durable tracking is needed
+
+Output:
+- apply-now list
+- monitor list
+- professor outreach list
+- rejected or weak leads
+- source-backed eligibility and deadlines
+
+## 23. Professor Or Lab Outreach
+
+Use after a professor, lab, or project looks like a credible fit.
+
+1. `professor-lab-outreach-workflow`
+2. `grounded-cover-letter-generator` only if a longer note is specifically needed
+3. `gmail-connector-reliability-workflow` or `outlook-mail-connector-reliability` for drafts/sends
+4. `obsidian-job-search-keyword-intelligence` for tracking
+
+Safety:
+- verify official contact route
+- check duplicate outreach memory
+- keep the email short and grounded
+- stop before send unless explicitly approved
+
+## 24. LinkedIn Profile Optimization
+
+Use when improving the user's own LinkedIn profile for target roles.
+
+1. `linkedin-profile-optimizer`
+2. `resume-hallucination-risk-audit` if drafted text adds new claims
+
+Safety:
+- draft changes before opening edit dialogs
+- use only approved evidence
+- stop before saving profile edits unless explicitly confirmed
+
+## 25. LinkedIn Feature Learning
+
+Use when LinkedIn has a new feature family, changed UI branch, or repeated
+automation confusion that is not covered by a narrower skill.
+
+1. `browseros-skill-router`
+2. `linkedin-feature-learning-lab`
+3. `browseros-skill-evolution-loop`
+
+Safety:
+- explore read-only or draft-only paths
+- stop before sends, posts, comments, replies, reactions, reposts, invites, accepts, ignores, joins, registrations, saves, applications, profile edits, follows, and sensitive uploads
+- capture direct URLs, controls, final-action boundaries, success signals, failure signals, and recovery paths
+- patch the narrowest LinkedIn skill only after the insight is verified and public-safe
+
+## 26. Mine LinkedIn Post Engagement
+
+Use after reviewing a LinkedIn post with comments, reactions, or reposts.
+
+1. `linkedin-post-engagement-lead-miner`
+2. `lead-scoring-dedup-pivots`
+3. `linkedin-outreach-sheet-workflow` or `obsidian-job-search-keyword-intelligence` if tracking is requested
+4. `linkedin-messaging-workflow` or `linkedin-connection-workflow` only after approval
+
+Safety:
+- deduplicate by profile URL
+- do not merge by name alone
+- stop before messaging, connecting, or commenting

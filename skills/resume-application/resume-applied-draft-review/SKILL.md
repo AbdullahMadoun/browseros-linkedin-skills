@@ -54,6 +54,12 @@ Optional inputs:
 6. Base every claim on the provided resumes, job requirements, metrics, and user-choice summaries.
 7. Be candid about missed opportunities from rejected or pending edits.
 
+## Stop Conditions
+
+Stop at a verdict and concrete next actions. Do not submit applications, edit the
+resume file, or compile new variants unless the user asks to move from review
+into implementation.
+
 ## Output schema
 
 Recommended output:

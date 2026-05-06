@@ -65,8 +65,11 @@ List the installed custom skills from browseros-linkedin-skills and summarize wh
 
 Expected result:
 
+- BrowserOS core skills are available for routing, connector-first discovery, unknown-site learning, approved-answer handling, and live skill evolution.
 - LinkedIn skills are available for search, outreach, messaging, and Easy Apply workflows.
-- Resume/application skills are available for fit ranking, tailoring, cover letters, ATS review, draft review, hallucination audits, and interview prep.
+- Job portal skills are available for external application forms, unknown ATS flows, verified document upload, and stop-before-submit behavior.
+- Research opportunity skills are available for AI/CS opportunity discovery and professor/lab outreach preparation.
+- Resume/application skills are available for fit and keyword review, tailoring, cover letters, draft review, hallucination audits, and interview prep.
 - Gmail skills are available for connector-first mail operations and web fallback workflows.
 - Outlook skills are available for connector-first drafting, local attachment, send, and scheduled send workflows.
 - Obsidian skills are available for local job-search keyword and lead intelligence vault maintenance.

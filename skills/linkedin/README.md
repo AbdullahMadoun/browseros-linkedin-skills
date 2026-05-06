@@ -1,6 +1,6 @@
 # LinkedIn Skills
 
-Skills for LinkedIn search, company mapping, hiring-post analysis, outreach, messaging, connection requests, document attachment, post preparation, and Easy Apply preparation.
+Skills for LinkedIn search, company mapping, hiring-post analysis, outreach, messaging, connection requests, document attachment, post preparation, profile optimization, post-engagement mining, and Easy Apply preparation.
 
 | Skill | Use |
 |---|---|
@@ -17,6 +17,8 @@ Skills for LinkedIn search, company mapping, hiring-post analysis, outreach, mes
 | `linkedin-attach-document-workflow` | Attach local documents in LinkedIn threads. |
 | `linkedin-connection-workflow` | Send and verify connection requests. |
 | `linkedin-poster-workflow` | Prepare LinkedIn posts and stop before publish. |
+| `linkedin-profile-optimizer` | Audit and draft profile improvements while stopping before save. |
+| `linkedin-post-engagement-lead-miner` | Mine post engagement for warm leads and follow-up actions. |
 | `linkedin-easy-apply-application-workflow` | Prepare Easy Apply applications and stop before final submit. |
-| `linkedin-job-resume-fit-ranking` | Rank LinkedIn jobs against resume evidence. |
 | `linkedin-shortlist-resume-batch-tailoring` | Tailor one truthful one-page resume per ranked LinkedIn opportunity. |
+| `linkedin-feature-learning-lab` | Safely learn new LinkedIn feature families and promote verified shortcuts into narrower skills. |

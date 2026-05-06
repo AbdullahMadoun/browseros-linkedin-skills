@@ -1,0 +1,35 @@
+{
+  "pass": false,
+  "tex": "test-runs/cv-format-installed-selftest-2026-05-07/run1_raw_placeholders.tex",
+  "baseline": "test-runs/cv-format-installed-selftest-2026-05-07/baseline.tex",
+  "pdf": null,
+  "expected_pages": 1,
+  "issues": [
+    "empty_or_too_thin_sections: summary, education, experience, projects, skills",
+    "placeholder_markers_present: TODO, <target role>",
+    "density_below_baseline: 0.248 < 0.85"
+  ],
+  "warnings": [
+    "low_bold_anchor_count: 0 < 3",
+    "pdf_not_checked"
+  ],
+  "metrics": {
+    "word_count": 29,
+    "baseline_word_count": 117,
+    "density_ratio": 0.248,
+    "section_count": 5,
+    "sections": [
+      "summary",
+      "education",
+      "experience",
+      "projects",
+      "skills"
+    ],
+    "bold_phrase_count": 0,
+    "baseline_bold_phrase_count": 8,
+    "retained_bold_phrase_count": 2,
+    "retained_bold_ratio": 0.0,
+    "bold_word_ratio": 0.0,
+    "page_count": null
+  }
+}

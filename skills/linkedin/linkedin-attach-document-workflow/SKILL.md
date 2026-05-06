@@ -22,6 +22,12 @@ Use this when the user asks to send a CV, resume, PDF, DOC, DOCX, or other docum
 ## Sensitive document rule
 For resumes, CVs, offer letters, contracts, IDs, financial documents, or other private files, require explicit confirmation of both the exact absolute file path and the exact recipient/thread before uploading. If the file was discovered by search instead of supplied directly by the user, re-confirm before sending.
 
+## Safety boundary
+
+Do not upload or send a document unless the user has approved the exact recipient
+and exact file. For automation tests, stop after detecting the composer,
+attachment control, and file-input path; do not upload real documents.
+
 ## Core rule
 Do not assume the visible paperclip button is the upload target.
 

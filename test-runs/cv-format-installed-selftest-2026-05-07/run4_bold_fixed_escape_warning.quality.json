@@ -1,0 +1,33 @@
+{
+  "pass": true,
+  "tex": "test-runs/cv-format-installed-selftest-2026-05-07/run4_bold_fixed_escape_warning.tex",
+  "baseline": "test-runs/cv-format-installed-selftest-2026-05-07/baseline.tex",
+  "pdf": null,
+  "expected_pages": 1,
+  "issues": [
+
+  ],
+  "warnings": [
+    "suspicious_unescaped_ampersand_lines: 16",
+    "pdf_not_checked"
+  ],
+  "metrics": {
+    "word_count": 122,
+    "baseline_word_count": 117,
+    "density_ratio": 1.043,
+    "section_count": 5,
+    "sections": [
+      "summary",
+      "education",
+      "experience",
+      "projects",
+      "skills"
+    ],
+    "bold_phrase_count": 8,
+    "baseline_bold_phrase_count": 8,
+    "retained_bold_phrase_count": 8,
+    "retained_bold_ratio": 1.0,
+    "bold_word_ratio": 0.131,
+    "page_count": null
+  }
+}

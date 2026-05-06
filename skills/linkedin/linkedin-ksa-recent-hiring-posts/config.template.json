@@ -15,6 +15,6 @@
   "LINKEDIN_NATIVE_RECOVERY_BEFORE_GOOGLE": true,
   "GOOGLE_XRAY_ENABLED": true,
   "NEGATIVE_TERMS_GOOGLE": ["internship", "course", "bootcamp", "freelance"],
-  "SEARCH_MODES": ["market_scan", "target_role_hunt", "recruiter_source_discovery", "employer_thread_discovery"],
+  "SEARCH_MODES": ["candidate_fit_mapping", "linkedin_posts_hiring_activity", "role_signal_refinement", "contact_poster_signal", "company_industry_context", "linkedin_native_recovery", "google_xray_fallback"],
   "NOTES": "If zero results, remove strict contact tokens, expand role variants, pivot inside LinkedIn, and use Google X-ray only after LinkedIn-native recovery."
 }

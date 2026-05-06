@@ -79,6 +79,9 @@ Use only after LinkedIn-native recovery paths are exhausted:
 
 Do not send candidate names, private profile-derived details, personal phone numbers, or personal emails to Google. Use role, company, geography, and hiring terms.
 
+Never treat Google freshness as proof of post freshness. Open the LinkedIn result
+and verify the post's visible date before counting it as recent.
+
 ## Google recency
 
 - Week: add `&tbs=qdr:w`.

@@ -1,17 +1,19 @@
 # BrowserOS Skills Suite
 
-Public BrowserOS skill packages for LinkedIn search, outreach operations, job applications, resume tailoring, Gmail and Outlook mail workflows, Google Sheets reliability, Obsidian job-search intelligence, and grounded application-material review.
+Public BrowserOS skill packages for BrowserOS routing, unknown-site learning, connector-first actions, LinkedIn search and outreach, job applications, research opportunities, resume tailoring, Gmail and Outlook mail workflows, Google Sheets reliability, Obsidian job-search intelligence, and grounded application-material review.
 
 The repository is organized as one skill per leaf folder under `skills/<group>/`. Each skill has a `SKILL.md` file with BrowserOS-compatible front matter and concise instructions for an agent to follow.
 
 ## What Is Included
 
-This repo includes 31 custom skills:
+This repo includes 41 custom skills:
 
+- BrowserOS core workflows: skill routing, first-time site exploration, unknown-site learning, connector-first action discovery, private approved-answer bank handling, and live skill evolution.
 - Search and lead discovery: LinkedIn people search, Boolean refinement, KSA hiring posts, company mapping, hiring-post comment mining, scoring, deduplication, and search-state hygiene.
 - Obsidian knowledge base workflows: keyword maturity, search logs, duplicate exclusions, lead notes, application paths, and graph-friendly job-search intelligence.
-- Outreach operations: one-sheet Google Sheets outreach tracking, inbox preview backfill, row enrichment, daily operations, LinkedIn messaging, connection requests, document attachment, and safe post preparation.
-- Job application support: LinkedIn Easy Apply preparation, job-to-resume fit ranking, batch shortlist tailoring, local LaTeX resume tailoring, cover letters, ATS keyword review, hallucination audits, final-draft review, and interview prep.
+- Outreach operations: one-sheet Google Sheets outreach tracking, inbox preview backfill, row enrichment, daily operations, LinkedIn messaging, connection requests, document attachment, profile optimization, post-engagement lead mining, safe post preparation, and LinkedIn feature learning.
+- Job application support: LinkedIn Easy Apply, generic job portals, job/CV fit and keyword review, batch shortlist tailoring, local LaTeX resume tailoring, cover letters, hallucination audits, final-draft review, and interview prep.
+- Research opportunity workflows: credible AI/CS research opportunity search and professor/lab outreach preparation.
 - Gmail workflows: connector-first search/read/draft/send/reply reliability, received attachment extraction, label cleanup, web fallback for outgoing attachments, scheduled send, draft editing, and label management.
 - Outlook workflows: connector-first draft/send reliability, local file attachment in Outlook web, and scheduled send verification.
 
@@ -24,10 +26,13 @@ browseros-linkedin-skills/
 ├── CONTRIBUTING.md
 ├── skills/
 │   ├── google-sheets/
+│   ├── browseros-core/
 │   ├── gmail/
+│   ├── job-portals/
 │   ├── linkedin/
 │   ├── obsidian/
 │   ├── outlook/
+│   ├── research-opportunities/
 │   ├── resume-application/
 │   └── search-leads/
 ├── docs/
@@ -39,10 +44,20 @@ browseros-linkedin-skills/
 │   ├── SKILL_CATALOG.md
 │   └── USAGE_IDEAS.md
 └── scripts/
-    └── install-browseros-skills.ps1
+    ├── install-browseros-skills.ps1
+    ├── install-browseros-skills.sh
+    └── validate-browseros-skills.sh
 ```
 
 ## Skill Groups
+
+### BrowserOS Core
+
+- `browseros-skill-router` - choose the right custom skill, built-in skill, connector action, local/private source, or unknown-site learning path.
+- `browseros-new-site-learning-protocol` - give new domains/site families a first-time exploration pass and map controls, fields, state changes, final-action boundaries, success signals, and recovery paths.
+- `connector-first-action-discovery` - discover and use connected-app actions before fragile browser UI automation.
+- `application-answer-bank-protocol` - use private approved application answers without storing personal defaults in public skills.
+- `browseros-skill-evolution-loop` - capture verified live-run insights and promote them into run notes, private memory, existing-skill patches, or new skills.
 
 ### Search and Lead Discovery
 
@@ -69,6 +84,9 @@ browseros-linkedin-skills/
 - `linkedin-attach-document-workflow` - attach and send local documents in LinkedIn message threads.
 - `linkedin-connection-workflow` - send profile-based LinkedIn connection requests and verify invite state.
 - `linkedin-poster-workflow` - prepare LinkedIn posts, media, documents, polls, and schedules while stopping before publish.
+- `linkedin-profile-optimizer` - audit and draft LinkedIn profile improvements while stopping before saving.
+- `linkedin-post-engagement-lead-miner` - mine post reactions, comments, and reposts for warm leads and follow-up actions.
+- `linkedin-feature-learning-lab` - safely learn new LinkedIn feature families and promote verified shortcuts into narrower skills.
 
 ### Gmail Mail
 
@@ -77,15 +95,23 @@ browseros-linkedin-skills/
 
 ### Application Materials
 
-- `linkedin-job-resume-fit-ranking` - rank LinkedIn jobs or posts against evidence from a resume.
+- `job-cv-fit-keyword-review` - rank jobs or posts against CV/resume evidence and check keyword coverage/stuffing risk.
 - `linkedin-shortlist-resume-batch-tailoring` - generate one truthful one-page resume per ranked opportunity, with mapping and truth audits.
-- `local-latex-resume-tailoring` - tailor and compile LaTeX resumes locally with alignment, rewrite, and audit artifacts.
+- `local-latex-resume-tailoring` - tailor, compile, and format-QA LaTeX resumes locally with alignment, rewrite, and audit artifacts.
 - `grounded-cover-letter-generator` - draft cover letters grounded in a resume, job requirements, and user-approved story.
-- `ats-keyword-density-review` - check keyword coverage and stuffing risk without adding unsupported terms.
 - `resume-hallucination-risk-audit` - audit edited application materials for unsupported facts.
 - `resume-applied-draft-review` - compare original and accepted resume drafts for improvement or regression.
 - `company-interview-prep-brief` - combine concise company research with resume-grounded interview prep.
 - `linkedin-easy-apply-application-workflow` - prepare LinkedIn Easy Apply applications and stop before final submit.
+
+### Job Portals
+
+- `job-portal-application-workflow` - prepare applications on external job portals and company career pages, learn unknown forms, fill approved fields, attach verified documents, and stop before submit.
+
+### Research Opportunities
+
+- `research-opportunity-finder` - find credible in-person AI/CS research opportunities, programs, lab openings, and RA routes with verified sources.
+- `professor-lab-outreach-workflow` - map professor/lab fit and prepare concise grounded outreach without sending until approved.
 
 ### Outlook Mail
 
@@ -98,6 +124,7 @@ browseros-linkedin-skills/
 These skills are intentionally conservative:
 
 - They do not invent resume facts, credentials, metrics, employers, dates, or outcomes.
+- They do not guess application answers such as salary, authorization, sponsorship, relocation, availability, notice period, years of experience, or document choice.
 - They require explicit confirmation before final application submission.
 - They treat names, profile URLs, email addresses, phone numbers, message snippets, private filenames, and application materials as sensitive.
 - They prefer redacted labels in chat summaries unless exact identifiers are required.
@@ -142,18 +169,42 @@ From the repository root on Windows:
 .\scripts\install-browseros-skills.ps1
 ```
 
+From macOS or Linux:
+
+```bash
+./scripts/install-browseros-skills.sh
+```
+
 The repo groups skills visually by use case, but the installer scans those groups recursively and installs each skill as a top-level BrowserOS skill folder.
 
-By default, the script copies only missing skills into:
+By default, the scripts copy only missing skills into:
 
 ```text
-$env:USERPROFILE\.browseros\skills
+Windows:      $env:USERPROFILE\.browseros\skills
+macOS/Linux:  $HOME/.browseros/skills
 ```
 
 To overwrite existing installed skills:
 
 ```powershell
 .\scripts\install-browseros-skills.ps1 -Overwrite
+```
+
+```bash
+./scripts/install-browseros-skills.sh --overwrite
+```
+
+To remove stale skill folders previously installed by this repo but no longer
+present here:
+
+```bash
+./scripts/install-browseros-skills.sh --overwrite --prune
+```
+
+Validate front matter, duplicate skill names, privacy markers, and whitespace before publishing or syncing:
+
+```bash
+./scripts/validate-browseros-skills.sh
 ```
 
 ## Usage
@@ -165,10 +216,18 @@ Use [docs/SKILL_CATALOG.md](docs/SKILL_CATALOG.md) for a full skill list.
 Use [docs/USAGE_IDEAS.md](docs/USAGE_IDEAS.md) for common chains such as:
 
 - search LinkedIn for people
+- learn an unfamiliar website safely
+- capture live-run insights into durable skill improvements
+- use connected-app actions before browser UI
 - find recent KSA hiring posts
+- prepare an external job-portal application
+- find AI/CS research opportunities
+- prepare professor/lab outreach
 - maintain an Obsidian job-search keyword vault
 - prepare LinkedIn posts without publishing
-- rank jobs by resume fit
+- optimize a LinkedIn profile without saving edits
+- mine LinkedIn post engagement for warm leads
+- rank jobs by CV/resume fit and keyword coverage
 - tailor a shortlist into resumes
 - prepare and stop at LinkedIn Easy Apply review
 - use Gmail connector-first or web fallback mail workflows

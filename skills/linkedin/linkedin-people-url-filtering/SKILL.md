@@ -42,6 +42,12 @@ Produce a targeted LinkedIn People shortlist by entering the People vertical ear
 6. Reset or reopen a clean URL before every new run.
 7. If UI chips are inconsistent, switch to URL-lock mode.
 
+## Stop Conditions
+
+Stop refining and report when result quality is good enough for the requested
+shortlist, two filter changes are neutral/worse, LinkedIn state cannot be
+verified, or login/CAPTCHA/manual verification appears.
+
 ## Entry modes
 
 ### Mode A: UI-first

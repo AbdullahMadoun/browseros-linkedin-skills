@@ -35,11 +35,14 @@ Current groups:
 
 | Group | Purpose |
 |---|---|
+| `skills/browseros-core/` | Routing, connector-first discovery, unknown-site learning, approved-answer handling, and live skill evolution. |
 | `skills/linkedin/` | LinkedIn search, outreach, messaging, Easy Apply, and LinkedIn-specific application workflows. |
+| `skills/job-portals/` | Non-LinkedIn job portals, company career pages, ATS forms, and external application workflows. |
 | `skills/google-sheets/` | Google Sheets connector reliability and sheet operations. |
 | `skills/gmail/` | Gmail connector-first mail workflows and Gmail web fallback operations. |
 | `skills/outlook/` | Outlook mail drafting, attachment, sending, scheduling, and verification. |
 | `skills/obsidian/` | Obsidian knowledge-base workflows for job-search keywords, lead notes, and application paths. |
+| `skills/research-opportunities/` | Research opportunity discovery and professor/lab outreach workflows. |
 | `skills/resume-application/` | Resume, cover letter, ATS, hallucination audit, draft review, and interview prep workflows. |
 | `skills/search-leads/` | General search hygiene, scoring, deduplication, and pivot planning. |
 
@@ -73,9 +76,11 @@ Do not keep old import notes, source-coverage maps, private package references, 
 
 Automation that helps install or validate the repo lives here.
 
-Current script:
+Current scripts:
 
 - `install-browseros-skills.ps1` copies skill folders into a BrowserOS skills directory.
+- `install-browseros-skills.sh` copies skill folders into a BrowserOS skills directory on macOS/Linux.
+- `validate-browseros-skills.sh` validates skill front matter, duplicate names, obvious privacy markers, and whitespace.
 
 ## Naming Rules
 

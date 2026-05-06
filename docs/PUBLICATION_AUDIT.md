@@ -52,6 +52,8 @@ Skills should require explicit confirmation before:
 
 Each workflow should include a success signal and at least one recovery path for common failure states.
 
+For live skill-evolution changes, verify the promoted insight was observed, generic, reusable, and not just a private account state or unverified guess.
+
 ## Documentation Check
 
 Update these files when skills are added, removed, or renamed:
@@ -84,6 +86,10 @@ rg -n -i 'PERSONAL_NAME|PUBLIC_HANDLE|PRIVATE_PROJECT|LOCAL_USER_PATH|WINDOWS_US
 
 ```bash
 git diff --check
+```
+
+```bash
+./scripts/validate-browseros-skills.sh
 ```
 
 Only publish after these checks are clean or any remaining findings are intentionally documented.

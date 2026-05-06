@@ -21,6 +21,11 @@ This skill covers the mechanics of opening a thread, composing a message, sendin
 - Clicking Send is a reliable fallback.
 - Plain Enter may insert a newline instead of sending.
 
+## Safety boundary
+
+Do not send unless the exact recipient/thread and message text are approved by
+the user. For tests, stop after opening the thread and locating the composer.
+
 ## Workflow
 
 1. **Open LinkedIn Messaging.**

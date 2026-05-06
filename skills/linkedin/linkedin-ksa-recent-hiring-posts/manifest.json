@@ -1,7 +1,7 @@
 {
   "name": "linkedin-ksa-recent-hiring-posts",
   "displayName": "LinkedIn KSA Recent Hiring Posts",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "target": "BrowserOS search agent",
   "region": "Saudi Arabia",
   "focus": "LinkedIn-first recent hiring posts with candidate-fit role mapping and direct contact paths",

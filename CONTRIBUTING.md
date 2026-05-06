@@ -12,6 +12,7 @@ Contributions should make BrowserOS better at repeatable workflows. A good contr
 | Safety audit | A skill sends, submits, uploads, schedules, deletes, or edits data. | Added confirmation points, stop conditions, and verification rules. |
 | Public cleanup | A skill contains private examples or account-specific details. | Generic examples and a clean privacy scan. |
 | Documentation | Users need clearer discovery or usage chains. | Updates to `README.md`, `docs/`, or group indexes. |
+| Live skill evolution | A real BrowserOS run reveals a reusable path, gap, or failure mode. | Run note, private-memory update, existing-skill patch, or new skill candidate. |
 
 ## New Skill Workflow
 
@@ -51,11 +52,14 @@ Place new skills under the closest group:
 
 | Group | Path |
 |---|---|
+| BrowserOS routing, unknown-site learning, connectors, answer bank, and skill evolution | `skills/browseros-core/<skill-name>/` |
 | LinkedIn workflows | `skills/linkedin/<skill-name>/` |
+| External job portals and company career pages | `skills/job-portals/<skill-name>/` |
 | Gmail workflows | `skills/gmail/<skill-name>/` |
 | Google Sheets workflows | `skills/google-sheets/<skill-name>/` |
 | Obsidian workflows | `skills/obsidian/<skill-name>/` |
 | Outlook workflows | `skills/outlook/<skill-name>/` |
+| Research opportunities and professor/lab outreach | `skills/research-opportunities/<skill-name>/` |
 | Resume and application-material workflows | `skills/resume-application/<skill-name>/` |
 | General search, scoring, and lead processing | `skills/search-leads/<skill-name>/` |
 

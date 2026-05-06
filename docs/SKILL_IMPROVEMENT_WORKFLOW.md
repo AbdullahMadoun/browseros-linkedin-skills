@@ -4,6 +4,8 @@ Use this workflow when creating a new BrowserOS skill or improving an existing o
 
 The purpose of a skill is to save BrowserOS from rediscovering the same workflow every time. A good skill captures the reliable path through a task: which buttons to use, which paths are slow, which states prove success, which fields are risky, and where the workflow should stop for user confirmation.
 
+For live runs, use `browseros-skill-evolution-loop` as the end-of-run learning gate. It decides whether a new insight belongs in a run note, private memory, an existing skill patch, a new skill, or nowhere.
+
 ## When To Create A Skill
 
 Create or improve a skill when:
@@ -13,8 +15,43 @@ Create or improve a skill when:
 - the task requires safety rules, such as before sending messages, submitting applications, uploading documents, or changing data
 - the workflow benefits from known shortcuts, direct URLs, connector-first actions, or verification rules
 - repeated manual exploration would waste time or create avoidable mistakes
+- a live run revealed a verified reusable insight, such as a faster URL, reliable label, connector gap, failure signal, success signal, or recovery path
 
 Do not create a skill for one-off tasks that have no reusable path.
+
+## Skill Hygiene Rules
+
+Keep the skill set small and sharp:
+
+- Prefer one canonical skill when two workflows share the same trigger, inputs, safety model, and output.
+- Keep narrow site-mechanics skills separate when the UI path is fragile or safety-sensitive.
+- Keep connector reliability skills short; they should define guardrails, not become full app manuals.
+- Do not preserve old skill names as wrappers unless active routing would otherwise break.
+- When collapsing skills, update catalog, usage chains, group indexes, and installed skills with prune enabled.
+- Preserve performance by moving essential rules into the canonical skill before deleting overlap.
+
+## Live Learning Loop
+
+During real BrowserOS work:
+
+1. For any new domain/site family or new workflow family, run a first-time exploration pass before full automation.
+2. Capture insights as they happen: URLs, labels, hidden controls, validation errors, final-action boundaries, success signals, failure signals, connector gaps, and recovery paths.
+3. At the end of the run, classify each insight:
+   - `run_note`: useful but one-off or not yet verified
+   - `private_memory`: personal paths, approved answers, real contacts, document names, or duplicate state
+   - `site_registry`: public-safe domain/workflow learning that marks a site family as known
+   - `existing_skill_patch`: verified, generic, and improves a current skill
+   - `new_skill_candidate`: a distinct repeatable workflow
+   - `do_not_store`: secrets, credentials, one-time codes, private message content, or speculation
+4. Patch the repo source of truth first when a public skill should change.
+5. Sync installed BrowserOS skills only after validation.
+
+Do not patch public skills with account-specific observations, personal defaults, private filenames, real profile URLs, private messages, or unverified guesses.
+
+For large known sites with many independent feature families, use a
+site-specific feature-learning skill when available. For example, use
+`linkedin-feature-learning-lab` to map a new LinkedIn branch, then promote the
+verified branch insight into the narrowest existing LinkedIn skill.
 
 ## Exploration Prompt
 

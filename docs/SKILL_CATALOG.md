@@ -2,6 +2,16 @@
 
 This catalog lists every public custom skill in the repository and the main reason to use it.
 
+## BrowserOS Core
+
+| Skill | Use When | Notes |
+|---|---|---|
+| `browseros-skill-router` | A request is complex, multi-app, unfamiliar, or likely to repeat failed browser actions. | Chooses custom skill, built-in, connector action, local/private source, or unknown-site protocol. |
+| `browseros-new-site-learning-protocol` | No existing skill fits a site/workflow, or the domain/site family is being handled for the first time. | Performs first-time exploration, then maps controls, fields, state changes, final-action boundaries, success signals, and recovery paths. |
+| `connector-first-action-discovery` | A connected app may support the task. | Discovers structured actions before falling back to brittle browser UI. |
+| `application-answer-bank-protocol` | A form needs personal, application, or document-choice answers. | Uses private approved defaults; never guesses sensitive application fields. |
+| `browseros-skill-evolution-loop` | A live run teaches a reusable BrowserOS workflow insight. | Classifies insights as run note, private memory, existing-skill patch, new-skill candidate, or do-not-store. |
+
 ## Search And Lead Intelligence
 
 | Skill | Use When | Notes |
@@ -46,19 +56,34 @@ This catalog lists every public custom skill in the repository and the main reas
 | `linkedin-connection-workflow` | A profile-based connection request must be sent. | Defaults to no-note flow and requires explicit invite-sent state. |
 | `linkedin-poster-workflow` | A LinkedIn post, media post, document post, poll, or scheduled post must be prepared. | Maps composer paths, upload fallbacks, audience/comment settings, and stops before final publish. |
 | `linkedin-easy-apply-application-workflow` | A LinkedIn Easy Apply application must be prepared. | Opens jobs, attaches the correct resume, fills only known fields, and stops before final submit. |
+| `linkedin-profile-optimizer` | A LinkedIn profile should be audited or improved for target roles. | Drafts headline/About/section changes and stops before saving profile edits. |
+| `linkedin-post-engagement-lead-miner` | A LinkedIn post has reactions, comments, or reposts worth mining. | Finds warm leads and follow-up hooks; stops before messaging, connecting, or commenting. |
+| `linkedin-feature-learning-lab` | A new LinkedIn feature family or UI branch needs safe exploration. | Maps direct URLs, controls, modals, final-action boundaries, fast paths, and candidate patches for narrower skills. |
 
 ## Application Materials
 
 | Skill | Use When | Notes |
 |---|---|---|
-| `linkedin-job-resume-fit-ranking` | LinkedIn jobs or posts need ranking against a resume. | Extracts requirements, maps evidence, applies caps, and gives candid fit verdicts. |
+| `job-cv-fit-keyword-review` | Jobs, LinkedIn posts, recruiter posts, or job descriptions need CV/resume fit and keyword review. | Extracts requirements, maps evidence, scores fit, applies caps, checks keyword coverage, and flags stuffing/unsupported terms. |
 | `linkedin-shortlist-resume-batch-tailoring` | A ranked shortlist should become one resume per opportunity. | Uses role-family presets, strict one-page checks, word-count floors, truth audits, and mapping guides. |
-| `local-latex-resume-tailoring` | A resume should be tailored locally with LaTeX artifacts. | Uses approved master data, alignment analysis, exact-substring rewrite plans, local PDF compilation, and compile recovery. |
+| `local-latex-resume-tailoring` | A resume should be tailored locally with LaTeX artifacts. | Uses approved master data, alignment analysis, exact-substring rewrite plans, local PDF compilation, compile recovery, and format QA. |
 | `grounded-cover-letter-generator` | A cover letter body is needed. | Requires a template/structure and uses only resume-supported or user-approved evidence. |
-| `ats-keyword-density-review` | A resume needs ATS keyword review. | Finds missing supported terms, weak evidence, overuse, and stuffing risk. |
 | `resume-hallucination-risk-audit` | Edited application materials may contain unsupported claims. | Audits tools, employers, titles, dates, degrees, metrics, outcomes, and ownership verbs. |
 | `resume-applied-draft-review` | A final accepted resume draft needs review. | Compares original vs accepted draft for wins, regressions, remaining gaps, and readiness. |
 | `company-interview-prep-brief` | Interview preparation needs company context and grounded talking points. | Combines compact research, likely questions, red flags, and resume evidence. |
+
+## Job Portals
+
+| Skill | Use When | Notes |
+|---|---|---|
+| `job-portal-application-workflow` | A non-LinkedIn portal or company career page application must be prepared. | Learns unknown forms, uses approved answers, verifies documents, and stops before submit. |
+
+## Research Opportunities
+
+| Skill | Use When | Notes |
+|---|---|---|
+| `research-opportunity-finder` | Credible AI/CS research opportunities, RA roles, visiting programs, or funded summer options are needed. | Verifies eligibility, deadlines, funding, location, and application routes against sources. |
+| `professor-lab-outreach-workflow` | A professor or lab should be contacted for a grounded research opportunity. | Maps fit, checks duplicate outreach, drafts concise email, and stops before send. |
 
 ## Outlook Mail
 

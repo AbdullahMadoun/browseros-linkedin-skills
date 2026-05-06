@@ -101,6 +101,12 @@ For every pass:
 4. Label the change as `better`, `worse`, or `neutral`.
 5. Keep only changes that improve relevance without destroying volume.
 
+## Stop Conditions
+
+Stop iterating when a query produces a useful top-result set, two consecutive
+changes are neutral/worse, volume collapses, or the next improvement requires a
+different workflow such as company mapping, people filtering, or comment mining.
+
 ## Practical default sequence
 
 ```text
